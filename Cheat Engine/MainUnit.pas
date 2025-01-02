@@ -314,8 +314,10 @@ type
     cbPresentMemoryOnly: TCheckBox;
     ColorDialog1: TColorDialog;
     CreateGroup: TMenuItem;
-    FromAddress: TEdit;
     andlabel: TLabel;
+    editSH2: TEdit;
+    edtAlignment: TEdit;
+    FromAddress: TEdit;
     lblcompareToSavedScan: TLabel;
     miTestAccessViolationThread: TMenuItem;
     miTriggerAccessViolation: TMenuItem;
@@ -349,6 +351,8 @@ type
     miGetDotNetObjectList: TMenuItem;
     miDBVMFindWhatWritesOrAccesses: TMenuItem;
     pmPresentMemoryOnly: TPopupMenu;
+    scanvalue: TEdit;
+    scanvalue2: TEdit;
     sep2: TMenuItem;
     miChangeValueBack: TMenuItem;
     miSignTable: TMenuItem;
@@ -359,13 +363,9 @@ type
     miFlFindWhatWrites: TMenuItem;
     miLanguages: TMenuItem;
     ScanText2: TLabel;
-    scanvalue2: TEdit;
     sbClearActiveMemory: TSpeedButton;
     tLuaGCPassive: TTimer;
     tLuaGCActive: TTimer;
-    ToAddress: TEdit;
-    editSH2: TEdit;
-    edtAlignment: TEdit;
     Foundlist3: TListView;
     ImageList2: TImageList;
     Label1: TLabel;
@@ -472,6 +472,7 @@ type
     rt3: TRadioButton;
     SettingsButton: TSpeedButton;
     tbSpeed: TTrackBar;
+    ToAddress: TEdit;
     UpdateTimer: TTimer;
     FreezeTimer: TTimer;
     PopupMenu2: TPopupMenu;
@@ -509,7 +510,6 @@ type
     VarType: TComboBox;
     ProgressBar: TProgressBar;
     UndoScan: TButton;
-    scanvalue: TEdit;
     foundlistpopup: TPopupMenu;
     Browsethismemoryarrea1: TMenuItem;
     Removeselectedaddresses1: TMenuItem;

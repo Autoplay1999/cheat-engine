@@ -137,6 +137,7 @@ object MainForm: TMainForm
       ShowHint = True
     end
     object ScanText: TLabel
+      AnchorSideLeft.Control = scanvalue
       AnchorSideTop.Control = btnNewScan
       AnchorSideTop.Side = asrBottom
       Left = 406
@@ -1155,13 +1156,13 @@ object MainForm: TMainForm
       AnchorSideRight.Control = Panel5
       AnchorSideRight.Side = asrBottom
       Left = 612
-      Height = 368
+      Height = 417
       Top = 124
       Width = 122
       Anchors = [akTop, akRight]
       AutoSize = True
       BevelOuter = bvNone
-      ClientHeight = 368
+      ClientHeight = 417
       ClientWidth = 122
       TabOrder = 6
       object pnlScanOptions: TPanel
@@ -1373,12 +1374,12 @@ object MainForm: TMainForm
         AnchorSideBottom.Control = Panel9
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 136
+        Height = 185
         Top = 232
         Width = 115
         Anchors = [akTop, akLeft, akBottom]
         BevelOuter = bvNone
-        ClientHeight = 136
+        ClientHeight = 185
         ClientWidth = 115
         TabOrder = 1
         object cbUnrandomizer: TCheckBox
@@ -1498,8 +1499,19 @@ object MainForm: TMainForm
           end
         end
       end
+      object editSH2: TEdit
+        AnchorSideLeft.Side = asrBottom
+        Left = 3
+        Height = 23
+        Top = 394
+        Width = 40
+        BorderSpacing.Left = 3
+        TabOrder = 2
+        Text = '1'
+      end
     end
     object ScanText2: TLabel
+      AnchorSideLeft.Control = scanvalue2
       AnchorSideTop.Control = ScanText
       Left = 653
       Height = 15
@@ -1511,6 +1523,7 @@ object MainForm: TMainForm
       ParentColor = False
     end
     object andlabel: TLabel
+      AnchorSideTop.Control = scanvalue
       AnchorSideTop.Side = asrCenter
       Left = 628
       Height = 15
@@ -1640,13 +1653,14 @@ object MainForm: TMainForm
     object scanvalue2: TEdit
       AnchorSideLeft.Control = andlabel
       AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = scanvalue
       AnchorSideRight.Control = Panel5
       AnchorSideRight.Side = asrBottom
       Left = 653
       Height = 23
       Top = 94
       Width = 76
-      Anchors = [akTop, akRight]
+      Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 5
       BorderSpacing.Right = 5
       Enabled = False
@@ -1654,67 +1668,59 @@ object MainForm: TMainForm
       PopupMenu = ccpmenu
       TabOrder = 18
     end
-  end
-  object FromAddress: TEdit
-    AnchorSideLeft.Control = Label1
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Panel3
-    AnchorSideRight.Control = Panel3
-    AnchorSideRight.Side = asrBottom
-    Left = 441
-    Height = 23
-    Top = 212
-    Width = 155
-    Alignment = taRightJustify
-    Anchors = []
-    BorderSpacing.Left = 6
-    BorderSpacing.Right = 6
-    TabOrder = 4
-    Text = '00000000'
-  end
-  object ToAddress: TEdit
-    AnchorSideTop.Side = asrBottom
-    AnchorSideRight.Side = asrBottom
-    Left = 441
-    Height = 23
-    Top = 237
-    Width = 155
-    Alignment = taRightJustify
-    Anchors = []
-    BorderSpacing.Top = 2
-    TabOrder = 5
-    Text = 'ffffffff'
-  end
-  object edtAlignment: TEdit
-    AnchorSideLeft.Control = cbFastScan
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Panel8
-    AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = Panel8
-    Left = 477
-    Height = 23
-    Top = 325
-    Width = 45
-    Alignment = taCenter
-    BorderSpacing.Top = 8
-    Constraints.MinWidth = 10
-    Enabled = False
-    OnKeyPress = edtAlignmentKeyPress
-    TabOrder = 6
-    Text = '4'
-  end
-  object editSH2: TEdit
-    AnchorSideLeft.Control = Label54
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Panel14
-    AnchorSideRight.Control = Panel14
-    Left = 652
-    Height = 23
-    Top = 394
-    Width = 40
-    BorderSpacing.Left = 3
-    TabOrder = 7
-    Text = '1'
+    object FromAddress: TEdit
+      AnchorSideLeft.Control = Foundlist3
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = lblcompareToSavedScan
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel9
+      Left = 408
+      Height = 23
+      Top = 255
+      Width = 190
+      Alignment = taRightJustify
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 71
+      BorderSpacing.Top = 49
+      BorderSpacing.Right = 14
+      TabOrder = 19
+      Text = '00000000'
+    end
+    object ToAddress: TEdit
+      AnchorSideLeft.Control = FromAddress
+      AnchorSideTop.Control = FromAddress
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = FromAddress
+      AnchorSideRight.Side = asrBottom
+      Left = 408
+      Height = 23
+      Top = 280
+      Width = 190
+      Alignment = taRightJustify
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 2
+      TabOrder = 20
+      Text = 'ffffffff'
+    end
+    object edtAlignment: TEdit
+      AnchorSideLeft.Control = Foundlist3
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = lblcompareToSavedScan
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel8
+      Left = 444
+      Height = 23
+      Top = 368
+      Width = 45
+      Alignment = taCenter
+      BorderSpacing.Left = 107
+      BorderSpacing.Top = 162
+      Constraints.MinWidth = 10
+      Enabled = False
+      OnKeyPress = edtAlignmentKeyPress
+      TabOrder = 21
+      Text = '4'
+    end
   end
   object UpdateTimer: TTimer
     Interval = 500

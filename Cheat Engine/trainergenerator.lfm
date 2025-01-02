@@ -281,7 +281,7 @@ object frmTrainerGenerator: TfrmTrainerGenerator
           Top = 0
           Width = 233
           BorderSpacing.Left = 7
-          Caption = 'Don''t support Cheat Engine (or yourself)'
+          Caption = 'Don''t support Cheese Engine (or yourself)'
           Checked = True
           OnChange = cbSupportCheatEngineChange
           State = cbChecked
@@ -331,7 +331,7 @@ object frmTrainerGenerator: TfrmTrainerGenerator
             BorderSpacing.Right = 8
             Lines.Strings = (
               'This trainer was made by Cheat Engine'
-              'www.cheatengine.org'
+              'www.cheeseengine.org'
             )
             ScrollBars = ssVertical
             TabOrder = 1

@@ -2,6 +2,8 @@ unit MainUnit;
 
 //{$MODE Delphi}
 {$mode objfpc}{$H+}
+{$MACRO ON}
+{$DEFINE altname}
 
 interface
 
@@ -8644,7 +8646,7 @@ begin
   logo.Width:=settingsbutton.width;
 
   {$ifdef altname}
-  rname:='IMAGES_ALT_CELOGO';
+  rname:='IMAGES_LOGO';
   {$else}
   rname:='IMAGES_CELOGO';
   {$endif}

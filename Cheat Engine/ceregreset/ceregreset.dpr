@@ -4,6 +4,9 @@ program ceregreset;
   {$MODE Delphi}
 {$ENDIF}
 
+{$MACRO ON}
+{$DEFINE altname}
+
 {$ifndef DEBUG}
   {$ifdef cpu64}
     {$error only 32-bit may compile this}

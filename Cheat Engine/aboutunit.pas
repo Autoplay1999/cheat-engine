@@ -1,6 +1,8 @@
 unit aboutunit;
 
 {$MODE Delphi}
+{$MACRO ON}
+{$DEFINE altname}
 
 interface
 
@@ -139,7 +141,7 @@ begin
   UpdateDBVMStatus;
 
   {$ifdef altname}
-  rs := TResourceStream.Create(HInstance, 'IMAGES_ALT_CELOGO', RT_RCDATA);
+  rs := TResourceStream.Create(HInstance, 'IMAGES_LOGO', RT_RCDATA);
   logopic:=TPicture.Create;
   logopic.LoadFromStreamWithFileExt(rs,'.PNG');
   image1.Picture:=logopic;
@@ -156,17 +158,17 @@ end;
 
 procedure TAbout.Label4Click(Sender: TObject);
 begin
-  shellexecute(0,'open',pchar('https://www.patreon.com/cheatengine'),nil,nil,sw_maximize);
+  shellexecute(0,'open',pchar('https://www.patreon.com/cheeseengine'),nil,nil,sw_maximize);
 end;
 
 procedure TAbout.Label8Click(Sender: TObject);
 begin
-  ShellExecute(0, pchar('open'),pchar('https://cheatengine.org/'), pchar(''),pchar(''), SW_MAXIMIZE	);
+  ShellExecute(0, pchar('open'),pchar('https://cheeseengine.org/'), pchar(''),pchar(''), SW_MAXIMIZE	);
 end;
 
 procedure TAbout.Label9Click(Sender: TObject);
 begin
-  ShellExecute(0, pchar('open'),pchar('http://forum.cheatengine.org/'), pchar(''),pchar(''), SW_MAXIMIZE	);
+  ShellExecute(0, pchar('open'),pchar('http://forum.cheeseengine.org/'), pchar(''),pchar(''), SW_MAXIMIZE	);
 end;
 
 procedure TAbout.Image1MouseDown(Sender: TObject; Button: TMouseButton;

@@ -1,6 +1,8 @@
 unit LuaInternet;
 
 {$mode delphi}
+{$MACRO ON}
+{$DEFINE altname}
 
 interface
 
@@ -369,9 +371,9 @@ end;
 function getInternet(L: Plua_State): integer; cdecl;
 begin
   if lua_gettop(l)>0 then
-    luaclass_newClass(L, TWinInternet.create({$ifdef altname}'Cheat Engine'{$else}cename{$endif}+' : luascript-'+Lua_ToString(L,1)))
+    luaclass_newClass(L, TWinInternet.create({$ifndef altname}'Cheat Engine'{$else}cename{$endif}+' : luascript-'+Lua_ToString(L,1)))
   else
-    luaclass_newClass(L, TWinInternet.create({$ifdef altname}'Cheat Engine'{$else}cename{$endif}+' : luascript'));
+    luaclass_newClass(L, TWinInternet.create({$ifndef altname}'Cheat Engine'{$else}cename{$endif}+' : luascript'));
 
   result:=1;
 end;

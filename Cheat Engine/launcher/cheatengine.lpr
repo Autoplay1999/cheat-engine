@@ -1,6 +1,8 @@
 program cheatengine;
 
 {$mode DELPHI}
+{$MACRO ON}
+{$DEFINE altname}
 
 uses
   {$IFDEF UNIX}{$IFDEF UseCThreads}

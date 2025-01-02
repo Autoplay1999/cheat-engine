@@ -11,6 +11,8 @@ Assume all strings passed between lua are in UTF8 format
 }
 
 {$mode delphi}
+{$MACRO ON}
+{$DEFINE altname}
 
 interface
 

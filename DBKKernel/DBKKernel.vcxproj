@@ -205,7 +205,7 @@
     <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
     <TimeStampServer>http://timestamp.globalsign.com/?signature=sha2</TimeStampServer>
     <OutDir>..\Cheat Engine\bin\</OutDir>
-    <TargetName>DBK64</TargetName>
+    <TargetName>KBD64</TargetName>
     <Inf2CatUseLocalTime>true</Inf2CatUseLocalTime>
     <EnableInf2cat>false</EnableInf2cat>
     <Inf2CatNoCatalog>true</Inf2CatNoCatalog>

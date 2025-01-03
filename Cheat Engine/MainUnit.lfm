@@ -1156,13 +1156,13 @@ object MainForm: TMainForm
       AnchorSideRight.Control = Panel5
       AnchorSideRight.Side = asrBottom
       Left = 612
-      Height = 417
+      Height = 368
       Top = 124
       Width = 122
       Anchors = [akTop, akRight]
       AutoSize = True
       BevelOuter = bvNone
-      ClientHeight = 417
+      ClientHeight = 368
       ClientWidth = 122
       TabOrder = 6
       object pnlScanOptions: TPanel
@@ -1374,12 +1374,12 @@ object MainForm: TMainForm
         AnchorSideBottom.Control = Panel9
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 185
+        Height = 136
         Top = 232
         Width = 115
         Anchors = [akTop, akLeft, akBottom]
         BevelOuter = bvNone
-        ClientHeight = 185
+        ClientHeight = 136
         ClientWidth = 115
         TabOrder = 1
         object cbUnrandomizer: TCheckBox
@@ -1498,16 +1498,6 @@ object MainForm: TMainForm
             TabOrder = 1
           end
         end
-      end
-      object editSH2: TEdit
-        AnchorSideLeft.Side = asrBottom
-        Left = 3
-        Height = 23
-        Top = 394
-        Width = 40
-        BorderSpacing.Left = 3
-        TabOrder = 2
-        Text = '1'
       end
     end
     object ScanText2: TLabel
@@ -1720,6 +1710,16 @@ object MainForm: TMainForm
       OnKeyPress = edtAlignmentKeyPress
       TabOrder = 21
       Text = '4'
+    end
+    object editSH2: TEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 648
+      Height = 23
+      Top = 376
+      Width = 40
+      BorderSpacing.Left = 3
+      TabOrder = 22
+      Text = '1'
     end
   end
   object UpdateTimer: TTimer

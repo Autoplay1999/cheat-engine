@@ -28,7 +28,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="7"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="7736"/>
+      <BuildNr Value="7737"/>
       <Language Value="041C"/>
       <CharSet Value="04B0"/>
       <StringTable CompanyName="Cheese Engine" FileDescription="Cheese Engine" ProductVersion="7.5"/>

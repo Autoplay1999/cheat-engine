@@ -1720,6 +1720,7 @@ object MainForm: TMainForm
       BorderSpacing.Left = 3
       TabOrder = 22
       Text = '1'
+      Visible = False
     end
   end
   object UpdateTimer: TTimer

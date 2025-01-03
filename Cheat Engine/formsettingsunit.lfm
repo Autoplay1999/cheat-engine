@@ -5,7 +5,7 @@ object formSettings: TformSettings
   Width = 902
   AutoSize = True
   BorderIcons = [biSystemMenu]
-  Caption = 'Cheat Engine settings'
+  Caption = 'Cheese Engine settings'
   ClientHeight = 817
   ClientWidth = 902
   OnChangeBounds = FormChangeBounds

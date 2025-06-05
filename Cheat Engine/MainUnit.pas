@@ -290,7 +290,7 @@ type
   TMainForm = class(TForm)
     actOpenLuaEngine: TAction;
     actOpenDissectStructure: TAction;
-    btnSetSpeedhack2: TButton;
+    btnSetSpdhack2: TButton;
     btnAddAddressManually: TButton;
     btnMemoryView: TButton;
     cbCaseSensitive: TCheckBox;
@@ -300,7 +300,7 @@ type
     cbFloatSimple: TCheckBox;
     cbHexadecimal: TCheckBox;
     cbPauseWhileScanning: TCheckBox;
-    cbSpeedhack: TCheckBox;
+    cbSpdhack: TCheckBox;
     cbUnicode: TCheckBox;
     cbUnrandomizer: TCheckBox;
     cbWritable: TCheckBox;
@@ -471,7 +471,7 @@ type
     rt2: TRadioButton;
     rt3: TRadioButton;
     SettingsButton: TSpeedButton;
-    tbSpeed: TTrackBar;
+    tbSpd: TTrackBar;
     UpdateTimer: TTimer;
     FreezeTimer: TTimer;
     PopupMenu2: TPopupMenu;
@@ -760,9 +760,9 @@ type
     procedure btnFirstClick(Sender: TObject);
     procedure btnNextClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure tbSpeedChange(Sender: TObject);
-    procedure btnSetSpeedhack2Click(Sender: TObject);
-    procedure cbSpeedhackChange(Sender: TObject);
+    procedure tbSpdChange(Sender: TObject);
+    procedure btnSetSpdhack2Click(Sender: TObject);
+    procedure cbSpdhackChange(Sender: TObject);
     procedure Process1Click(Sender: TObject);
     procedure miAboutClick(Sender: TObject);
     procedure CreateProcess1Click(Sender: TObject);
@@ -1344,7 +1344,7 @@ resourcestring
   rsAreYouSure = 'Are you sure?';
   rsClearRecentFiles = 'Empty Recent Files List';
   rsFirst = 'First';
-  rsEnableSpeedHack = 'Enable '+strSpeedHack;
+  rsEnableSpdHack = 'Enable '+strSpeedHack;
   rsPreviousValueList = 'Previous value list';
   rsSelectTheSavedResult = 'Select the saved results you wish to use';
   rsNetworkOption = 'Network option :';
@@ -1558,7 +1558,7 @@ begin
   if not down then
   begin
     editsh2.Text := '1';
-    btnSetSpeedhack2.Click;
+    btnSetSpdhack2.Click;
     ttimer(sender).enabled:=false;
   end;
 end;
@@ -1674,11 +1674,11 @@ begin
 
       3: //speedhack
       begin
-        if cbSpeedhack.Enabled then
+        if cbSpdhack.Enabled then
         begin
           try
-            cbSpeedhack.Checked := not cbSpeedhack.Checked;
-            btnSetSpeedhack2.Click;
+            cbSpdhack.Checked := not cbSpdhack.Checked;
+            btnSetSpdhack2.Click;
             beep;
           except
             errorbeep;
@@ -1689,12 +1689,12 @@ begin
       //3..7=set speedhack speed
       4:
       begin
-        if cbspeedhack.Enabled then
+        if cbSpdhack.Enabled then
         begin
           try
-            cbspeedhack.Checked := True;
+            cbSpdhack.Checked := True;
 
-            if cbspeedhack.Checked then
+            if cbSpdhack.Checked then
             begin
               editsh2.Text := format('%.3f', [speedhackspeed1.speed]);  //Just rebuild. I wish this would get fixed in fpc someday...
               btnSetSpeedhack2.Click;
@@ -1722,13 +1722,13 @@ begin
 
       5:
       begin
-        if cbspeedhack.Enabled then
+        if cbSpdhack.Enabled then
         begin
-          cbspeedhack.Checked := True;
-          if cbspeedhack.Checked then
+          cbSpdhack.Checked := True;
+          if cbSpdhack.Checked then
           begin
             editsh2.Text := format('%.3f', [speedhackspeed2.speed]);
-            btnSetSpeedhack2.Click;
+            btnSetSpdhack2.Click;
 
             if speedhackspeed2.disablewhenreleased then
             begin
@@ -1749,13 +1749,13 @@ begin
 
       6:
       begin
-        if cbspeedhack.Enabled then
+        if cbSpdhack.Enabled then
         begin
-          cbspeedhack.Checked := True;
-          if cbspeedhack.Checked then
+          cbSpdhack.Checked := True;
+          if cbSpdhack.Checked then
           begin
             editsh2.Text := format('%.3f', [speedhackspeed3.speed]);
-            btnSetSpeedhack2.Click;
+            btnSetSpdhack2.Click;
 
             if speedhackspeed3.disablewhenreleased then
             begin
@@ -1776,13 +1776,13 @@ begin
 
       7:
       begin
-        if cbspeedhack.Enabled then
+        if cbSpdhack.Enabled then
         begin
-          cbspeedhack.Checked := True;
-          if cbspeedhack.Checked then
+          cbSpdhack.Checked := True;
+          if cbSpdhack.Checked then
           begin
             editsh2.Text := format('%.3f', [speedhackspeed4.speed]);
-            btnSetSpeedhack2.Click;
+            btnSetSpdhack2.Click;
 
             if speedhackspeed4.disablewhenreleased then
             begin
@@ -1803,13 +1803,13 @@ begin
 
       8:
       begin
-        if cbspeedhack.Enabled then
+        if cbSpdhack.Enabled then
         begin
-          cbspeedhack.Checked := True;
-          if cbspeedhack.Checked then
+          cbSpdhack.Checked := True;
+          if cbSpdhack.Checked then
           begin
             editsh2.Text := format('%.3f', [speedhackspeed5.speed]);
-            btnSetSpeedhack2.Click;
+            btnSetSpdhack2.Click;
 
             if speedhackspeed5.disablewhenreleased then
             begin
@@ -1832,15 +1832,15 @@ begin
       begin
         //increase speed
         try
-          if cbspeedhack.Enabled then
+          if cbSpdhack.Enabled then
           begin
-            cbspeedhack.Checked := True;
-            if cbspeedhack.Checked then
+            cbSpdhack.Checked := True;
+            if cbSpdhack.Checked then
             begin
               a := strtofloat(editsh2.Text);
               a := a + speedupdelta;
               editsh2.Text := format('%.3f', [a]);
-              btnSetSpeedhack2.Click;
+              btnSetSpdhack2.Click;
             end;
           end;
         except
@@ -1853,15 +1853,15 @@ begin
       begin
         //decrease speed
         try
-          if cbspeedhack.Enabled then
+          if cbSpdhack.Enabled then
           begin
-            cbspeedhack.Checked := True;
-            if cbspeedhack.Checked then
+            cbSpdhack.Checked := True;
+            if cbSpdhack.Checked then
             begin
               b := strtofloat(editsh2.Text);
               b := b - slowdowndelta;
               editsh2.Text := format('%.3f', [b]);
-              btnSetSpeedhack2.Click;
+              btnSetSpdhack2.Click;
             end;
           end;
         except
@@ -2144,10 +2144,10 @@ begin
 
     try
       unregisterhotkey(mainform.handle, 2);
-      if cbSpeedhack.Enabled then
+      if cbSpdhack.Enabled then
       begin
         beep;
-        cbSpeedhack.Checked := not cbSpeedhack.Checked;
+        cbSpdhack.Checked := not cbSpdhack.Checked;
       end;
     finally
       registerhotkey(mainform.handle, 2, message.lparamlo, message.LParamHi);
@@ -2435,7 +2435,7 @@ begin
   //-----------------------
   SetExpectedTableName;
 
-  cbspeedhack.Enabled := True;
+  cbSpdhack.Enabled := True;
   cbunrandomizer.Enabled := True;
 
   miAddTab.enabled:=true;
@@ -3115,7 +3115,7 @@ begin
     Updatescantype;
     Scantype.ItemIndex := 0;
 
-    cbSpeedhack.Enabled := False;
+    cbSpdhack.Enabled := False;
     cbUnrandomizer.Enabled := False;
 
     if processid <> $FFFFFFFF then
@@ -3146,7 +3146,7 @@ begin
   outputdebugstring('oldprocessid != processid');
 
   //a new process has been selected
-  cbspeedhack.Enabled := True;
+  cbSpdhack.Enabled := True;
   cbunrandomizer.Enabled := True;
 
   if not autoattachopen then
@@ -3202,7 +3202,7 @@ begin
   begin
     if (oldprocess<>0) and (processid<>oldprocess) then
     begin
-      cbSpeedhack.Checked:=false;
+      cbSpdhack.Checked:=false;
       addresslist.disableAllWithoutExecute;
       for i := 0 to AdvancedOptions.count - 1 do
         if AdvancedOptions.code[i]<>nil then AdvancedOptions.code[i].changed := False;
@@ -6401,7 +6401,7 @@ begin
   cereg.readStrings('Recent Files', RecentFiles);
 
 
-  cbSpeedhack.caption:=rsEnableSpeedHack;
+  cbSpdhack.caption:=rsEnableSpdHack;
 
 
   {$ifdef darwin}
@@ -7748,7 +7748,7 @@ begin
   if unrandomize <> nil then
     FreeAndNil(unrandomize);
 
-  cbSpeedhack.Checked := False;
+  cbSpdhack.Checked := False;
 
   if flashprocessbutton <> nil then
   begin
@@ -8940,8 +8940,8 @@ begin
   gbScanOptionsChangeBounds(panel5);
 
 
-  btnSetSpeedhack2.AutoSize:=false;
-  btnSetSpeedhack2.Height:=btnAddAddressManually.Height;
+  btnSetSpdhack2.AutoSize:=false;
+  btnSetSpdhack2.Height:=btnAddAddressManually.Height;
 
   scantype.Anchors:=[akRight];
   scantype.AnchorSideTop.Control:=nil;
@@ -10871,12 +10871,12 @@ begin
 
 end;
 
-procedure TMainForm.tbSpeedChange(Sender: TObject);
+procedure TMainForm.tbSpdChange(Sender: TObject);
 var
   x: integer;
   y: single;
 begin
-  x := tbSpeed.position;
+  x := tbSpd.position;
   case x of
     0: y := 0;
     1: y := 0.25;
@@ -10904,7 +10904,7 @@ begin
     editSH2.Text := format('%.2f', [y]);
 end;
 
-procedure TMainForm.btnSetSpeedhack2Click(Sender: TObject);
+procedure TMainForm.btnSetSpdhack2Click(Sender: TObject);
 var
   newspeed: single;
   fs: Tformatsettings;
@@ -10940,10 +10940,10 @@ begin
   end;
 end;
 
-procedure TMainForm.cbSpeedhackChange(Sender: TObject);
+procedure TMainForm.cbSpdhackChange(Sender: TObject);
 var ss: TShiftState;
 begin
-  if cbSpeedhack.Checked then
+  if cbSpdhack.Checked then
   begin
     try
       if speedhack <> nil then
@@ -10961,7 +10961,7 @@ begin
           lua_pushboolean(luavm,true);
           lua_pcall(luavm, 1,1,0);
           if lua_toboolean(luavm,-1)<>true then
-            cbSpeedhack.Checked:=false;
+            cbSpdhack.Checked:=false;
 
           exit;
         end
@@ -10969,7 +10969,7 @@ begin
           lua_pop(luavm,1);
            }
 
-        cbSpeedhack.Checked := False;
+        cbSpdhack.Checked := False;
         MessageDlg(e.message,mtError,[mbok],0);
       end;
     end;
@@ -10980,7 +10980,7 @@ begin
       FreeAndNil(speedhack);
   end;
 
-  panel14.Visible := cbSpeedhack.Checked;
+  panel14.Visible := cbSpdhack.Checked;
 end;
 
 {--------Processlist menuitem--------}

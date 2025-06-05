@@ -1475,26 +1475,26 @@ object MainForm: TMainForm
           OnMouseDown = cbUnrandomizerMouseDown
           TabOrder = 0
         end
-        object cbSpeedhack: TCheckBox
+        object cbSpdhack: TCheckBox
           AnchorSideLeft.Control = Panel10
           AnchorSideTop.Control = cbUnrandomizer
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Side = asrBottom
           Left = 0
           Height = 19
-          Hint = 'Enable speedhack'
+          Hint = 'Enable spdhack'
           Top = 19
           Width = 115
-          Caption = 'Enable Speedhack'
+          Caption = 'Enable Spdhack'
           Enabled = False
-          OnChange = cbSpeedhackChange
+          OnChange = cbSpdhackChange
           ParentShowHint = False
           ShowHint = True
           TabOrder = 1
         end
         object Panel14: TPanel
           AnchorSideLeft.Control = Panel10
-          AnchorSideTop.Control = cbSpeedhack
+          AnchorSideTop.Control = cbSpdhack
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = Panel10
           AnchorSideRight.Side = asrBottom
@@ -1522,8 +1522,8 @@ object MainForm: TMainForm
             ParentColor = False
           end
           object lblSH0: TLabel
-            AnchorSideLeft.Control = tbSpeed
-            AnchorSideTop.Control = tbSpeed
+            AnchorSideLeft.Control = tbSpd
+            AnchorSideTop.Control = tbSpd
             AnchorSideTop.Side = asrBottom
             Left = 11
             Height = 15
@@ -1534,9 +1534,9 @@ object MainForm: TMainForm
             ParentColor = False
           end
           object lblSH20: TLabel
-            AnchorSideTop.Control = tbSpeed
+            AnchorSideTop.Control = tbSpd
             AnchorSideTop.Side = asrBottom
-            AnchorSideRight.Control = tbSpeed
+            AnchorSideRight.Control = tbSpd
             AnchorSideRight.Side = asrBottom
             Left = 94
             Height = 15
@@ -1547,7 +1547,7 @@ object MainForm: TMainForm
             Caption = '500'
             ParentColor = False
           end
-          object btnSetSpeedhack2: TButton
+          object btnSetSpdhack2: TButton
             AnchorSideLeft.Control = lblSH0
             AnchorSideTop.Control = lblSH0
             AnchorSideTop.Side = asrBottom
@@ -1560,7 +1560,7 @@ object MainForm: TMainForm
             Anchors = [akTop, akLeft, akRight]
             AutoSize = True
             Caption = 'Apply'
-            OnClick = btnSetSpeedhack2Click
+            OnClick = btnSetSpdhack2Click
             TabOrder = 0
           end
           object editSH2: TEdit
@@ -1576,7 +1576,7 @@ object MainForm: TMainForm
             TabOrder = 1
             Text = '1'
           end
-          object tbSpeed: TTrackBar
+          object tbSpd: TTrackBar
             AnchorSideLeft.Control = Label54
             AnchorSideTop.Control = editSH2
             AnchorSideTop.Side = asrBottom
@@ -1587,7 +1587,7 @@ object MainForm: TMainForm
             Top = 25
             Width = 110
             Max = 11
-            OnChange = tbSpeedChange
+            OnChange = tbSpdChange
             Position = 3
             Anchors = [akTop, akLeft, akRight]
             BorderSpacing.Top = 2

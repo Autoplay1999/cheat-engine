@@ -3,7 +3,7 @@ if getTranslationFolder()~='' then
 end
 
 
-if cheatEngineIs64Bit() then
+if monoEngineIs64Bit() then
   if string.find(package.cpath, 'clibs64')==nil then
     package.cpath=package.cpath..[[;.\clibs64\?.dll]]
   end
@@ -174,7 +174,7 @@ function loadMemoryScan()
 
 	local dialog=createOpenDialog()
 	dialog.DefaultExt=".CS"
-	dialog.Filter=translate("Cheat Engine Scan files").." (*.CS)|*.CS"
+	dialog.Filter=translate("Mono Engine Scan files").." (*.CS)|*.CS"
 	dialog.FilterIndex=1
   dialog.Options="[ofEnableSizing]"    
 
@@ -300,7 +300,7 @@ function saveMemoryScan()
 
   local dialog=createSaveDialog()
   dialog.DefaultExt=".CS"
-  dialog.Filter=translate("Cheat Engine Scan files").." (*.CS)|*.CS"
+  dialog.Filter=translate("Mono Engine Scan files").." (*.CS)|*.CS"
   dialog.FilterIndex=1
   dialog.Options="[ofEnableSizing,ofOVerwritePrompt]"
 
@@ -323,7 +323,7 @@ SaveScanSession.miSaveScanSession.OnClick=saveMemoryScan
 SaveScanSession.miSaveScanSession.Enabled=false
 
 local s=createPicture()
-s.LoadFromFile(getCheatEngineDir()..[[autorun\images\export128x128.png]])
+s.LoadFromFile(getMonoEngineDir()..[[autorun\images\export128x128.png]])
 local ii=MainForm.mfImageList.add(s.Bitmap)
 SaveScanSession.miSaveScanSession.ImageIndex=ii
 s.destroy()
@@ -339,7 +339,7 @@ SaveScanSession.miLoadScanSession.OnClick=loadMemoryScan
 SaveScanSession.miLoadScanSession.Enabled=false
 
 local s=createPicture()
-s.LoadFromFile(getCheatEngineDir()..[[autorun\images\import128x128.png]])
+s.LoadFromFile(getMonoEngineDir()..[[autorun\images\import128x128.png]])
 local ii=MainForm.mfImageList.add(s.Bitmap)
 SaveScanSession.miLoadScanSession.ImageIndex=ii
 s.destroy()

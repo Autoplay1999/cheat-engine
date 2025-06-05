@@ -223,7 +223,7 @@ resourcestring
   rsAskIfStupid = 'Generating a '+strtrainerlower+' with the current state of the cheat '
     +'table will likely result in a completely useless '+strtrainerlower+' that does '
     +'nothing. Are you sure?';
-  rsOSThereIsANewerVersionifCheatEngineOutEtc = 'There is a newer version of '+strCheatEngine+' out. It''s recommended to use that version instead';
+  rsOSThereIsANewerVersionifMonoEngineOutEtc = 'There is a newer version of '+strCheatEngine+' out. It''s recommended to use that version instead';
   rsOSThisCheatTableIsCorrupt = 'This '+strCheatTableLower+' is corrupt';
   rsInvalidLuaForTrainer = 'The lua script in this '+strTrainerLower+' has some issues and will therefore not load';
 
@@ -382,14 +382,14 @@ begin
     //first load the form. If the lua functions are not loaded it's no biggy, the events just don't do anything then
     //and just assume that the loading of the lua script initializes the objects accordingly
 
-    CheatTable:=doc.FindNode('CheatTable');
+    CheatTable:=doc.FindNode('MonoTable');
     if CheatTable<>nil then
     begin
 
       signed:={$ifdef windows}isProperlySigned(TDOMElement(cheattable), signedstring, imagepos, image){$else}false{$endif};
 
       try
-        tempnode:=CheatTable.Attributes.GetNamedItem('CheatEngineTableVersion');
+        tempnode:=CheatTable.Attributes.GetNamedItem('MonoEngineTableVersion');
       except
         tempnode:=nil;
       end;
@@ -399,7 +399,7 @@ begin
         try
           version:=strtoint(tempnode.TextContent);
           if (version>CurrentTableVersion) then
-            showmessage(rsOSThereIsANewerVersionifCheatEngineOutEtc);
+            showmessage(rsOSThereIsANewerVersionifMonoEngineOutEtc);
 
           lastLoadedTableVersion:=version;
         except
@@ -410,8 +410,8 @@ begin
 
       Files:=CheatTable.FindNode('Files');
       Forms:=CheatTable.FindNode('Forms');
-      Entries:=CheatTable.FindNode('CheatEntries');
-      Codes:=CheatTable.FindNode('CheatCodes');
+      Entries:=CheatTable.FindNode('MonoEntries');
+      Codes:=CheatTable.FindNode('MonoCodes');
       Symbols:=CheatTable.FindNode('UserdefinedSymbols');
       Structures:=CheatTable.FindNode('Structures');
       Comments:=CheatTable.FindNode('Comments');
@@ -1016,7 +1016,7 @@ begin
     getmem(buf,size);
     if readprocessmemory(processhandle,pointer(address),buf,size,temp) then
     begin
-      memfile.WriteBuffer(pchar('CHEATENGINE')^,11);
+      memfile.WriteBuffer(pchar('MONOENGINE')^,10);
       temp:=2; //version
       memfile.WriteBuffer(temp,4);
       a:=address;
@@ -1039,10 +1039,10 @@ begin
   check:=nil;
   try
     memfile:=Tfilestream.Create(filename,fmopenread);
-    getmem(check,12);
-    memfile.ReadBuffer(check^,11);
-    check[11]:=#0;
-    if check='CHEATENGINE' then
+    getmem(check,11);
+    memfile.ReadBuffer(check^,10);
+    check[10]:=#0;
+    if check='MONOENGINE' then
     begin
       memfile.ReadBuffer(temp,4);
       if temp<>1 then raise exception.Create(Format(rsTheVersionOfIsIncompatibleWithThisCEVersion, [filename]));
@@ -1082,9 +1082,9 @@ begin
 
   mainform.addresslist.Items.BeginUpdate;
   try
-    getmem(x,12);
-    ctfile.ReadBuffer(x^,11);
-    x[11]:=#0;  //write a 0 terminator
+    getmem(x,11);
+    ctfile.ReadBuffer(x^,10);
+    x[10]:=#0;  //write a 0 terminator
     freeandnil(ctfile);
 
 
@@ -1092,7 +1092,7 @@ begin
     begin
       //not xml
 
-      if X='CHEATENGINE' then
+      if X='MONOENGINE' then
       begin
          doc:=ConvertCheatTableToXML(filename)
       end
@@ -1214,8 +1214,8 @@ var
 
   a: TDOMAttr;
 begin
-  CheatTable:=TDOMElement(doc.AppendChild(TDOMNode(doc.CreateElement('CheatTable'))));
-  TDOMElement(CheatTable).SetAttribute('CheatEngineTableVersion',IntToStr(CurrentTableVersion));
+  CheatTable:=TDOMElement(doc.AppendChild(TDOMNode(doc.CreateElement('MonoTable'))));
+  TDOMElement(CheatTable).SetAttribute('MonoEngineTableVersion',IntToStr(CurrentTableVersion));
 
   if mainform.LuaForms.count>0 then
   begin
@@ -1232,13 +1232,13 @@ begin
       mainform.LuaFiles[i].savetoxml(files);
   end;
 
-  entries:=CheatTable.AppendChild(doc.CreateElement('CheatEntries'));
+  entries:=CheatTable.AppendChild(doc.CreateElement('MonoEntries'));
 
   mainform.addresslist.saveTableXMLToNode(entries);
 
   if advancedoptions.count>0 then
   begin
-    CodeRecords:=CheatTable.AppendChild(doc.CreateElement('CheatCodes'));
+    CodeRecords:=CheatTable.AppendChild(doc.CreateElement('MonoCodes'));
 
 
     for i:=0 to AdvancedOptions.count-1 do

@@ -70,12 +70,12 @@ var ss: TStringstream;
 begin
   {$IFDEF windows}
   if internet=nil then
-    internet:=TWinInternet.Create({$ifdef altname}'Cheat Engine'{$else}strCheatEngine{$endif}+' microtransaction system');
+    internet:=TWinInternet.Create({$ifdef altname}'Mono Engine'{$else}strCheatEngine{$endif}+' microtransaction system');
 
   ss:=tstringstream.create({$if FPC_FULLVERSION<030200}''{$endif});
   try
     try
-      internet.getURL('https://cheatengine.org/microtransaction.php?action=buy&amount='+inttostr(tbitbtn(sender).Tag), ss);
+      internet.getURL('https://monoengine.org/microtransaction.php?action=buy&amount='+inttostr(tbitbtn(sender).Tag), ss);
       if luaL_loadstring(LuaVM, pchar(ss.DataString))=0 then
         lua_pcall(LuaVM,0,0,0)
       else

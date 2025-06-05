@@ -138,7 +138,7 @@ end;
 
 const methodcount=12;
 var jnimethods: array [0..methodcount-1] of JNINativeMethod =(
-  (name: 'create'; signature: '(Lorg/cheatengine/TMemScan;)J'; fnPtr: @TFoundList_Create),
+  (name: 'create'; signature: '(Lorg/monoengine/TMemScan;)J'; fnPtr: @TFoundList_Create),
   (name: 'initialize'; signature: '()J'; fnPtr: @TFoundList_initialize),
   (name: 'deinitialize'; signature: '()V'; fnPtr: @TFoundList_deinitialize),
   (name: 'getCount'; signature: '()J'; fnPtr: @TFoundList_getCount),
@@ -157,7 +157,7 @@ procedure InitializeJniTFoundList(env: PJNIEnv);
 var c: jclass;
 begin
   log('InitializeJniTFoundList entry');
-  c:=env^.FindClass(env, 'org/cheatengine/TFoundList');
+  c:=env^.FindClass(env, 'org/monoengine/TFoundList');
   env^.RegisterNatives(env, c, @jnimethods[0], methodcount);
 
   log('InitializeJniTFoundList exit');

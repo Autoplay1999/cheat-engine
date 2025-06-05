@@ -78,11 +78,11 @@ begin
 
   try
     datafile:=tfilestream.Create(filename,fmopenread);
-    getmem(check,12);
-    datafile.ReadBuffer(check^,11);
-    check[11]:=#0;
+    getmem(check,11);
+    datafile.ReadBuffer(check^,10);
+    check[10]:=#0;
 
-    if check='CHEATENGINE' then
+    if check='MONOENGINE' then
     begin
       //this is a file with a header. (if not the user has been lame enough to copy memory starting with CHEATENGINE)
       temp:=0;

@@ -30,7 +30,7 @@ function emurpm.OnProcessOpened(processid, processhandle, caption)
 end
 
 --find the emurpm.frm file
-local ced=getCheatEngineDir()
+local ced=getMonoEngineDir()
 local possiblepaths={}
 possiblepaths[1]="emurpm.frm"
 possiblepaths[2]=ced.."emurpm.frm"

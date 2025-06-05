@@ -1,4 +1,4 @@
-program cheatengine;
+program monoengine;
 
 {$mode objfpc}{$H+}
 

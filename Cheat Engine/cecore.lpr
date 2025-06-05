@@ -71,7 +71,7 @@ var i: integer;
 
 begin
 //small test funtion
-  log('Java_org_cheatengine_jnitest_cecore_f1 called');
+  log('Java_org_mono_jnitest_cecore_f1 called');
 
   log('Creating test thread');
   TTestThread.Create(false);
@@ -365,7 +365,7 @@ begin
     MainThread:=TMainThread.Create(false);
 
 
-    c:=env^.FindClass(env, 'org/cheatengine/cecore');  //'org/cheatengine/jnitest/cecore';
+    c:=env^.FindClass(env, 'org/monoengine/cecore');  //'org/cheatengine/jnitest/cecore';
     env^.RegisterNatives(env, c, @jnimethods[0], methodcount);
     env^.DeleteLocalRef(env, c);
 

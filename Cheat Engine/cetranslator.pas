@@ -99,13 +99,13 @@ var
     if LangID <> '' then
     begin
       //ParamStrUTF8(0) is said not to work properly in linux, but I've tested it
-      Result := cheatenginedir + {$ifdef Darwin}'../'+{$endif}'Languages' + DirectorySeparator + LangID + DirectorySeparator + 'cheatengine'+LCEXT;
+      Result := cheatenginedir + {$ifdef Darwin}'../'+{$endif}'Languages' + DirectorySeparator + LangID + DirectorySeparator + 'monoengine'+LCEXT;
       if FileExists(Result) then exit;
 
-      Result := cheatenginedir + {$ifdef Darwin}'../'+{$endif}'Languages' + DirectorySeparator + LangID + DirectorySeparator + 'cheatengine-x86_64'+LCEXT;
+      Result := cheatenginedir + {$ifdef Darwin}'../'+{$endif}'Languages' + DirectorySeparator + LangID + DirectorySeparator + 'monoengine-x86_64'+LCEXT;
       if FileExists(Result) then exit;
 
-      Result := cheatenginedir + {$ifdef Darwin}'../'+{$endif}'Languages' + DirectorySeparator + LangID + DirectorySeparator + 'cheatengine-i386'+LCEXT;
+      Result := cheatenginedir + {$ifdef Darwin}'../'+{$endif}'Languages' + DirectorySeparator + LangID + DirectorySeparator + 'monoengine-i386'+LCEXT;
       if FileExists(Result) then exit;
 
     end;
@@ -399,18 +399,18 @@ end;
 {$ifdef altname}
 function altnamer(s: string): string;
 begin
-  s:=StringReplace(s, 'Cheat Engine','Runtime Modifier',[rfReplaceAll, rfIgnoreCase]);
-  s:=StringReplace(s, 'cheating in','modding',[rfReplaceAll]);
-  s:=StringReplace(s, 'cheating','modding',[rfReplaceAll]);
-  s:=StringReplace(s, 'cheatengine','runtimemodifier',[rfReplaceAll]);
-  s:=StringReplace(s, 'runtimemodifier.org','cheatengine.org',[rfReplaceAll]);
-  s:=StringReplace(s, 'cheat','modification',[rfReplaceAll]);
-  s:=StringReplace(s, 'Tutorial-','rtm-Tutorial-',[rfReplaceAll, rfIgnoreCase]);
-  s:=StringReplace(s, 'Cheat Table','Code Table',[rfReplaceAll]);
-  s:=StringReplace(s, 'CheatTable','Codetable',[rfReplaceAll]);
+  //s:=StringReplace(s, 'Cheat Engine','Mono Engine',[rfReplaceAll, rfIgnoreCase]);
+  //s:=StringReplace(s, 'cheating in','modding',[rfReplaceAll]);
+  //s:=StringReplace(s, 'cheating','modding',[rfReplaceAll]);
+  //s:=StringReplace(s, 'cheatengine','monoengine',[rfReplaceAll]);
+  //s:=StringReplace(s, 'cheatengine.org','monoengine.org',[rfReplaceAll]);
+  //s:=StringReplace(s, 'cheat','modification',[rfReplaceAll]);
+  //s:=StringReplace(s, 'Tutorial-','rtm-Tutorial-',[rfReplaceAll, rfIgnoreCase]);
+  //s:=StringReplace(s, 'Cheat Table','Code Table',[rfReplaceAll]);
+  //s:=StringReplace(s, 'CheatTable','Codetable',[rfReplaceAll]);
 
-  s:=StringReplace(s, ' trainer',' mod-tool ',[rfReplaceAll]);
-  s:=StringReplace(s, ' Trainer',' Mod-Tool ',[rfReplaceAll]);
+  //s:=StringReplace(s, ' trainer',' mod-tool ',[rfReplaceAll]);
+  //s:=StringReplace(s, ' Trainer',' Mod-Tool ',[rfReplaceAll]);
   exit(s);
 end;
 {$endif}

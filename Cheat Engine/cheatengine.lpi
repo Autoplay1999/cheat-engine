@@ -119,7 +119,7 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="bin\cheatengine-$(TargetCPU)-SSE4-AVX2"/>
+            <Filename Value="bin\monoengine-$(TargetCPU)-SSE4-AVX2"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images;$(LazarusDir)\ideintf\images"/>

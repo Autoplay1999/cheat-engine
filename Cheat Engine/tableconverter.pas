@@ -73,14 +73,14 @@ begin
   try
     doc:=TXMLDocument.Create;
 
-    CheatTable:=doc.AppendChild(doc.CreateElement('CheatTable'));
-    TDOMElement(CheatTable).SetAttribute('CheatEngineTableVersion',IntToStr(CurrentTableVersion));
+    CheatTable:=doc.AppendChild(doc.CreateElement('MonoTable'));
+    TDOMElement(CheatTable).SetAttribute('MonoEngineTableVersion',IntToStr(CurrentTableVersion));
 
 
-    getmem(x,12);
+    getmem(x,11);
     try
-      ctfile.ReadBuffer(x^,11);
-      x[11]:=#0;
+      ctfile.ReadBuffer(x^,10);
+      x[10]:=#0;
 
      // if x<>'CHEATENGINE' then
      //   raise exception.Create('Not a valid cheat engine 5.6 table. If this table was made by a uce, get ce 5.6 and open/resave it');
@@ -100,23 +100,23 @@ begin
     //first create the 6 possible groups, unused ones will be deleted after filling is done
     for i:=1 to 6 do
     begin
-      cheatEntry:=doc.CreateElement('CheatEntry');
+      cheatEntry:=doc.CreateElement('MonoEntry');
       cheatEntry.AppendChild(doc.CreateElement('GroupHeader')).TextContent:='1';
       cheatEntry.AppendChild(doc.CreateElement('Description')).TextContent:='Group '+inttostr(i);
 
       groups[i].node:=cheatEntry;
-      groups[i].appendnode:=cheatEntry.AppendChild(doc.CreateElement('CheatEntries'));
+      groups[i].appendnode:=cheatEntry.AppendChild(doc.CreateElement('MonoEntries'));
       groups[i].used:=false;
     end;
 
     if records>0 then
     begin
-      entries:=CheatTable.AppendChild(doc.CreateElement('CheatEntries'));
+      entries:=CheatTable.AppendChild(doc.CreateElement('MonoEntries'));
 
 
       for i:=0 to records-1 do
       begin
-        cheatEntry:=doc.CreateElement('CheatEntry');
+        cheatEntry:=doc.CreateElement('MonoEntry');
 
         //get description
         ctfile.ReadBuffer(j,4);
@@ -233,7 +233,7 @@ begin
     if records>0 then
     begin
       //it has code records
-      CodeRecords:=CheatTable.AppendChild(doc.CreateElement('CheatCodes'));
+      CodeRecords:=CheatTable.AppendChild(doc.CreateElement('MonoCodes'));
 
       for i:=0 to records-1 do
       begin

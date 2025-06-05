@@ -628,9 +628,9 @@ function javaInjectAgent()
   local dllpath
 
   if targetIs64Bit() then
-    dllpath=getCheatEngineDir()..[[autorun\dlls\64\CEJVMTI]]
+    dllpath=getMonoEngineDir()..[[autorun\dlls\64\CEJVMTI]]
   else
-    dllpath=getCheatEngineDir()..[[autorun\dlls\32\CEJVMTI]]
+    dllpath=getMonoEngineDir()..[[autorun\dlls\32\CEJVMTI]]
   end
 
 
@@ -2944,7 +2944,7 @@ label(copyoption)
 
 path:
 {$lua}
-return "db ';"..getCheatEngineDir().."autorun\\dlls\\32;"..getCheatEngineDir().."autorun\\dlls\\64',0"
+return "db ';"..getMonoEngineDir().."autorun\\dlls\\32;"..getMonoEngineDir().."autorun\\dlls\\64',0"
 {$asm}
 
 pathstr:
@@ -3041,7 +3041,7 @@ label(copyoption)
 
 path:
 {$lua}
-return "db ';"..getCheatEngineDir().."autorun\\dlls\\32;"..getCheatEngineDir().."autorun\\dlls\\64',0"
+return "db ';"..getMonoEngineDir().."autorun\\dlls\\32;"..getMonoEngineDir().."autorun\\dlls\\64',0"
 {$asm}
 
 pathstr:

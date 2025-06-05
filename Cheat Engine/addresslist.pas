@@ -523,7 +523,7 @@ begin
   currentEntry:=CheatEntries.FirstChild;
   while currententry<>nil do
   begin
-    if tdomelement(currententry).TagName='CheatEntry' then
+    if tdomelement(currententry).TagName='MonoEntry' then
     begin
       //create a blank entry
       memrec:=TMemoryRecord.create(self);
@@ -552,10 +552,10 @@ begin
 
   ms:=TMemorystream.Create;
 
-  cheattable:=doc.CreateElement('CheatTable');
+  cheattable:=doc.CreateElement('MonoTable');
   doc.AppendChild(cheattable);
 
-  CheatEntries:=doc.CreateElement('CheatEntries');
+  CheatEntries:=doc.CreateElement('MonoEntries');
   cheattable.AppendChild(CheatEntries);
 
   try
@@ -582,7 +582,7 @@ var CheatEntries, currentEntry: TDOMNode;
 begin
   result:=true;
   //go through the list untill one is found that has the custom type
-  CheatEntries:=CheatTable.FindNode('CheatEntries');
+  CheatEntries:=CheatTable.FindNode('MonoEntries');
   if cheatentries<>nil then
   begin
     currentEntry:=CheatEntries.FirstChild;
@@ -605,7 +605,7 @@ var CheatEntries, currentEntry: TDOMNode;
   s: string;
 begin
   
-  CheatEntries:=CheatTable.FindNode('CheatEntries');
+  CheatEntries:=CheatTable.FindNode('MonoEntries');
   if cheatentries<>nil then
   begin
     currentEntry:=CheatEntries.FirstChild;
@@ -623,7 +623,7 @@ begin
 
       if hasRelative and (not allRelative) then exit;
 
-      if currententry.findnode('CheatEntries')<>nil then
+      if currententry.findnode('MonoEntries')<>nil then
         __CheatTableNodeCheckForRelativeAddress(currentEntry, hasRelative, allRelative);
 
       currentEntry:=currentEntry.NextSibling;
@@ -682,10 +682,10 @@ begin
 
       insertafter:=treeview.Selected;
 
-      CheatTable:=doc.FindNode('CheatTable');
+      CheatTable:=doc.FindNode('MonoTable');
       if cheattable<>nil then
       begin
-        CheatEntries:=CheatTable.FindNode('CheatEntries');
+        CheatEntries:=CheatTable.FindNode('MonoEntries');
         if CheatEntries<>nil then
         begin
           currentEntry:=CheatEntries.FirstChild;
@@ -726,7 +726,7 @@ begin
 
           while currententry<>nil do
           begin
-            if tdomelement(currententry).TagName='CheatEntry' then
+            if tdomelement(currententry).TagName='MonoEntry' then
             begin
 
               //create a blank entry

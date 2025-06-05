@@ -58,7 +58,7 @@ var jnimethods: array [0..methodcount-1] of JNINativeMethod =(
 procedure InitializeJniSymbolHandler(env: PJNIEnv);
 var c: jclass;
 begin
-  c:=env^.FindClass(env, 'org/cheatengine/SymbolHandler');
+  c:=env^.FindClass(env, 'org/monoengine/SymbolHandler');
   env^.RegisterNatives(env, c, @jnimethods[0], methodcount);
 end;
 

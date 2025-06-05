@@ -15,7 +15,7 @@ autosave.getPath=function()
   
     path=os.getenv("LOCALAPPDATA")
     if (path==nil) or (path=='') then
-      path=getCheatEngineDir() --last attempt  
+      path=getMonoEngineDir() --last attempt  
     end
   end
   
@@ -32,24 +32,24 @@ function autosave.saveState()
   local pid=AutoSaveSettings['ProcessID']
   if pid and pid~='' then
     pid=tonumber(pid)
-    if pid~=getCheatEngineProcessID() then
+    if pid~=getMonoEngineProcessID() then
       --another CE has done an autosave
       if getProcessList()[pid]==nil then
         --it doesn't exist anymore.
-        messageDialog(translate('Another instance of Cheat Engine has crashed and it created an autosave.  Autosave disabled until you go to settings and click ok'), mtWarning, mbOk)
+        messageDialog(translate('Another instance of Mono Engine has crashed and it created an autosave.  Autosave disabled until you go to settings and click ok'), mtWarning, mbOk)
         return false
       end
     end
   end
 
-  AutoSaveSettings['ProcessID']=getCheatEngineProcessID()
+  AutoSaveSettings['ProcessID']=getMonoEngineProcessID()
   local path, err=autosave.getPath()
   if path==nil then
     messageDialog(translate('Failure to obtain a location to save the autosave data'), mtError, mbOk)  
     return false
   end
     
-  path=path..'Cheat Engine AutoSave';
+  path=path..'Mono Engine AutoSave';
   lfs.mkdir(path)
   
   
@@ -151,8 +151,8 @@ end
 function autosave.loadState()
  -- print("loadState()")
   
-  AutoSaveSettings['ProcessID']=getCheatEngineProcessID()
-  local path=autosave.getPath()..'Cheat Engine AutoSave\\';  
+  AutoSaveSettings['ProcessID']=getMonoEngineProcessID()
+  local path=autosave.getPath()..'Mono Engine AutoSave\\';  
   
   r,err=loadTable(path..'table.ct')
   if (r==nil) or (r==false) then
@@ -307,7 +307,7 @@ if (pid) and (pid ~= '') and (getProcessList()[tonumber(pid)]==nil) then
   --The noted down processid does not exist anymore. CE crashed.  Ask to load the autosave
   AutoSaveSettings['ProcessID']=nil
   
-  if messageDialog(translate('Cheat Engine did not properly close last time. Do you wish to restore your work?'), mtInformation, mbYes, mbNo)==mrYes then
+  if messageDialog(translate('Mono Engine did not properly close last time. Do you wish to restore your work?'), mtInformation, mbYes, mbNo)==mrYes then
     autosave.loadState()    
   end
 end

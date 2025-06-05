@@ -343,9 +343,9 @@ end;
 const methodcount=10;
 var jnimethods: array [0..methodcount-1] of JNINativeMethod =(
   (name: 'GetCount'; signature: '()I'; fnPtr: @addresslist_getCount),
-  (name: 'GetEntry'; signature: '(I)Lorg/cheatengine/AddressListEntry;'; fnPtr: @addresslist_getEntry),
-  (name: 'SetEntry'; signature: '(ILorg/cheatengine/AddressListEntry;)V'; fnPtr: @addresslist_setEntry),
-  (name: 'AddEntry'; signature: '(Lorg/cheatengine/AddressListEntry;)I'; fnPtr: @addresslist_addEntry),
+  (name: 'GetEntry'; signature: '(I)Lorg/monoengine/AddressListEntry;'; fnPtr: @addresslist_getEntry),
+  (name: 'SetEntry'; signature: '(ILorg/monoengine/AddressListEntry;)V'; fnPtr: @addresslist_setEntry),
+  (name: 'AddEntry'; signature: '(Lorg/monoengine/AddressListEntry;)I'; fnPtr: @addresslist_addEntry),
   (name: 'SetEntryActive'; signature: '(IZ)Z'; fnPtr: @addresslist_setActive),
   (name: 'SetFreezeTimer'; signature: '(I)V'; fnPtr: @addresslist_setFreezeTimer),
   (name: 'DeleteEntry'; signature: '(I)V'; fnPtr: @addresslist_deleteEntry),
@@ -366,10 +366,10 @@ begin
     addresslistcs:=TCriticalSection.Create;
   end;
 
-  c:=env^.FindClass(env, 'org/cheatengine/AddressList');
+  c:=env^.FindClass(env, 'org/monoengine/AddressList');
   env^.RegisterNatives(env, c, @jnimethods[0], methodcount);
 
-  c:=env^.FindClass(env, 'org/cheatengine/AddressListEntry');
+  c:=env^.FindClass(env, 'org/monoengine/AddressListEntry');
   AddressListEntry_class:=env^.NewGlobalRef(env, c); //I'll need this later
 
   AddressListEntry_init_method:=env^.GetMethodID(env, c, '<init>', '()V');

@@ -456,9 +456,9 @@ begin
   if (debuggerthread=nil) then
   begin
     if @DebugActiveProcessStop=@DebugActiveProcessStopProstitute then
-      mes:='This will attach the debugger of Cheat Engine to the current process. If you close Cheat Engine while the game is running, the game will close too. Are you sure you want to do this?'
+      mes:='This will attach the debugger of Mono Engine to the current process. If you close Mono Engine while the game is running, the game will close too. Are you sure you want to do this?'
     else
-      mes:='This will attach the debugger of Cheat Engine to the current process. Continue?';
+      mes:='This will attach the debugger of Mono Engine to the current process. Continue?';
 
     {$ifndef net}
     if ask then
@@ -1488,7 +1488,7 @@ begin
         attachedevent.SetEvent;
 
 
-        err:='Cheat Engine failed to create the process. (Error='+pchar(IntToStr(GetLastError))+')';
+        err:='Mono Engine failed to create the process. (Error='+pchar(IntToStr(GetLastError))+')';
         messagebox(0,pchar(err),'Create failure',mb_ok);
 
         {$ifndef net}
@@ -1548,7 +1548,7 @@ begin
         attachedevent.SetEvent;
 
         {$ifndef net}
-        err:='Cheat Engine failed to attach to the process. (Error='+IntToStr(GetLastError)+')';
+        err:='Mono Engine failed to attach to the process. (Error='+IntToStr(GetLastError)+')';
         messagebox(0,pchar(err),'Attach failure',mb_ok);
         postmessage(mainform.Handle,WM_USER+1,0,0);  //set debuggerthread to nil
         {$endif}

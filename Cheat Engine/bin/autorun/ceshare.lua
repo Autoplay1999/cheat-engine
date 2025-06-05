@@ -126,7 +126,7 @@ fills in ceshare.ceshareserverlist if needed and puts the list into the combobox
 --]]
   
   if ceshare.ceshareserverlist==nil then
-    local list=ceshare.getInternet().getURL('https://cheatengine.org/cesharelist.txt') --AKA: Eggbaskets
+    local list=ceshare.getInternet().getURL('https://monoengine.org/cesharelist.txt') --AKA: Eggbaskets
     local sl=createStringList()
     sl.Text=list
     
@@ -217,7 +217,7 @@ else
 
 end
 
-ceshare.ceversion=getCEVersion()
+ceshare.ceversion=getMNVersion()
 
 --add a ceshare config option to settings
 

@@ -22,7 +22,7 @@ end, slNotSymbol)
 registerEXETrainerFeature('Lua Symbols', function()
   local r={}
   r[1]={}
-  r[1].PathToFile=getCheatEngineDir()..[[autorun\luasymbols.lua]]
+  r[1].PathToFile=getMonoEngineDir()..[[autorun\luasymbols.lua]]
   r[1].RelativePath=[[autorun\]]
   
   return r

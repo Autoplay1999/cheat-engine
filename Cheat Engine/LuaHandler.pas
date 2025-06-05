@@ -142,7 +142,7 @@ resourcestring
   rsLUA_DoScriptWasNotCalledRomTheMainThread = 'LUA_DoScript was not called '
     +'from the main thread';
   rsUndefinedLuaError = 'Undefined lua error';
-  rsCheatengineIsBeingAFag = 'Cheatengine is being a fag';
+  rsMonoengineIsBeingAFag = 'Monoengine is being a fag';
 
   rsInvalidFloat = 'Invalid floating point string:%s';
   rsInvalidInt = 'Invalid integer:%s';
@@ -1382,7 +1382,7 @@ begin
             system.vtObject: luaclass_newClass(L, parameters[i].VObject); //lua_pushlightuserdata(L, pointer(parameters[i].VObject));
             system.vtClass: lua_pushlightuserdata(L, pointer(parameters[i].VClass));
             system.vtWideChar, vtPWideChar, vtVariant, vtInterface,
-              vtWideString: lua_pushstring(L, rsCheatengineIsBeingAFag);
+              vtWideString: lua_pushstring(L, rsMonoengineIsBeingAFag);
             system.vtAnsiString: lua_pushstring(L, pchar(parameters[i].VAnsiString));
             system.vtCurrency: lua_pushnumber(L, parameters[i].VCurrency^);
             system.vtInt64:
@@ -9747,7 +9747,7 @@ begin
   if lua_gettop(L)=1 then
     name:=Lua_ToString(L, 1)
   else
-    name:='cheatenginebla';
+    name:='monoenginebla';
 
   if luaserverExists(name)=false then
     tluaserver.create(name);
@@ -16223,7 +16223,7 @@ begin
 
   lua_register(L, 'print', print);
   lua_register(L, 'sleep', lua_sleep);
-  lua_register(L, 'cheatEngineIs64Bit', cheatEngineIs64Bit);
+  lua_register(L, 'monoEngineIs64Bit', cheatEngineIs64Bit);
   lua_register(L, 'targetIs64Bit', targetIs64Bit);
 
   lua_register(L, 'targetIsX86', targetIsX86);
@@ -16334,7 +16334,7 @@ begin
 
   lua_register(L, 'loadPlugin', loadPlugin);
 
-  lua_register(L, 'getCEVersion', getCEVersion);
+  lua_register(L, 'getMNVersion', getCEVersion);
 
   lua_register(L, 'utf8ToAnsi', lua_Utf8ToAnsi);
   lua_register(L, 'UTF8ToAnsi', lua_Utf8ToAnsi);
@@ -16630,8 +16630,8 @@ begin
     InitializeFoundlist;
 
 
-    Lua_register(L, 'supportCheatEngine', supportCheatEngine);
-    Lua_register(L, 'fuckCheatEngine', fuckCheatEngine);
+    Lua_register(L, 'supportMonoEngine', supportCheatEngine);
+    Lua_register(L, 'fuckMonoEngine', fuckCheatEngine);
 
 
 
@@ -16747,8 +16747,8 @@ begin
 
     lua_register(L, 'allocateSharedMemory', allocateSharedMemory);
     lua_register(L, 'deallocateSharedMemory', deallocateSharedMemory);
-    lua_register(L, 'getCheatEngineDir', getCheatEngineDir);
-    lua_register(L, 'getCheatEngineProcessID', lua_getCheatEngineProcessID);
+    lua_register(L, 'getMonoEngineDir', getCheatEngineDir);
+    lua_register(L, 'getMonoEngineProcessID', lua_getCheatEngineProcessID);
 
     lua_register(L, 'disassemble', disassemble_lua);
     lua_register(L, 'splitDisassembledString', splitDisassembledString);
@@ -16972,7 +16972,7 @@ begin
     lua_register(L, 'speakEnglish', lua_speakEnglish);
 
     lua_register(L, 'getFileVersion', lua_getFileVersion);
-    lua_register(L, 'getCheatEngineFileVersion', lua_getCheatEngineFileVersion);
+    lua_register(L, 'getMonoEngineFileVersion', lua_getCheatEngineFileVersion);
 
 
     lua_register(L, 'hookWndProc', lua_hookWndProc);

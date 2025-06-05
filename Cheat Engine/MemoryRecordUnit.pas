@@ -1308,7 +1308,7 @@ var
   a:TDOMNode;
 begin
   {$IFNDEF jni}
-  if TDOMElement(CheatEntry).TagName<>'CheatEntry' then exit; //invalid node type
+  if TDOMElement(CheatEntry).TagName<>'MonoEntry' then exit; //invalid node type
 
   tempnode:=Cheatentry.FindNode('ID');
   if tempnode<>nil then
@@ -1427,7 +1427,7 @@ begin
   end;
 
 
-  tempnode:=CheatEntry.FindNode('CheatEntries');
+  tempnode:=CheatEntry.FindNode('MonoEntries');
   if tempnode<>nil then
   begin
     currentEntry:=tempnode.FirstChild;
@@ -1809,7 +1809,7 @@ begin
 
 
   doc:=node.OwnerDocument;
-  cheatEntry:=doc.CreateElement('CheatEntry');
+  cheatEntry:=doc.CreateElement('MonoEntry');
   cheatEntry.AppendChild(doc.CreateElement('ID')).TextContent:=IntToStr(ID);
 
 
@@ -2089,7 +2089,7 @@ begin
   //append the children if it has any
   if treenode.HasChildren then
   begin
-    CheatEntries:=doc.CreateElement('CheatEntries');
+    CheatEntries:=doc.CreateElement('MonoEntries');
     tn:=treenode.GetFirstChild;
     while tn<>nil do
     begin

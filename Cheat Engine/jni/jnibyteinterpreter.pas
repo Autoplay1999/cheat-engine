@@ -76,7 +76,7 @@ boolean parseStringAndWriteToAddress(String value, long address, int variabletyp
 procedure InitializeJniByteInterpreter(env: PJNIEnv);
 var c: jclass;
 begin
-  c:=env^.FindClass(env, 'org/cheatengine/ByteInterpreter');
+  c:=env^.FindClass(env, 'org/monoengine/ByteInterpreter');
   env^.RegisterNatives(env, c, @jnimethods[0], methodcount);
 
 end;

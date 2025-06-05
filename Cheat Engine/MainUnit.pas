@@ -735,7 +735,7 @@ type
       Shift: TShiftState; X, Y: integer);
     procedure Findoutwhataccessesthisaddress1Click(Sender: TObject);
     procedure OpenProcesslist1Click(Sender: TObject);
-    procedure CloseCheatEngine1Click(Sender: TObject);
+    procedure CloseMonoEngine1Click(Sender: TObject);
     procedure Showashexadecimal1Click(Sender: TObject);
     procedure OpenMemorybrowser1Click(Sender: TObject);
     procedure cbPauseWhileScanningClick(Sender: TObject);
@@ -1210,7 +1210,7 @@ resourcestring
     'Select the saved scan result to delete from the list below';
   rsComparingTo = 'Comparing to %s';
   rsHex = 'Hex';
-  rsDoYouWantToGoToTheCheatEngineWebsite =
+  rsDoYouWantToGoToTheMonoEngineWebsite =
     'Do you want to go to the '+strCheatEngine+' website?';
 
   strdeleteall = 'Are you sure you want to delete all addresses?';
@@ -1258,7 +1258,7 @@ resourcestring
   strHideAll = 'will hide all windows';
   strUnHideForeground = 'will bring the foreground window back';
   strUnhideAll = 'will bring all windows back';
-  rsBringsCheatEngineToFront = 'brings '+strCheatEngine+' to front';
+  rsBringsMonoEngineToFront = 'brings '+strCheatEngine+' to front';
 
   strhappybirthday = 'Let''s sing Happy Birthday for Dark Byte today!';
   strXMess = 'Merry christmas and happy new year';
@@ -5111,7 +5111,7 @@ var
   s: string;
 begin
   s := scantablist.TabText[scantablist.SelectedTab];
-  if InputQuery(rsCheatEngine, rsWhatWillBeTheNewNameForThisTab, s) then
+  if InputQuery(rsMonoEngine, rsWhatWillBeTheNewNameForThisTab, s) then
     scantablist.TabText[scantablist.SelectedTab] := s;
 end;
 
@@ -5899,7 +5899,7 @@ begin
   callhelp := False;
   Result := True;
 
-  wikipath:='https://wiki.cheatengine.org/index.php';
+  wikipath:='https://wiki.monoengine.org/index.php';
   wikiurl:='';
 
   if command = HELP_CONTEXT then
@@ -5910,13 +5910,13 @@ begin
       4:    wikiurl:='?title=Tutorials:AttachToProcess';
       11:   wikiurl:='?title=Help_File:Table_Extras';
       12:   wikiurl:='?title=Help_File:Memory_view';
-      19:   wikiurl:='?title=Cheat_Engine:Lua';
-      1089: wikiurl:='?title=Cheat_Engine:Auto_Assembler';
+      19:   wikiurl:='?title=Mono_Engine:Lua';
+      1089: wikiurl:='?title=Mono_Engine:Auto_Assembler';
     end;
 
     {$ifdef windows}
     if wikiurl='' then //no wikilink given
-      HtmlHelpA(Win32WidgetSet.AppHandle, PChar(cheatenginedir + 'cheatengine.chm'), HH_HELP_CONTEXT, Data)
+      HtmlHelpA(Win32WidgetSet.AppHandle, PChar(cheatenginedir + 'monoengine.chm'), HH_HELP_CONTEXT, Data)
     else
     {$endif}
       ShellExecute(0,'open',pchar(wikipath+wikiurl),nil,nil,SW_SHOW);
@@ -7297,8 +7297,8 @@ end;
 procedure TMainForm.LogoClick(Sender: TObject);
 var s: string;
 begin
-  s:=format('http://www.cheatengine.org/?referredby=CE%.2f',[ceversion]);
-  if messagedlg(rsDoYouWantToGoToTheCheatEngineWebsite, mtConfirmation,
+  s:=format('http://www.monoengine.org/?referredby=CE%.2f',[ceversion]);
+  if messagedlg(rsDoYouWantToGoToTheMonoEngineWebsite, mtConfirmation,
     [mbYes, mbNo], 0) = mrYes then
     ShellExecute(0, PChar('open'), PChar(s),
       PChar(''), PChar(''), SW_MAXIMIZE);
@@ -8414,7 +8414,7 @@ begin
 
   end
   else
-    fronttext := rsBringsCheatEngineToFront;
+    fronttext := rsBringsMonoEngineToFront;
 
 
   hk:=cereg.readString('BringToFrontHotkey');
@@ -8547,7 +8547,7 @@ begin
 
   //  animatewindow(mainform.Handle,10000,AW_CENTER);
   //mainform.repaint;
-  fronttext := rsBringsCheatEngineToFront;
+  fronttext := rsBringsMonoEngineToFront;
 
   if dontrunshow then
     exit;
@@ -9168,7 +9168,7 @@ begin
   sbOpenProcess.Click;
 end;
 
-procedure TMainForm.CloseCheatEngine1Click(Sender: TObject);
+procedure TMainForm.CloseMonoEngine1Click(Sender: TObject);
 begin
   Close;
 end;
@@ -11137,7 +11137,7 @@ end;
 
 procedure TMainForm.Helpindex1Click(Sender: TObject);
 begin
-  ShellExecute(0,'open','https://wiki.cheatengine.org/index.php',nil,nil,SW_SHOW);
+  ShellExecute(0,'open','https://wiki.monoengine.org/index.php',nil,nil,SW_SHOW);
 //  Application.HelpContext(1);
 end;
 

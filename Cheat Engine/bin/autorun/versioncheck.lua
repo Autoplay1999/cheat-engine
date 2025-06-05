@@ -14,8 +14,8 @@ function CheckVersion(automatic)
   --create a thread that will get the latest version and buildnumber
   if versionCheckThread==nil then
     versionCheckThread=createThread(function(t)
-        local i=getInternet('CEVersionCheck')
-        local r=i.getURL('https://cheatengine.org/latestversion.txt')
+        local i=getInternet('MNVersionCheck')
+        local r=i.getURL('https://monoengine.org/latestversion.txt')
 
         if r then
           local sl=createStringlist()
@@ -55,7 +55,7 @@ function CheckVersion(automatic)
             return
           end
 
-          local fv=getCheatEngineFileVersion()
+          local fv=getMonoEngineFileVersion()
 
           if fv then
             if latestVersionCompleteBuildNumber>fv then
@@ -63,7 +63,7 @@ function CheckVersion(automatic)
             end
           else
             --failed getting the file version (filesystem issues...)
-            if latestVersionNumber>getCEVersion() then
+            if latestVersionNumber>getMNVersion() then
               newerVersion=true
             end
           end
@@ -71,8 +71,8 @@ function CheckVersion(automatic)
 
           t.synchronize(function()
             if newerVersion then
-              if messageDialog(string.format(translate('Cheat Engine %s is available at www.cheatengine.org. Go there now?'),latestVersionString), mtConfirmation, mbYes, mbNo)==mrYes then
-                shellExecute('https://cheatengine.org/?versioncheck=1')
+              if messageDialog(string.format(translate('Mono Engine %s is available at www.monoengine.org. Go there now?'),latestVersionString), mtConfirmation, mbYes, mbNo)==mrYes then
+                shellExecute('https://monoengine.org/?versioncheck=1')
               else
                 if automatic then --the user clicked away, so probably not interested
                   local NewInterval=(tonumber(vsettings.Value['CheckInterval']) or 1)*2 --just show a default of two times the current skip time
@@ -143,7 +143,7 @@ local edtInterval=createEdit(sf)
 local parent=sf.cbShowUndo.Parent --put it inside the same control as the "undo button checkbox" (the scrollbox)
 
 cbCheckForUpdatesOnLaunch.Checked=vsettings.Value['CheckOnLaunch']=='1'
-cbCheckForUpdatesOnLaunch.Caption=translate('Check for updates when Cheat Engine starts')..'.'
+cbCheckForUpdatesOnLaunch.Caption=translate('Check for updates when Mono Engine starts')..'.'
 cbCheckForUpdatesOnLaunch.Parent=parent
 cbCheckForUpdatesOnLaunch.AnchorSideTop.Control=edtInterval
 cbCheckForUpdatesOnLaunch.AnchorSideTop.Side=asrCenter

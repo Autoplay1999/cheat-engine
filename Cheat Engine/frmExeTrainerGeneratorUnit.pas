@@ -279,7 +279,7 @@ begin
       //temporarily insert this in front of the lua script
       MainForm.frmLuaTableScript.assemblescreen.BeginUpdate;
       MainForm.frmLuaTableScript.assemblescreen.Lines.Insert(0, 'RequiredCEVersion='+floattostr(ceversion));
-      MainForm.frmLuaTableScript.assemblescreen.Lines.Insert(1, 'if (getCEVersion==nil) or (getCEVersion()<RequiredCEVersion) then');
+      MainForm.frmLuaTableScript.assemblescreen.Lines.Insert(1, 'if (getMNVersion==nil) or (getMNVersion()<RequiredMNVersion) then');
       MainForm.frmLuaTableScript.assemblescreen.Lines.Insert(2, '  messageDialog(''Please install '+strCheatEngine+' ''..RequiredCEVersion, mtError, mbOK)');
       MainForm.frmLuaTableScript.assemblescreen.Lines.Insert(3, '  closeCE()');
       MainForm.frmLuaTableScript.assemblescreen.Lines.Insert(4, 'end');
@@ -358,7 +358,7 @@ begin
 
             if rb32.checked then
             begin
-              addfile(cheatenginedir+'cheatengine-i386.exe');
+              addfile(cheatenginedir+'monoengine-i386.exe');
 
               addfile(cheatenginedir+'lua53-32.dll');
               addfile(cheatenginedir+'win32\dbghelp.dll','win32');
@@ -373,7 +373,7 @@ begin
               begin
                 addfile(cheatenginedir+'dbk32.sys');
                 addfile(cheatenginedir+'dbk64.sys');
-                addfile(cheatenginedir+'cheatengine-i386.exe.sig');
+                addfile(cheatenginedir+'monoengine-i386.exe.sig');
               end;
 
               if cbModPlayer.checked then
@@ -385,7 +385,7 @@ begin
             end
             else
             begin
-              addfile(cheatenginedir+'cheatengine-x86_64.exe');
+              addfile(cheatenginedir+'monoengine-x86_64.exe');
               addfile(cheatenginedir+'lua53-64.dll');
 
               if cbSpeedhack.checked then
@@ -397,7 +397,7 @@ begin
               if cbKernelDebug.checked then
               begin
                 addfile(cheatenginedir+'dbk64.sys');
-                addfile(cheatenginedir+'cheatengine-x86_64.exe.sig');
+                addfile(cheatenginedir+'monoengine-x86_64.exe.sig');
               end;
 
               if cbModPlayer.checked then

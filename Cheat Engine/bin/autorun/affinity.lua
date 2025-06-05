@@ -33,7 +33,7 @@ function GetAffinity(ph)
   local psize
   local s=createMemoryStream()
 
-  if cheatEngineIs64Bit() then
+  if monoEngineIs64Bit() then
     psize=8
     s.Size=24
   else
@@ -97,7 +97,7 @@ function SetAffinity(mask, ph)
   local psize
   local s=createMemoryStream()
 
-  if cheatEngineIs64Bit() then
+  if monoEngineIs64Bit() then
     psize=8
     s.Size=16
   else
@@ -165,7 +165,7 @@ function SetAffinityThread(mask, th)
   local psize
   local s=createMemoryStream()
 
-  if cheatEngineIs64Bit() then
+  if monoEngineIs64Bit() then
     psize=8
     s.Size=16
   else

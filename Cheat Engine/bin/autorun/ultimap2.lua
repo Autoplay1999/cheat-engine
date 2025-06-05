@@ -538,7 +538,7 @@ function LaunchUltimap2()
     --create a form with options and state of ultimap2
     if ultimap2.Form==nil then
 	  ultimap2.Active=false
-      ultimap2.Form=createFormFromFile(getCheatEngineDir()..[[autorun\forms\frmUltimap2.FRM]])
+      ultimap2.Form=createFormFromFile(getMonoEngineDir()..[[autorun\forms\frmUltimap2.FRM]])
       
      
       

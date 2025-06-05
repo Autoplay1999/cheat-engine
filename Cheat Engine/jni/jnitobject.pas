@@ -48,7 +48,7 @@ procedure InitializeJniTObject(env: PJNIEnv);
 var c: jclass;
 begin
   log('InitializeJniObject entry');
-  c:=env^.FindClass(env, 'org/cheatengine/TObject');
+  c:=env^.FindClass(env, 'org/monoengine/TObject');
 
   log('Getting the required fields');
   field_object:=env^.GetFieldID(env, c, 'object','J');

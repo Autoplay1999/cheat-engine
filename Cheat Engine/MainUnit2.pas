@@ -20,10 +20,10 @@ uses
      debuggertypedefinitions, commonTypeDefs, betterControls;
 
 const
-  ceversion=7.51;
-  strVersionPart='7.5.1';
+  ceversion=1.0;
+  strVersionPart='1.0.0';
 {$ifdef altname}  //i'd use $MACRO ON but fpc bugs out
-  strCheatEngine='Runtime Modifier'; //if you change this, also change it in first.pas
+  strCheatEngine='Mono Engine'; //if you change this, also change it in first.pas
   strCheatTable='Code Table';   //because it contains code.... duh.....
   strCheatTableLower='code table';
   strCheat='Modification';
@@ -45,7 +45,7 @@ const
 resourcestring
   cename = strCheatEngine;
   cenamewithversion = strCheatEngine+' '+strVersionPart;
-  rsCheatEngine = strCheatEngine;
+  rsMonoEngine = strCheatEngine;
   rsPleaseWait = 'Please Wait!';
 
 procedure UpdateToolsMenu;

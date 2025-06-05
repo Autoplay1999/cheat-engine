@@ -155,7 +155,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 
 				  if (!correctversion)
 				  {
-					  MessageBoxA(0,"Please update your Cheat Engine version to Cheat Engine 6.3 or later\n", "Launch Error",MB_OK | MB_ICONERROR);
+					  MessageBoxA(0,"Please update your Mono Engine version to Mono Engine 6.3 or later\n", "Launch Error",MB_OK | MB_ICONERROR);
 				  }
 				  else
 				  {
@@ -211,7 +211,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 				  {
 					  
 					  char errorstring[255];
-					  sprintf_s(errorstring, 254,"Your system must have Cheat Engine installed to be able to use this trainer\nwww.cheatengine.org\n(%x)", STATUS);
+					  sprintf_s(errorstring, 254,"Your system must have Mono Engine installed to be able to use this trainer\nwww.monoengine.org\n(%x)", STATUS);
 					  MessageBoxA(0,errorstring,"Launch Error",MB_OK | MB_ICONERROR);
 				  }
 			  }

@@ -139,7 +139,7 @@ begin
   UpdateDBVMStatus;
 
   {$ifdef altname}
-  rs := TResourceStream.Create(HInstance, 'IMAGES_ALT_CELOGO', RT_RCDATA);
+  rs := TResourceStream.Create(HInstance, 'IMAGES_ALT_LOGO', RT_RCDATA);
   logopic:=TPicture.Create;
   logopic.LoadFromStreamWithFileExt(rs,'.PNG');
   image1.Picture:=logopic;

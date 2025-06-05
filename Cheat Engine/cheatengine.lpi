@@ -27,7 +27,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="7"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="7712"/>
+      <BuildNr Value="7717"/>
       <Language Value="041C"/>
       <CharSet Value="04B0"/>
       <StringTable CompanyName="Cheat Engine" FileDescription="Cheat Engine" ProductVersion="7.5"/>
@@ -163,7 +163,7 @@
             </Verbosity>
             <WriteFPCLogo Value="False"/>
             <CompilerMessages>
-              <IgnoredMessages idx6058="True" idx5066="True" idx5043="True" idx4105="True" idx4104="True" idx3177="True" idx3175="True" idx2005="True"/>
+              <IgnoredMessages idx6058="True" idx5093="True" idx5089="True" idx5066="True" idx5059="True" idx5044="True" idx5043="True" idx5036="True" idx4110="True" idx4105="True" idx4104="True" idx4056="True" idx3177="True" idx3175="True" idx2005="True"/>
             </CompilerMessages>
             <CustomOptions Value="-WB00400000
 -CfAVX2
@@ -175,8 +175,9 @@
 -dDBVMFORAMDISWORKING
 -dNESTEDSTRUCTURES
 -donebytejumps
--dNoODS"/>
-            <OtherDefines Count="20">
+-dNoODS
+-daltname"/>
+          <OtherDefines Count="20">
               <Define0 Value="NOTMULTITHREADED"/>
               <Define1 Value="benchmarkps"/>
               <Define2 Value="cemain"/>
@@ -3120,28 +3121,6 @@
 -dNESTEDSTRUCTURES
 -donebytejumps
 -dNoODS"/>
-      <OtherDefines Count="20">
-        <Define0 Value="NOTMULTITHREADED"/>
-        <Define1 Value="benchmarkps"/>
-        <Define2 Value="cemain"/>
-        <Define3 Value="NDEBUG"/>
-        <Define4 Value="D3DDebug"/>
-        <Define5 Value="NOVMX"/>
-        <Define6 Value="CUSTOMFLOAT"/>
-        <Define7 Value="XDEBUG"/>
-        <Define8 Value="memleaksearch"/>
-        <Define9 Value="checkassembleralphabet"/>
-        <Define10 Value="memorymapped"/>
-        <Define11 Value="privatebuild"/>
-        <Define12 Value="DBVMFORAMDISWORKING"/>
-        <Define13 Value="NESTEDSTRUCTURES"/>
-        <Define14 Value="THREADNAMESUPPORT"/>
-        <Define15 Value="LINUXTCCTEST"/>
-        <Define16 Value="asserthexviewisthreadsafe"/>
-        <Define17 Value="DEBUGPROTOCOL"/>
-        <Define18 Value="NEWCHANGEREGONX86"/>
-        <Define19 Value="overflowdebug"/>
-      </OtherDefines>
     </Other>
   </CompilerOptions>
   <Debugging>

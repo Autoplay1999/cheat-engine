@@ -8644,7 +8644,7 @@ begin
   logo.Width:=settingsbutton.width;
 
   {$ifdef altname}
-  rname:='IMAGES_ALT_CELOGO';
+  rname:='IMAGES_ALT_LOGO';
   {$else}
   rname:='IMAGES_CELOGO';
   {$endif}

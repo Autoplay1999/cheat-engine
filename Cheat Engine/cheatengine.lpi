@@ -9,11 +9,11 @@
       </Flags>
       <SessionStorage Value="InProjectDir"/>
       <AutoCreateForms Value="False"/>
-      <Title Value="Cheat Engine 7.5"/>
+      <Title Value="Mono Engine 1.0.0"/>
       <UseXPManifest Value="True"/>
       <XPManifest>
         <DpiAware Value="True"/>
-        <TextName Value="Cheat Engine"/>
+        <TextName Value="Mono Engine"/>
         <TextDesc Value="Scripting language and tools"/>
       </XPManifest>
       <Icon Value="0"/>
@@ -24,13 +24,10 @@
     </i18n>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
-      <AutoIncrementBuild Value="True"/>
-      <MajorVersionNr Value="7"/>
-      <MinorVersionNr Value="5"/>
-      <BuildNr Value="7717"/>
-      <Language Value="041C"/>
+      <MajorVersionNr Value="1"/>
+      <Language Value="041E"/>
       <CharSet Value="04B0"/>
-      <StringTable CompanyName="Cheat Engine" FileDescription="Cheat Engine" ProductVersion="7.5"/>
+      <StringTable CompanyName="Mono Engine" FileDescription="Mono Engine" ProductVersion="1.0"/>
     </VersionInfo>
     <BuildModes Count="11">
       <Item1 Name="Release 32-Bit" Default="True"/>
@@ -163,7 +160,7 @@
             </Verbosity>
             <WriteFPCLogo Value="False"/>
             <CompilerMessages>
-              <IgnoredMessages idx6058="True" idx5093="True" idx5089="True" idx5066="True" idx5059="True" idx5044="True" idx5043="True" idx5036="True" idx4110="True" idx4105="True" idx4104="True" idx4056="True" idx3177="True" idx3175="True" idx2005="True"/>
+              <IgnoredMessages idx9201="True" idx6058="True" idx5093="True" idx5089="True" idx5066="True" idx5059="True" idx5044="True" idx5043="True" idx5036="True" idx4110="True" idx4105="True" idx4104="True" idx4056="True" idx4045="True" idx3177="True" idx3175="True" idx2005="True"/>
             </CompilerMessages>
             <CustomOptions Value="-WB00400000
 -CfAVX2

@@ -615,10 +615,10 @@ begin
 
 
           if temphotkeylist[3][0]<>0 then
-            mainform.cbSpeedhack.Hint:=rsEnableDisableSpeedhack+' ('+
+            mainform.cbSpdhack.Hint:=rsEnableDisableSpeedhack+' ('+
               ConvertKeyComboToString(temphotkeylist[3])+')'
           else
-            mainform.cbSpeedhack.Hint:=rsEnableDisableSpeedhack+rsM2NoHotkey;
+            mainform.cbSpdhack.Hint:=rsEnableDisableSpeedhack+rsM2NoHotkey;
 
 
           ResumeHotkeyHandler;

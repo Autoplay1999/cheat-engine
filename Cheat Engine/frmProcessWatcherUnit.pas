@@ -387,10 +387,10 @@ begin
   begin
     if GetSystemType>=4 then
     begin
-      cbSpeedhack.checked:=false;
-      cbSpeedhack.Enabled:=true;
-      cbspeedhack.Checked:=false;
-      cbspeedhack.Enabled:=true;
+      cbSpdhack.checked:=false;
+      cbSpdhack.Enabled:=true;
+      cbspdhack.Checked:=false;
+      cbspdhack.Enabled:=true;
     end;
   end;
 

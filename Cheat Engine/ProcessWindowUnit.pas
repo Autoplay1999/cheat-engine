@@ -794,8 +794,8 @@ begin
   begin
     if GetSystemType>=4 then
     begin
-      cbSpeedhack.checked:=false;
-      cbSpeedhack.Enabled:=true;
+      cbSpdhack.checked:=false;
+      cbSpdhack.Enabled:=true;
       cbunrandomizer.Checked:=false;
       cbunrandomizer.Enabled:=true;
     end;

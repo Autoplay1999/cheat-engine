@@ -78,7 +78,7 @@ object frmExeTrainerGenerator: TfrmExeTrainerGenerator
       ClientHeight = 63
       ClientWidth = 308
       TabOrder = 1
-      object cbSpeedhack: TCheckBox
+      object cbSpdhack: TCheckBox
         Left = 0
         Height = 19
         Top = 0

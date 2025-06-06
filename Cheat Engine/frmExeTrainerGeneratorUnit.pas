@@ -34,7 +34,7 @@ type
     btnRemoveFile: TButton;
     Button3: TButton;
     cbKernelDebug: TCheckBox;
-    cbSpeedhack: TCheckBox;
+    cbSpdhack: TCheckBox;
     cbVEHDebug: TCheckBox;
     cbModPlayer: TCheckBox;
     cbD3DHook: TCheckBox;
@@ -363,7 +363,7 @@ begin
               addfile(cheatenginedir+'lua53-32.dll');
               addfile(cheatenginedir+'win32\dbghelp.dll','win32');
 
-              if cbSpeedhack.checked then
+              if cbSpdhack.checked then
                 addfile(cheatenginedir+'speedhack-i386.dll');
 
               if cbvehdebug.checked then
@@ -388,7 +388,7 @@ begin
               addfile(cheatenginedir+'monoengine-x86_64.exe');
               addfile(cheatenginedir+'lua53-64.dll');
 
-              if cbSpeedhack.checked then
+              if cbSpdhack.checked then
                 addfile(cheatenginedir+'speedhack-x86_64.dll');
 
               if cbvehdebug.checked then
@@ -660,7 +660,7 @@ begin
   GroupBox2.enabled:=cbGigantic.checked;
   rb32.enabled:=cbGigantic.Checked;
   rb64.enabled:=cbGigantic.checked;
-  cbSpeedhack.enabled:=cbGigantic.Checked;
+  cbSpdhack.enabled:=cbGigantic.Checked;
   cbVEHDebug.enabled:=cbGigantic.checked;
   cbModPlayer.Enabled:=cbGigantic.checked;
   cbKernelDebug.enabled:=cbGigantic.Checked;
@@ -750,7 +750,7 @@ begin
   //scan the current script for markers that might indicate a used feature
   s:=lowercase(mainform.frmLuaTableScript.assemblescreen.Text);
 
-  cbSpeedhack.checked:=pos('speedhack_',s)>0;
+  cbSpdhack.checked:=pos('speedhack_',s)>0;
   cbModPlayer.checked:=(pos('xmplayer_',s)>0) or (pos('xmplayer.',s)>0);
   cbKernelDebug.checked:=pos('dbk_',s)>0;
   cbD3DHook.checked:=pos('created3dhook',s)>0;

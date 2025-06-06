@@ -348,6 +348,12 @@ type
     miDotNET: TMenuItem;
     miGetDotNetObjectList: TMenuItem;
     miDBVMFindWhatWritesOrAccesses: TMenuItem;
+    Panel11: TPanel;
+    Panel12: TPanel;
+    Panel13: TPanel;
+    Panel15: TPanel;
+    Panel16: TPanel;
+    Panel17: TPanel;
     pmPresentMemoryOnly: TPopupMenu;
     sep2: TMenuItem;
     miChangeValueBack: TMenuItem;
@@ -1697,7 +1703,7 @@ begin
             if cbSpdhack.Checked then
             begin
               editsh2.Text := format('%.3f', [speedhackspeed1.speed]);  //Just rebuild. I wish this would get fixed in fpc someday...
-              btnSetSpeedhack2.Click;
+              btnSetSpdhack2.Click;
 
               if speedhackspeed1.disablewhenreleased then
               begin

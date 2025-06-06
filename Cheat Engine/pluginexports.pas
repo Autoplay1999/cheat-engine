@@ -2272,14 +2272,14 @@ begin
   result:=nil;
   try
     speed:=params;
-    if not MainForm.cbSpeedhack.checked then
-      MainForm.cbSpeedhack.Checked:=true;
+    if not MainForm.cbSpdhack.checked then
+      MainForm.cbSpdhack.Checked:=true;
 
-    if mainform.cbspeedhack.checked then
+    if mainform.cbspdhack.checked then
     begin
       s:=floattostr(speed^);
       mainform.editsh2.Text:=s;
-      mainform.btnSetSpeedhack2.Click;
+      mainform.btnSetSpdhack2.Click;
     end;
     result:=pointer(1);
   except

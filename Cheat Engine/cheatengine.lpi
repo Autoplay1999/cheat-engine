@@ -13,6 +13,7 @@
       <UseXPManifest Value="True"/>
       <XPManifest>
         <DpiAware Value="True"/>
+        <ExecutionLevel Value="requireAdministrator"/>
         <TextName Value="Mono Engine"/>
         <TextDesc Value="Scripting language and tools"/>
       </XPManifest>
@@ -823,7 +824,7 @@
         <PackageName Value="LCL"/>
       </Item9>
     </RequiredPackages>
-    <Units Count="424">
+    <Units Count="425">
       <Unit0>
         <Filename Value="cheatengine.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -3062,6 +3063,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit423>
+      <Unit424>
+        <Filename Value="textbox.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Textbox"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit424>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

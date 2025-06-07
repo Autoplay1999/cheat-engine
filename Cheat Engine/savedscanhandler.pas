@@ -728,7 +728,7 @@ begin
   maxregionsize:=20*4096;
   try
     try
-      SavedScanaddressFS:=tfilestream.Create(scandir+'ADDRESSES.'+savedresultsname, fmopenread or fmsharedenynone);
+      SavedScanaddressFS:=tfilestream.Create(scandir+'A.'+savedresultsname, fmopenread or fmsharedenynone);
     except
       raise ESavedScanException.Create(rsNoFirstScanDataFilesFound);
     end;
@@ -771,7 +771,7 @@ begin
 
 
     try
-      SavedScanmemoryFS:=Tfilestream.Create(scandir+'MEMORY.'+savedresultsname,fmOpenRead or fmsharedenynone);
+      SavedScanmemoryFS:=Tfilestream.Create(scandir+'M.'+savedresultsname,fmOpenRead or fmsharedenynone);
       getmem(SavedScanmemory, maxregionsize+512); //extra just to be safe for custom types that misreport size
     except
       raise ESavedScanException.Create(rsNoFirstScanDataFilesFound);

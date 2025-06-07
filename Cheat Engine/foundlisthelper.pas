@@ -228,9 +228,9 @@ begin
   if addressfile=nil then exit;
 
   try
-    memoryfile:=tfilestream.Create(fmemscan.ScanresultFolder+'MEMORY.'+fListName,fmOpenRead or fmShareDenyNone);
-    outaddress:=tfilestream.Create(fmemscan.ScanresultFolder+'ADDRESSES.NEW',fmCreate or fmShareDenyNone);
-    outmemory:=tfilestream.Create(fmemscan.ScanresultFolder+'MEMORY.NEW',fmCreate or fmShareDenyNone);
+    memoryfile:=tfilestream.Create(fmemscan.ScanresultFolder+'M.'+fListName,fmOpenRead or fmShareDenyNone);
+    outaddress:=tfilestream.Create(fmemscan.ScanresultFolder+'A.NEW',fmCreate or fmShareDenyNone);
+    outmemory:=tfilestream.Create(fmemscan.ScanresultFolder+'M.NEW',fmCreate or fmShareDenyNone);
   except
     exit;
   end;
@@ -302,10 +302,10 @@ begin
   //still here, not crashed, so out with the old, in with the new...
   deinitialize;
 
-  deletefile(fmemscan.ScanresultFolder+'MEMORY.'+fListName);
-  deletefile(fmemscan.ScanresultFolder+'ADDRESSES.'+fListName);
-  renamefile(fmemscan.ScanresultFolder+'MEMORY.NEW',memscan.ScanresultFolder+'MEMORY.'+fListName);
-  renamefile(fmemscan.ScanresultFolder+'ADDRESSES.NEW',memscan.ScanresultFolder+'ADDRESSES.'+fListName);
+  deletefile(fmemscan.ScanresultFolder+'M.'+fListName);
+  deletefile(fmemscan.ScanresultFolder+'A.'+fListName);
+  renamefile(fmemscan.ScanresultFolder+'M.NEW',memscan.ScanresultFolder+'M.'+fListName);
+  renamefile(fmemscan.ScanresultFolder+'A.NEW',memscan.ScanresultFolder+'A.'+fListName);
 
   Reinitialize;
 end;
@@ -737,15 +737,15 @@ begin
   fcustomType:=customtype;
 
 
- // log('Checking if '+fmemscan.ScanresultFolder+'ADDRESSES.'+fListName+' exists');
+ // log('Checking if '+fmemscan.ScanresultFolder+'A.'+fListName+' exists');
 
-  if fileexists(fmemscan.ScanresultFolder+'ADDRESSES.'+fListName) then
+  if fileexists(fmemscan.ScanresultFolder+'A.'+fListName) then
   begin
    // log('it exists');
 
 
     try
-      self.addressfile:=tfilestream.Create(fmemscan.ScanresultFolder+'ADDRESSES.'+fListName,fmOpenRead or fmShareDenyNone);
+      self.addressfile:=tfilestream.Create(fmemscan.ScanresultFolder+'A.'+fListName,fmOpenRead or fmShareDenyNone);
     except
       foundlist.Items.Count:=0;
       scantype:=fs_advanced;

@@ -8854,10 +8854,10 @@ begin
           begin
             if length(info.Name)>5 then
             begin
+              f:=usedtempdir+strCheatEngine+pathdelim+info.name;
               //if found, delete them if older than 2 days
               {$ifndef windows}
               //exclusivity means nothing to unix
-              f:=usedtempdir+strCheatEngine+pathdelim+info.name;
               if FileExists(f+PathDelim+'inuse.lock') then
               begin
                 iuf:=nil;

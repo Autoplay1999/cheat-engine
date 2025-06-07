@@ -5,6 +5,7 @@ unit askToRunLuaScript;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, SynEdit, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ExtCtrls, LuaSyntax, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmLuaScriptQuestion }
 
-  TfrmLuaScriptQuestion = class(TForm)
+  TfrmLuaScriptQuestion = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     GroupBox5: TGroupBox;

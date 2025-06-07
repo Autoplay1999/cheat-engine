@@ -11,7 +11,7 @@ uses
   macport, mactypes,
   {$endif}
   {$ifdef windows}
-  jwawindows, win32proc,  windows,
+  jwawindows, win32proc,  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdCtrls, ComCtrls, EditBtn, Menus, iptnative, libipt, ProcessHandlerUnit,
@@ -296,7 +296,7 @@ type
 
   { TfrmUltimap2 }
 
-  TfrmUltimap2 = class(TForm)
+  TfrmUltimap2 = class(TInvisForm)
     btnAddRange: TButton;
     btnExecuted: TButton;
     btnFilterCallCount: TButton;

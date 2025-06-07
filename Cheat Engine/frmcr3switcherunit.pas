@@ -7,6 +7,7 @@ unit frmCR3SwitcherUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Menus, maps;
 
@@ -14,7 +15,7 @@ type
 
   { TfrmCR3Switcher }
 
-  TfrmCR3Switcher = class(TForm)
+  TfrmCR3Switcher = class(TInvisForm)
     btnSetCR3: TButton;
     edtNewCR3: TEdit;
     Label1: TLabel;

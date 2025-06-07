@@ -123,7 +123,7 @@ uses
   DisAssemblerARM32, frmAnchorEditor, disassemblerArm32Thumb, iptnative,
   iptlogdisplay, LuaVirtualStringTree, userbytedisassembler,
   LuaNetworkInterface, libcepack, symbolsync, gdbserverconnectdialog,
-  GDBServerDebuggerInterface;
+  GDBServerDebuggerInterface, InvisForm;
 
 {$R cheatengine.res}
 {$IFDEF windows}

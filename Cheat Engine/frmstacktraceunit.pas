@@ -9,7 +9,7 @@ uses
   macport, macportdefines,
   {$endif}
   {$ifdef windows}
-  windows, imagehlp,
+  windows, imagehlp, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs,NewKernelHandler, CEFuncProc, ComCtrls,CEDebugger, KernelDebugger,
@@ -19,7 +19,7 @@ type
 
   { TfrmStacktrace }
 
-  TfrmStacktrace = class(TForm)
+  TfrmStacktrace = class(TInvisForm)
     stImageList: TImageList;
     ListView1: TListView;
     miManualStackwalk: TMenuItem;

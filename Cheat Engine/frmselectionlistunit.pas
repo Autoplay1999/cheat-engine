@@ -5,6 +5,7 @@ unit frmSelectionlistunit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, LResources, betterControls;
 
@@ -14,7 +15,7 @@ type
 
   TSelectionToTextEvent=function(index: integer; listText: string): string of object;
 
-  TfrmSelectionList = class(TForm)
+  TfrmSelectionList = class(TInvisForm)
     Edit1: TEdit;
     ListBox1: TListBox;
     Panel1: TPanel;

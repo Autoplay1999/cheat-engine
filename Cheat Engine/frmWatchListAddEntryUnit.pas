@@ -5,6 +5,7 @@ unit frmWatchListAddEntryUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmWatchListAddEntry }
 
-  TfrmWatchListAddEntry = class(TForm)
+  TfrmWatchListAddEntry = class(TInvisForm)
     btnOK: TButton;
     btnCancel: TButton;
     edtExpression: TEdit;

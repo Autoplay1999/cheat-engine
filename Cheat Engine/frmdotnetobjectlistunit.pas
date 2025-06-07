@@ -5,13 +5,14 @@ unit frmDotNetObjectListUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ComCtrls, betterControls;
 
 type
 
   { TfrmDotNetObjectList }
 
-  TfrmDotNetObjectList = class(TForm)
+  TfrmDotNetObjectList = class(TInvisForm)
     ListView1: TListView;
   private
     { private declarations }

@@ -6,7 +6,7 @@ interface
 
 uses
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ComCtrls, ExtCtrls, ExtDlgs, cefuncproc, commonTypeDefs, betterControls;
@@ -15,7 +15,7 @@ type
 
   { TfrmD3DTrainerGeneratorOptions }
 
-  TfrmD3DTrainerGeneratorOptions = class(TForm)
+  TfrmD3DTrainerGeneratorOptions = class(TInvisForm)
     btnClear: TButton;
     Button2: TButton;
     Button3: TButton;

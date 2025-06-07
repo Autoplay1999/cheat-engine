@@ -5,6 +5,7 @@ unit frmSyntaxHighlighterEditor;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ColorBox, ExtCtrls, ComCtrls, SynEditHighlighter, Types, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmHighlighterEditor }
 
-  TfrmHighlighterEditor = class(TForm)
+  TfrmHighlighterEditor = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     cbBold: TCheckBox;

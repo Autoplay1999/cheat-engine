@@ -5,6 +5,7 @@ unit FrmMemoryRecordDropdownSettingsUnit;
 interface
 
 uses
+  InvisForm,
   LCLType, Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, MemoryRecordUnit, CEFuncProc, SynEdit, Menus, betterControls, addresslist,
   synedittypes;
@@ -16,7 +17,7 @@ type
 
   { TFrmMemoryRecordDropdownSettings }
 
-  TFrmMemoryRecordDropdownSettings = class(TForm)
+  TFrmMemoryRecordDropdownSettings = class(TInvisForm)
     btnCancel: TButton;
     btnOk: TButton;
     cbDisallowUserInput: TCheckBox;

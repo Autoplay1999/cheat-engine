@@ -5,6 +5,7 @@ unit frmReferencedFunctionsUnit;
 interface
 
 uses
+  InvisForm,
   LCLProc, Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ComCtrls,
   StdCtrls, ExtCtrls, Menus, symbolhandler, Clipbrd, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmReferencedFunctions }
 
-  TfrmReferencedFunctions = class(TForm)
+  TfrmReferencedFunctions = class(TInvisForm)
     FindDialog1: TFindDialog;
     miFind: TMenuItem;
     N1: TMenuItem;

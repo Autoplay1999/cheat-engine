@@ -9,7 +9,7 @@ uses
   macport, macportdefines,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   NewKernelHandler, LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Buttons, LResources, commonTypeDefs, frmFindDialogUnit,
@@ -63,7 +63,7 @@ type
 
   { TfrmTracer }
 
-  TfrmTracer = class(TForm)
+  TfrmTracer = class(TInvisForm)
     aflabel: TLabel;
     Button1: TButton;
     btnStopSearch: TButton;

@@ -5,6 +5,7 @@ unit frmBreakpointlistunit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, LMessages, LCLType, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, CEDebugger, KernelDebugger, ExtCtrls, LResources, ComCtrls, Menus,
   debuggertypedefinitions, BreakpointTypeDef, betterControls;
@@ -13,7 +14,7 @@ uses
 type
   { TfrmBreakpointlist }
 
-  TfrmBreakpointlist = class(TForm)
+  TfrmBreakpointlist = class(TInvisForm)
     bplImageList: TImageList;
     ListView1: TListView;
     MenuItem1: TMenuItem;

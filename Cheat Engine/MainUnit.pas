@@ -45,7 +45,7 @@ uses
   groupscancommandparser, GraphType, IntfGraphics, RemoteMemoryManager,
   DBK64SecondaryLoader, savedscanhandler, debuggertypedefinitions, networkInterface,
   FrmMemoryRecordDropdownSettingsUnit, xmlutils, zstream, zstreamext, commonTypeDefs,
-  VirtualQueryExCache, LazLogger, LazUTF8, LCLVersion, fgl, betterControls;
+  VirtualQueryExCache, LazLogger, LazUTF8, LCLVersion, fgl, betterControls, InvisForm;
   {$endif}
 //the following are just for compatibility
 
@@ -287,7 +287,7 @@ type
 
   //TPreviousResultList=specialize TFPGList<TSavedScanHandler>;
 
-  TMainForm = class(TForm)
+  TMainForm = class(TInvisForm)
     actOpenLuaEngine: TAction;
     actOpenDissectStructure: TAction;
     btnSetSpdhack2: TButton;

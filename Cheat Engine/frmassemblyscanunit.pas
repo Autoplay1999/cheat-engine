@@ -5,6 +5,7 @@ unit frmAssemblyScanUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, CEFuncProc, Parsers, symbolhandler, ProcessHandlerUnit, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmAssemblyScan }
 
-  TfrmAssemblyScan = class(TForm)
+  TfrmAssemblyScan = class(TInvisForm)
     btnOk: TButton;
     edtFrom: TEdit;
     edtTo: TEdit;

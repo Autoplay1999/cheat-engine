@@ -5,6 +5,7 @@ unit frmAAEditPrefsUnit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, LResources, SynEdit, synedittypes, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmAAEditPrefs }
 
-  TfrmAAEditPrefs = class(TForm)
+  TfrmAAEditPrefs = class(TInvisForm)
     cbFontQuality: TComboBox;
     cbShowGutter: TCheckBox;
     cbShowLineNumbers: TCheckBox;

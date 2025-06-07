@@ -5,6 +5,7 @@ unit CEListviewItemEditor;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ComCtrls, ExtCtrls, propedits, math, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmCEListviewItemEditor }
 
-  TfrmCEListviewItemEditor = class(TForm)
+  TfrmCEListviewItemEditor = class(TInvisForm)
     btnDelete: TButton;
     btnCancel: TButton;
     btnOk: TButton;

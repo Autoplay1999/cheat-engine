@@ -5,6 +5,7 @@ unit frmSaveMemoryRegionUnit;
 interface
 
 uses
+  InvisForm,
   {$ifdef darwin}
   macport,
   {$endif}
@@ -15,7 +16,7 @@ type
 
   { TfrmSaveMemoryRegion }
 
-  TfrmSaveMemoryRegion = class(TForm)
+  TfrmSaveMemoryRegion = class(TInvisForm)
     smrImageList: TImageList;
     miClearList: TMenuItem;
     Panel1: TPanel;

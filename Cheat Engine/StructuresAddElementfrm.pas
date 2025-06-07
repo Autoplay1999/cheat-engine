@@ -5,6 +5,7 @@ unit StructuresAddElementfrm;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, LResources, betterControls;
 
@@ -16,7 +17,7 @@ type
 
   { TfrmStructuresAddElement }
 
-  TfrmStructuresAddElement = class(TForm)
+  TfrmStructuresAddElement = class(TInvisForm)
     cbType: TComboBox;
     cbPointerto: TCheckBox;
     Button1: TButton;

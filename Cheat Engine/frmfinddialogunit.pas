@@ -12,6 +12,7 @@ Thus this version instead
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, betterControls;
 
@@ -20,7 +21,7 @@ type
   { TfrmFindDialog }
   TFindDirection=(fdUp, fdDown);
 
-  TfrmFindDialog = class(TForm)
+  TfrmFindDialog = class(TInvisForm)
     btnFind: TButton;
     Button1: TButton;
     cbCaseSensitive: TCheckBox;

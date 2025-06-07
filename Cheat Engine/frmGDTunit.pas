@@ -5,6 +5,7 @@ unit frmGDTunit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, ComCtrls, LResources,CEFuncProc,NewKernelHandler, commonTypeDefs, betterControls;
 
@@ -23,7 +24,7 @@ resourcestring
   rsGDTReadError = 'Read error';
 
 type
-  TfrmGDTinfo = class(TForm)
+  TfrmGDTinfo = class(TInvisForm)
     TreeView1: TTreeView;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

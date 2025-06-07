@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  jwawindows, windows,
+  jwawindows, windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics,
   Dialogs, StdCtrls, ExtCtrls, ComCtrls, Menus, resolve, Sockets, ctypes,
@@ -21,7 +21,7 @@ type
 
 
 
-  TfrmNetworkConfig = class(TForm)
+  TfrmNetworkConfig = class(TInvisForm)
     btnConnect: TButton;
     Button2: TButton;
     edtFriendlyName: TEdit;

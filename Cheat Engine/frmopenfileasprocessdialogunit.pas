@@ -5,6 +5,7 @@ unit frmOpenFileAsProcessDialogUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmOpenFileAsProcessDialog }
 
-  TfrmOpenFileAsProcessDialog = class(TForm)
+  TfrmOpenFileAsProcessDialog = class(TInvisForm)
     mbOK: TButton;
     mkCancel: TButton;
     edtBaseAddress: TEdit;

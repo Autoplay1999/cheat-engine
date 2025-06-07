@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows,InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   DBK32functions, NewKernelHandler, cefuncproc, AvgLvlTree, ExtCtrls, ComCtrls,
@@ -64,7 +64,7 @@ type
 
   { TfrmUltimap }
 
-  TfrmUltimap = class(TForm)
+  TfrmUltimap = class(TInvisForm)
     btnExecuted: TButton;
     btnFilterCallCount: TButton;
     btnFilterModule: TButton;

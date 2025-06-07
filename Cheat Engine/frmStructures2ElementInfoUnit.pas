@@ -5,6 +5,7 @@ unit frmStructures2ElementInfoUnit;
 interface
 
 uses
+  InvisForm,
   {$ifdef windows}windows,{$endif}Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, cefuncproc, StructuresFrm2, vartypestrings, math, CustomTypeHandler, commonTypeDefs, betterControls;
 
@@ -18,7 +19,7 @@ type
 
   { TfrmStructures2ElementInfo }
 
-  TfrmStructures2ElementInfo = class(TForm)
+  TfrmStructures2ElementInfo = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     cbStructType: TComboBox;

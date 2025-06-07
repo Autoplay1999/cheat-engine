@@ -11,7 +11,7 @@ uses
   macport, lcltype,
   {$endif}
   {$ifdef windows}
-  windows, win32proc,
+  windows, win32proc, InvisForm,
   {$endif}
   LCLIntf, LResources, LMessages, Messages, SysUtils, Variants,
   Classes, Graphics, Controls, Forms, Dialogs, StdCtrls, ExtCtrls, ComCtrls,
@@ -139,7 +139,7 @@ type
 
   { TformAddressChange }
 
-  TformAddressChange = class(TForm)
+  TformAddressChange = class(TInvisForm)
     cbCodePage: TCheckBox;
     cbHex: TCheckBox;
     cbSigned: TCheckBox;

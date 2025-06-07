@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  jwawindows, windows,
+  jwawindows, windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, ComCtrls,disassembler,CEFuncProc,NewKernelHandler,
@@ -46,7 +46,7 @@ type
 
   { TfrmFindStatics }
 
-  TfrmFindStatics = class(TForm)
+  TfrmFindStatics = class(TInvisForm)
     ProgressBar1: TProgressBar;
     Panel1: TPanel;
     Button1: TButton;

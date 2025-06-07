@@ -9,7 +9,7 @@ uses
   macport, LCLType, math, machotkeys,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, registry, CEFuncProc, ExtCtrls, LResources,
@@ -19,7 +19,7 @@ type
 
   { THotKeyForm }
 
-  THotKeyForm = class(TForm)
+  THotKeyForm = class(TInvisForm)
     btnApply: TButton;
     btnCreateHotkey: TButton;
     btnEditHotkey: TButton;

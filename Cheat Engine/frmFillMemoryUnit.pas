@@ -9,7 +9,7 @@ uses
   macport, math,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics, Controls,
   Forms, Dialogs, StdCtrls, CEFuncProc, NewKernelHandler, LResources, ExtCtrls, betterControls;
@@ -18,7 +18,7 @@ type
 
   { TfrmFillMemory }
 
-  TfrmFillMemory = class(TForm)
+  TfrmFillMemory = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     Edit1: TEdit;

@@ -5,6 +5,7 @@ unit frmResumePointerscanUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, ComCtrls, Menus, registry, multilineinputqueryunit, CEFuncProc,
   math, types, betterControls;
@@ -20,7 +21,7 @@ type
 
   { TfrmResumePointerscan }
 
-  TfrmResumePointerscan = class(TForm)
+  TfrmResumePointerscan = class(TInvisForm)
     btnNotifySpecificIPs: TButton;
     Button1: TButton;
     Button2: TButton;

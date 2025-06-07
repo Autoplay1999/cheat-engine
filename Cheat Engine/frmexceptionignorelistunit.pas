@@ -5,6 +5,7 @@ unit frmExceptionIgnoreListUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, Menus, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmExceptionIgnoreList }
 
-  TfrmExceptionIgnoreList = class(TForm)
+  TfrmExceptionIgnoreList = class(TInvisForm)
     btnAdd: TButton;
     edtExceptionCode: TEdit;
     Label1: TLabel;

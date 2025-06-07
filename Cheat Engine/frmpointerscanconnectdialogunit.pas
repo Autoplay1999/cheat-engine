@@ -6,6 +6,7 @@ unit frmPointerscanConnectDialogUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, Sockets, resolve, CEFuncProc;
 
@@ -13,7 +14,7 @@ type
 
   { TfrmPointerscanConnectDialog }
 
-  TfrmPointerscanConnectDialog = class(TForm)
+  TfrmPointerscanConnectDialog = class(TInvisForm)
     btnCancel: TButton;
     btnOk: TButton;
     cbPriority: TComboBox;

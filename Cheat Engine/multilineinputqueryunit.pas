@@ -9,7 +9,7 @@ uses
   macport, LCLIntf,
   {$endif}
   {$ifdef windows}
-  win32proc, windows,
+  win32proc, windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   LCLType, math, betterControls;
@@ -25,7 +25,7 @@ implementation
 {$R *.lfm}
 
 type
-  TfrmMultilineInputQuery = class(TForm)
+  TfrmMultilineInputQuery = class(TInvisForm)
     Panel1: TPanel;
     Panel2: TPanel;
     Button1: TButton;

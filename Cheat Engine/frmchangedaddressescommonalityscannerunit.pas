@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   ComCtrls, StdCtrls, ExtCtrls, formChangedAddresses, betterControls;
@@ -18,7 +18,7 @@ type
 
   { TfrmChangedAddressesCommonalityScanner }
 
-  TfrmChangedAddressesCommonalityScanner = class(TForm)
+  TfrmChangedAddressesCommonalityScanner = class(TInvisForm)
     lvRegisters: TListView;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);

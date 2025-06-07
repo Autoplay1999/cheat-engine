@@ -5,6 +5,7 @@ unit frmReferencedStringsUnit;
 interface
 
 uses
+  InvisForm,
   {$ifdef darwin}
   macport,
   {$endif}
@@ -26,7 +27,7 @@ type
 
   { TfrmReferencedStrings }
 
-  TfrmReferencedStrings = class(TForm)
+  TfrmReferencedStrings = class(TInvisForm)
     rsImageList: TImageList;
 
     lvStringlist: TListView;

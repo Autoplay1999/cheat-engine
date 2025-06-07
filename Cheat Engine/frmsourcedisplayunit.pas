@@ -7,6 +7,7 @@ unit frmSourceDisplayUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, ComCtrls,
   ExtCtrls, Menus, SynEdit, SynEditMarks, SynHighlighterCpp, disassembler,
   MemoryBrowserFormUnit, tcclib, betterControls, SynGutterBase, debugeventhandler,
@@ -16,7 +17,7 @@ type
 
   { TfrmSourceDisplay }
 
-  TfrmSourceDisplay = class(TForm)
+  TfrmSourceDisplay = class(TInvisForm)
     itInfo: TIdleTimer;
     ilDebug: TImageList;
     MenuItem1: TMenuItem;

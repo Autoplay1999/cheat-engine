@@ -5,6 +5,7 @@ unit Changeoffsetunit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ComCtrls, LResources, ExtCtrls,symbolhandler, math, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TChangeOffset }
 
-  TChangeOffset = class(TForm)
+  TChangeOffset = class(TInvisForm)
     Cancel: TButton;
     Change: TButton;
     TabControl1: TTabControl;

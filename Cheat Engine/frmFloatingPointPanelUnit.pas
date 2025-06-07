@@ -13,7 +13,7 @@ uses
   macport, math,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, cefuncproc, ComCtrls, LResources, NewKernelHandler,
@@ -26,7 +26,7 @@ type
 
   { TfrmFloatingPointPanel }
 
-  TfrmFloatingPointPanel = class(TForm)
+  TfrmFloatingPointPanel = class(TInvisForm)
     cbClassicView: TCheckBox;
     PageControl1: TPageControl;
     sbData: TScrollBox;

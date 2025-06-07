@@ -5,6 +5,7 @@ unit frmManualStacktraceConfigUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmManualStacktraceConfig }
 
-  TfrmManualStacktraceConfig = class(TForm)
+  TfrmManualStacktraceConfig = class(TInvisForm)
     btnCancel: TButton;
     btnOK: TButton;
     cbUseShadow: TCheckBox;

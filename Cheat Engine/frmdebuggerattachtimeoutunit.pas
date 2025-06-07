@@ -5,6 +5,7 @@ unit frmDebuggerAttachTimeoutUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, syncobjs, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmDebuggerAttachTimeout }
 
-  TfrmDebuggerAttachTimeout = class(TForm)
+  TfrmDebuggerAttachTimeout = class(TInvisForm)
     Button1: TButton;
     Label1: TLabel;
     lblStatus: TLabel;

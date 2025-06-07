@@ -5,6 +5,7 @@ unit frmBreakThreadUnit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, LResources, ExtCtrls,CEDebugger, debughelper, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { Tfrmbreakthread }
 
-  Tfrmbreakthread = class(TForm)
+  Tfrmbreakthread = class(TInvisForm)
     Label1: TLabel;
     Panel1: TPanel;
     Threadlistbox: TListBox;

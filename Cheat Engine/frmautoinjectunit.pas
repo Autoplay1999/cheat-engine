@@ -8,7 +8,7 @@ uses
   {$ifdef darwin}
   macport, LCLProc,
   {$else}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls, Menus, MemoryRecordUnit, commonTypeDefs, CustomTypeHandler,
@@ -206,7 +206,7 @@ type
 
   { TfrmAutoInject }
 
-  TfrmAutoInject = class(TForm)
+  TfrmAutoInject = class(TInvisForm)
     aaImageList: TImageList;
     btnExecute: TButton;
     MainMenu1: TMainMenu;

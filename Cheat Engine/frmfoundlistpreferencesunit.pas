@@ -5,6 +5,7 @@ unit frmFoundlistPreferencesUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ColorBox, ComCtrls, ExtCtrls, math, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmFoundlistPreferences }
 
-  TfrmFoundlistPreferences = class(TForm)
+  TfrmFoundlistPreferences = class(TInvisForm)
     btnOK: TButton;
     btnCancel: TButton;
     btnFont: TButton;

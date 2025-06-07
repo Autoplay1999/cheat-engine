@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics,
   Dialogs, ceguicomponents, lclintf, StdCtrls, EditBtn, ExtCtrls, ExtDlgs,
@@ -25,7 +25,7 @@ type
   end; //so it's uniquely identifyable
 
   { TfrmTrainerGenerator }
-  TfrmTrainerGenerator = class(TForm)
+  TfrmTrainerGenerator = class(TInvisForm)
     btnAddSounds: TButton;
     btnDelete: TButton;
     btnAddHotkey: TButton;

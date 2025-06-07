@@ -9,7 +9,7 @@ uses
   macport, LCLType, LCLIntf,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdCtrls, ComCtrls, Menus, memdisplay, newkernelhandler, cefuncproc,
@@ -59,7 +59,7 @@ type
 
   { TfrmMemoryViewEx }
 
-  TfrmMemoryViewEx = class(TForm)
+  TfrmMemoryViewEx = class(TInvisForm)
     btnMEMMAP: TButton;
     cbAddresslist: TComboBox;
     cbAddresslistOnly: TCheckBox;

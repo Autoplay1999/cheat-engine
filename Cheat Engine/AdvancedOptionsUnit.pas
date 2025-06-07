@@ -12,7 +12,7 @@ uses
   macport, LCLType, math,
   {$endif}
   {$ifdef windows}
-  jwawindows, windows,
+  jwawindows, windows, InvisForm,
   {$endif}
 
   symbolhandler,symbolhandlerstructs,LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
@@ -49,7 +49,7 @@ type
     destructor destroy; override;
   end;
 
-  TAdvancedOptions = class(TForm)
+  TAdvancedOptions = class(TInvisForm)
     aoImageList: TImageList;
     ColorDialog1: TColorDialog;
     MenuItem1: TMenuItem;

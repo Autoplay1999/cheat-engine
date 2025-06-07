@@ -7,6 +7,7 @@ unit gdbserverconnectdialog;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
   bettercontrols;
 
@@ -14,7 +15,7 @@ type
 
   { TfrmGDBServerConnectDialog }
 
-  TfrmGDBServerConnectDialog = class(TForm)
+  TfrmGDBServerConnectDialog = class(TInvisForm)
     Button1: TButton;
     Edit1: TEdit;
     Edit2: TEdit;

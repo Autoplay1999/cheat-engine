@@ -5,6 +5,7 @@ unit frmBreakpointConditionUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ComCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmBreakpointCondition }
 
-  TfrmBreakpointCondition = class(TForm)
+  TfrmBreakpointCondition = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     edtEasy: TEdit;

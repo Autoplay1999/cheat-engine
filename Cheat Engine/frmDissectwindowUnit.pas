@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, ComCtrls,StdCtrls,CEFuncProc, ExtCtrls, LResources, Menus, betterControls;
@@ -27,7 +27,7 @@ type
 
   { TfrmdissectWindow }
 
-  TfrmdissectWindow = class(TForm)
+  TfrmdissectWindow = class(TInvisForm)
     TreeView1: TTreeView;
     Button1: TButton;
     Panel1: TPanel;

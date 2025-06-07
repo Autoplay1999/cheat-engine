@@ -5,6 +5,7 @@ unit frmStructuresNewStructureUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Registry, LCLType, ExtCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmStructuresNewStructure }
 
-  TfrmStructuresNewStructure = class(TForm)
+  TfrmStructuresNewStructure = class(TInvisForm)
     btnCancel: TButton;
     btnOk: TButton;
     cbUseAutoTypes: TCheckBox;

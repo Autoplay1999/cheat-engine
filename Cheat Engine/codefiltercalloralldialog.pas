@@ -5,6 +5,7 @@ unit CodeFilterCallOrAllDialog;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TCallOrAllDialog }
 
-  TCallOrAllDialog = class(TForm)
+  TCallOrAllDialog = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;

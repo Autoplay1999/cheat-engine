@@ -5,13 +5,14 @@ unit textbox;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls;
 
 type
 
   { TTextbox }
 
-  TTextbox = class(TForm)
+  TTextbox = class(TInvisForm)
     Confirm: TButton;
     Input: TEdit;
   private

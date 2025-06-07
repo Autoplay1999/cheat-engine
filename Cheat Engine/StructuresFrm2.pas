@@ -12,7 +12,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows, win32proc,
+  windows, win32proc, InvisForm,
   {$endif}
   Classes, LCLProc, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls, math,
   StdCtrls, ComCtrls, Menus, lmessages, byteinterpreter, symbolhandler, symbolhandlerstructs, cefuncproc,
@@ -389,7 +389,7 @@ type
     property SavedStateSize: integer read fsavedstatesize write fsavedstatesize;
   end;
 
-  TfrmStructures2 = class(TForm)
+  TfrmStructures2 = class(TInvisForm)
     FindDialog1: TFindDialog;
     miChangeTypeSeparator1: TMenuItem;
     miChangeTypeSeparator2: TMenuItem;

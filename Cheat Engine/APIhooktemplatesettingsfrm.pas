@@ -5,6 +5,7 @@ unit APIhooktemplatesettingsfrm;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Lmessages, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, LResources, ExtCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmAPIhookTemplateSettings }
 
-  TfrmAPIhookTemplateSettings = class(TForm)
+  TfrmAPIhookTemplateSettings = class(TInvisForm)
     Edit1: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;

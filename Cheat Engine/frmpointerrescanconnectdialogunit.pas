@@ -5,6 +5,7 @@ unit frmpointerrescanconnectdialogunit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, resolve, Sockets, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmPointerrescanConnectDialog }
 
-  TfrmPointerrescanConnectDialog = class(TForm)
+  TfrmPointerrescanConnectDialog = class(TInvisForm)
     btnCancel: TButton;
     btnOK: TButton;
     edtHost: TEdit;

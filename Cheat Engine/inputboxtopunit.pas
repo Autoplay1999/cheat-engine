@@ -5,6 +5,7 @@ unit inputboxtopunit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, LResources, ExtCtrls{$ifdef darwin},macport{$endif}, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TInputboxTop }
 
-  TInputboxTop = class(TForm)
+  TInputboxTop = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     Edit1: TEdit;

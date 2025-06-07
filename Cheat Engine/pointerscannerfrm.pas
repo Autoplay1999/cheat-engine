@@ -19,7 +19,7 @@ uses
   frmSelectionlistunit, baseunix, commonTypeDefs;
 {$else}
 uses
-  windows, LCLIntf, LResources, Messages, SysUtils, Variants, Classes, Graphics,
+  InvisForm, windows, LCLIntf, LResources, Messages, SysUtils, Variants, Classes, Graphics,
   Controls, Forms, Dialogs, StdCtrls, ExtCtrls, ComCtrls, syncobjs, syncobjs2,
   Menus, math, frmRescanPointerUnit, pointervaluelist, rescanhelper,
   virtualmemory, symbolhandler, MainUnit, disassembler, CEFuncProc,
@@ -166,7 +166,7 @@ type
 
   { Tfrmpointerscanner }
 
-  Tfrmpointerscanner = class(TForm)
+  Tfrmpointerscanner = class(TInvisForm)
     btnConnect: TButton;
     btnStopRescanLoop: TButton;
     btnStopScan: TButton;

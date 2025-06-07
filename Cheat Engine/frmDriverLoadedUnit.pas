@@ -6,6 +6,7 @@ unit frmDriverLoadedUnit;
 interface
 
 uses
+  InvisForm,
   {$ifdef windows}windows,{$endif} LCLIntf, Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   StdCtrls, betterControls;
 
@@ -13,7 +14,7 @@ type
 
   { TfrmDriverLoaded }
 
-  TfrmDriverLoaded = class(TForm)
+  TfrmDriverLoaded = class(TInvisForm)
     Label1: TLabel;
     Timer1: TTimer;
     Timer2: TTimer;

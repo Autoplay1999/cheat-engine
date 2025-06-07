@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   cefuncproc, newkernelhandler, Classes, SysUtils, FileUtil, LResources,
   Forms, Controls, Graphics, Dialogs, StdCtrls, Menus, stacktrace2, Clipbrd, ComCtrls,
@@ -19,7 +19,7 @@ type
 
   { TfrmStackView }
 
-  TfrmStackView = class(TForm)
+  TfrmStackView = class(TInvisForm)
     ColorDialog1: TColorDialog;
     FindDialog1: TFindDialog;
     svImageList: TImageList;

@@ -5,6 +5,7 @@ unit formAddToCodeList;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, LResources, ExtCtrls, cefuncproc, newkernelhandler, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmAddToCodeList }
 
-  TfrmAddToCodeList = class(TForm)
+  TfrmAddToCodeList = class(TInvisForm)
     Label1: TLabel;
     Edit1: TEdit;
     Button1: TButton;

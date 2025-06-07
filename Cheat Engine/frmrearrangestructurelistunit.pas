@@ -5,6 +5,7 @@ unit frmRearrangeStructureListUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   Buttons, StdCtrls, Menus, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmRearrangeStructureList }
 
-  TfrmRearrangeStructureList = class(TForm)
+  TfrmRearrangeStructureList = class(TInvisForm)
     lbStructlist: TListBox;
     MenuItem1: TMenuItem;
     Panel4: TPanel;

@@ -5,6 +5,7 @@ unit frmNetworkDataCompressionUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ComCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmNetworkDataCompression }
 
-  TfrmNetworkDataCompression = class(TForm)
+  TfrmNetworkDataCompression = class(TInvisForm)
     Label1: TLabel;
     lblMaxCompression: TLabel;
     lblNone: TLabel;

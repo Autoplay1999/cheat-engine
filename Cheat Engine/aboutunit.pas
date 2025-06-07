@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,shellapi,
+  windows,shellapi,InvisForm,
   {$endif}LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, LResources, vmxfunctions, NewKernelHandler, betterControls;
 
@@ -17,7 +17,7 @@ type
 
   { TAbout }
 
-  TAbout = class(TForm)
+  TAbout = class(TInvisForm)
     GroupBox1: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;

@@ -5,6 +5,7 @@ unit frmsnapshothandlerUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   StdCtrls, Menus, math, NewKernelHandler, FPImage, FPCanvas, FPImgCanv, FPReadPNG, FPWritePNG, betterControls  ;
 
@@ -55,7 +56,7 @@ type
   TSnapshotList =  Tlist;
 
 
-  TfrmSnapshotHandler = class(TForm)
+  TfrmSnapshotHandler = class(TInvisForm)
     btnCompare: TButton;
     shImageList: TImageList;
     lblCompare: TLabel;

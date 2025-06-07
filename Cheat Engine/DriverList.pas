@@ -6,7 +6,7 @@ interface
 
 uses
   {$ifdef windows}
-  jwaWindows, windows, imagehlp,
+  jwaWindows, windows, imagehlp, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics,
   Controls, Forms, Dialogs, StdCtrls, Menus, CEFuncProc,
@@ -19,7 +19,7 @@ type
 
   { TfrmDriverlist }
 
-  TfrmDriverlist = class(TForm)
+  TfrmDriverlist = class(TInvisForm)
     Button1: TButton;
     FindDialog1: TFindDialog;
     FindDialog2: TFindDialog;

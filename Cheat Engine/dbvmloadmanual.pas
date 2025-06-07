@@ -6,6 +6,7 @@ interface
 {$ifdef windows}
 
 uses
+  InvisForm,
   windows, Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ExtCtrls, betterControls;
 
@@ -13,7 +14,7 @@ type
 
   { TfrmDBVMLoadManual }
 
-  TfrmDBVMLoadManual = class(TForm)
+  TfrmDBVMLoadManual = class(TInvisForm)
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
   private

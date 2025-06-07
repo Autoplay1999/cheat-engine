@@ -6,7 +6,7 @@ interface
 
 uses
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ComCtrls, LResources, ExtCtrls, betterControls;
@@ -22,7 +22,7 @@ type
 
   { TfrmCapturedTimers }
 
-  TfrmCapturedTimers = class(TForm)
+  TfrmCapturedTimers = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     Edit1: TEdit;

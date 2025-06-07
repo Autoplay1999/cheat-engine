@@ -6,6 +6,7 @@ unit frmBranchMapperUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   CheckLst, maps, ExtCtrls, syncobjs, betterControls;
 
@@ -13,7 +14,7 @@ type
 
   { TfrmBranchMapper }
 
-  TfrmBranchMapper = class(TForm)
+  TfrmBranchMapper = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     clbThreads: TCheckListBox;

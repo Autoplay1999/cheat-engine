@@ -175,7 +175,7 @@
 -donebytejumps
 -dNoODS
 -daltname"/>
-          <OtherDefines Count="20">
+            <OtherDefines Count="20">
               <Define0 Value="NOTMULTITHREADED"/>
               <Define1 Value="benchmarkps"/>
               <Define2 Value="cemain"/>
@@ -824,7 +824,7 @@
         <PackageName Value="LCL"/>
       </Item9>
     </RequiredPackages>
-    <Units Count="425">
+    <Units Count="426">
       <Unit0>
         <Filename Value="cheatengine.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -3070,6 +3070,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit424>
+      <Unit425>
+        <Filename Value="invisform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="InvisForm"/>
+      </Unit425>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -6,7 +6,7 @@ interface
 
 uses
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, LResources, ComCtrls, CEFuncProc, betterControls;
@@ -15,7 +15,7 @@ type
 
   { TComments }
 
-  TComments = class(TForm)
+  TComments = class(TInvisForm)
     Memo1: TMemo;
     PageControl1: TPageControl;
     Panel1: TPanel;

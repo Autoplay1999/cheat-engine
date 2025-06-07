@@ -5,6 +5,7 @@ unit frmMemviewPreferencesUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, Menus, ExtCtrls, disassemblerviewunit, disassemblerviewlinesunit,
   LCLIntf, LCLType,
@@ -19,7 +20,7 @@ type
 
   { TfrmMemviewPreferences }
 
-  TfrmMemviewPreferences = class(TForm)
+  TfrmMemviewPreferences = class(TInvisForm)
     btnFont: TButton;
     btnHexFont: TButton;
     btnRegisterViewFont: TButton;

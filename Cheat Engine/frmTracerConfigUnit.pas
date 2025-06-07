@@ -5,6 +5,7 @@ unit frmTracerConfigUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ExtCtrls, debuggertypedefinitions, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmTracerConfig }
 
-  TfrmTracerConfig = class(TForm)
+  TfrmTracerConfig = class(TInvisForm)
     btnCancel: TButton;
     btnOK: TButton;
     cbDereferenceAddresses: TCheckBox;

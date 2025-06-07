@@ -5,6 +5,7 @@ unit frmStructureLinkerUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Grids, ExtCtrls, symbolhandler, StructuresFrm2, cefuncproc, newkernelhandler, betterControls;
 
@@ -19,7 +20,7 @@ type
 
   { TfrmStructureLinker }
 
-  TfrmStructureLinker = class(TForm)
+  TfrmStructureLinker = class(TInvisForm)
     btnCancel: TButton;
     btnLink: TButton;
     cbNoExactMatches: TCheckBox;

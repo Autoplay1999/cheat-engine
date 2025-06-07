@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls,CEFuncProc, ExtCtrls, ComCtrls, Menus, NewKernelHandler, LResources,
@@ -83,7 +83,7 @@ type
   end;
   {$endif}
 
-  TfrmChangedAddresses = class(TForm)
+  TfrmChangedAddresses = class(TInvisForm)
     caImageList: TImageList;
     editCodeAddress: TEdit;
     labelCodeAddress: TLabel;

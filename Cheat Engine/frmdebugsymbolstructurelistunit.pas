@@ -5,6 +5,7 @@ unit frmDebugSymbolStructureListUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ComCtrls, symbolhandlerstructs, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmDebugSymbolStructureList }
 
-  TfrmDebugSymbolStructureList = class(TForm)
+  TfrmDebugSymbolStructureList = class(TInvisForm)
     btnSelect: TButton;
     btnSearch: TButton;
     edtSearch: TEdit;

@@ -9,7 +9,7 @@ uses
   macport, lclintf,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ExtCtrls, math, registry, betterControls;
@@ -18,7 +18,7 @@ type
 
   { TfrmSetupPSNNode }
 
-  TfrmSetupPSNNode = class(TForm)
+  TfrmSetupPSNNode = class(TInvisForm)
     btnCancel: TButton;
     btnOK: TButton;
     Button1: TButton;

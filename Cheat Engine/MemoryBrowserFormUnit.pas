@@ -9,7 +9,7 @@ uses
   LCLType,
   {$endif}
   {$ifdef windows}
-  jwawindows, windows,imagehlp,
+  jwawindows, windows,imagehlp, InvisForm,
   {$endif}
   LCLProc, LCLIntf, Messages, SysUtils, Classes, Graphics,
   Controls, Forms, Dialogs, frmMemoryAllocHandlerUnit, math, StdCtrls, Spin,
@@ -29,7 +29,7 @@ type
 
   { TMemoryBrowser }
 
-  TMemoryBrowser = class(TForm)
+  TMemoryBrowser = class(TInvisForm)
     aflabel: TLabel;
     cflabel: TLabel;
     CSLabel: TLabel;

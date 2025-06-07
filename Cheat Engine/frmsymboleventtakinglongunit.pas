@@ -5,6 +5,7 @@ unit frmSymbolEventTakingLongUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ExtCtrls, syncobjs, symbolhandler, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmSymbolEventTakingLong }
 
-  TfrmSymbolEventTakingLong = class(TForm)
+  TfrmSymbolEventTakingLong = class(TInvisForm)
     Button1: TButton;
     cbSkipThisSymbol: TCheckBox;
     cbSkipAllSymbols: TCheckBox;

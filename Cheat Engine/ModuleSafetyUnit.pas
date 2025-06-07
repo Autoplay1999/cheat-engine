@@ -5,6 +5,7 @@ unit ModuleSafetyUnit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, StdCtrls, LResources, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmModuleSafety }
 
-  TfrmModuleSafety = class(TForm)
+  TfrmModuleSafety = class(TInvisForm)
     msImageList: TImageList;
     ListBox1: TListBox;
     Edit1: TEdit;

@@ -5,6 +5,7 @@ unit frmMemrecComboboxUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, MemoryRecordUnit, math, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmMemrecCombobox }
 
-  TfrmMemrecCombobox = class(TForm)
+  TfrmMemrecCombobox = class(TInvisForm)
     btnCancel: TButton;
     btnOk: TButton;
     cbMemrecCombobox: TComboBox;

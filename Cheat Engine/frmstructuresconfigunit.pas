@@ -13,7 +13,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   ComCtrls, StdCtrls, ExtCtrls, registry, fontSaveLoadRegistry, betterControls;
@@ -22,7 +22,7 @@ type
 
   { TfrmStructuresConfig }
 
-  TfrmStructuresConfig = class(TForm)
+  TfrmStructuresConfig = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;

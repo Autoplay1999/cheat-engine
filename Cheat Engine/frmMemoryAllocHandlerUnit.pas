@@ -8,6 +8,7 @@ ZwVirtualAllocEx
 interface
 
 uses
+  InvisForm,
   {$ifdef darwin}
   macport,
   {$endif}
@@ -149,7 +150,7 @@ type
 
   { TfrmMemoryAllocHandler }
 
-  TfrmMemoryAllocHandler = class(TForm)
+  TfrmMemoryAllocHandler = class(TInvisForm)
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;

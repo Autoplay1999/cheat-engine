@@ -5,6 +5,7 @@ unit frmDBVMWatchConfigUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmDBVMWatchConfig }
 
-  TfrmDBVMWatchConfig = class(TForm)
+  TfrmDBVMWatchConfig = class(TInvisForm)
     btnOK: TButton;
     Button2: TButton;
     cbLockPage: TCheckBox;

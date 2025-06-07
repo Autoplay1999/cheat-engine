@@ -5,11 +5,12 @@ unit FormDebugStringsUnit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, LResources, betterControls;
 
 type
-  TFormDebugStrings = class(TForm)
+  TFormDebugStrings = class(TInvisForm)
     ListBox1: TListBox;
     Panel1: TPanel;
     Button1: TButton;

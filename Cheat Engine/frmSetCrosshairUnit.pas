@@ -5,6 +5,7 @@ unit frmSetCrosshairUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   Menus, StdCtrls, ExtDlgs, ComCtrls, d3dhookUnit, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmSetCrosshair }
 
-  TfrmSetCrosshair = class(TForm)
+  TfrmSetCrosshair = class(TInvisForm)
     btnApply: TButton;
     Image1: TImage;
     Label1: TLabel;

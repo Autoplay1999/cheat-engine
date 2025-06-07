@@ -8,7 +8,7 @@ interface
 
 uses
   {$ifdef windows}
-  jwawindows, windows,
+  jwawindows, windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, ComCtrls, Menus, StdCtrls, LResources,cefuncproc, CEDebugger, debugHelper,
@@ -23,7 +23,7 @@ type
 
   { TfrmThreadlist }
 
-  TfrmThreadlist = class(TForm)
+  TfrmThreadlist = class(TInvisForm)
     miRefresh: TMenuItem;
     Separator1: TMenuItem;
     tlImageList: TImageList;

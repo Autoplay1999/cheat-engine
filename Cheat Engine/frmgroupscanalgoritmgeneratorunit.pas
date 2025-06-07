@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, CustomTypeHandler, math, strutils, cefuncproc, groupscancommandparser,
@@ -17,7 +17,7 @@ uses
 
 type
   { TfrmGroupScanAlgoritmGenerator }
-  TfrmGroupScanAlgoritmGenerator = class(TForm)
+  TfrmGroupScanAlgoritmGenerator = class(TInvisForm)
     btnCancel: TButton;
     btnOK: TButton;
     cbOutOfOrder: TCheckBox;

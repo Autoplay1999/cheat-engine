@@ -5,6 +5,7 @@ unit frmLoadMemoryunit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, CEFuncProc, StdCtrls, NewKernelHandler, LResources, ExtCtrls, betterControls;
 
@@ -14,7 +15,7 @@ type
 
   { TfrmLoadMemory }
 
-  TfrmLoadMemory = class(TForm)
+  TfrmLoadMemory = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     editAddress: TEdit;

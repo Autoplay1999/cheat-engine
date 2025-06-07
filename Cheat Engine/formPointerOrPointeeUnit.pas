@@ -5,6 +5,7 @@ unit formPointerOrPointeeUnit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, LResources, ExtCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TformPointerOrPointee }
 
-  TformPointerOrPointee = class(TForm)
+  TformPointerOrPointee = class(TInvisForm)
     btnFindWhatWritesPointer: TButton;
     btnFindWhatWritesPointee: TButton;
     Label1: TLabel;

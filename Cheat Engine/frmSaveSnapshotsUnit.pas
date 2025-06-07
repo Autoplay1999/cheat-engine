@@ -5,6 +5,7 @@ unit frmSaveSnapshotsUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, math, LuaCanvas, FPImage, FPCanvas, FPImgCanv, FPReadPNG, FPWritePNG
   {$ifdef laztrunk}
@@ -19,7 +20,7 @@ type
 
   { TfrmSaveSnapshots }
 
-  TfrmSaveSnapshots = class(TForm)
+  TfrmSaveSnapshots = class(TInvisForm)
     btnSave: TButton;
     btnDone: TButton;
     btnCombinedSelect: TButton;

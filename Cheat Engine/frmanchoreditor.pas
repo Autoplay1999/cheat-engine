@@ -5,6 +5,7 @@ unit frmAnchorEditor;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   StdCtrls, Buttons, Spin, DPIHelper, propedits, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TAnchorEditor }
 
-  TAnchorEditor = class(TForm)
+  TAnchorEditor = class(TInvisForm)
     cbBottomAnchorEnabled: TCheckBox;
     cbBottomSideControl: TComboBox;
     cbLeftAnchorEnabled: TCheckBox;

@@ -9,7 +9,7 @@ uses
   macport, LCLProc, math,
   {$endif}
   {$ifdef windows}
-  win32proc, jwawindows, windows,
+  win32proc, jwawindows, windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, ExtCtrls, StdCtrls, frmFloatingPointPanelUnit, NewKernelHandler,
@@ -21,7 +21,7 @@ type
 
   { TRegisters }
 
-  TRegisters = class(TForm)
+  TRegisters = class(TInvisForm)
     EAXLabel: TLabel;
     lblCF: TLabel;
     lblPF: TLabel;

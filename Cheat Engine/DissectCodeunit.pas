@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  jwawindows, windows,
+  jwawindows, windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ComCtrls, ExtCtrls, DissectCodeThread, CEFuncProc,
@@ -24,7 +24,7 @@ type
 
   { TfrmDissectCode }
 
-  TfrmDissectCode = class(TForm)
+  TfrmDissectCode = class(TInvisForm)
     edtCustomRangeStart: TEdit;
     edtCustomRangeStop: TEdit;
     Label10: TLabel;

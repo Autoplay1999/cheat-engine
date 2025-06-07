@@ -5,6 +5,7 @@ unit frmHeapsUnit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, ComCtrls,{tlhelp32,}CEFuncProc, frmMemoryAllocHandlerUnit, LResources, betterControls;
 
@@ -24,7 +25,7 @@ type TFillHeapList=class(tthread)
 end;
 
 type
-  TfrmHeaps = class(TForm)
+  TfrmHeaps = class(TInvisForm)
     Panel1: TPanel;
     Button1: TButton;
     ListView1: TListView;

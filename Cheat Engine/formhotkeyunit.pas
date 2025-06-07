@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, LResources, ExtCtrls, LCLType, betterControls;
@@ -18,7 +18,7 @@ type
 
   { TFormHotkey }
 
-  TFormHotkey = class(TForm)
+  TFormHotkey = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     Edit1: TEdit;

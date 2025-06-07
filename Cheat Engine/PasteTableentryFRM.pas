@@ -5,6 +5,7 @@ unit PasteTableentryFRM;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, LResources, ExtCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmPasteTableentry }
 
-  TfrmPasteTableentry = class(TForm)
+  TfrmPasteTableentry = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     cbChildrenAsWell: TCheckBox;

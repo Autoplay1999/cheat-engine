@@ -9,7 +9,7 @@ uses
   macport, lclproc,
   {$endif}
   {$ifdef windows}
-  windows, imagehlp,
+  windows, imagehlp, InvisForm,
   {$endif}
 
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
@@ -33,7 +33,7 @@ type
 
   { TfrmEnumerateDLLs }
 
-  TfrmEnumerateDLLs = class(TForm)
+  TfrmEnumerateDLLs = class(TInvisForm)
     CopySymbolName: TAction;
     edImageList: TImageList;
     Label2: TLabel;

@@ -5,6 +5,7 @@ unit frmPagingUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ComCtrls, ExtCtrls, Menus,newkernelhandler,cefuncproc, commonTypeDefs,
   betterControls, DBK32functions;
@@ -21,7 +22,7 @@ type
 
   { TfrmPaging }
 
-  TfrmPaging = class(TForm)
+  TfrmPaging = class(TInvisForm)
     Button1: TButton;
     cb8byteentries: TCheckBox;
     cb64bit: TCheckBox;

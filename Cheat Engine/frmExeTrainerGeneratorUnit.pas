@@ -9,7 +9,7 @@ uses
   macport, math, LCLIntf,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics,
   ExtCtrls, dialogs, StdCtrls, ComCtrls, Menus, CEFuncProc, IconStuff, zstream,
@@ -27,7 +27,7 @@ type
 
   { TfrmExeTrainerGenerator }
 
-  TfrmExeTrainerGenerator = class(TForm)
+  TfrmExeTrainerGenerator = class(TInvisForm)
     Button1: TButton;
     btnGenerateTrainer: TButton;
     btnAddFile: TButton;

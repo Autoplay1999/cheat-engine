@@ -6,7 +6,7 @@ interface
 
 uses
   {$ifdef darwin} macport, {$endif}
-  {$IFDEF windows} windows, {$ENDIF} Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  {$IFDEF windows} windows, InvisForm, {$ENDIF} Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, PointerscanresultReader, maps, ComCtrls, math, betterControls;
 
 type
@@ -34,7 +34,7 @@ type
 
 
 
-  TfrmSortPointerlist = class(TForm)
+  TfrmSortPointerlist = class(TInvisForm)
     Button1: TButton;
     Label1: TLabel;
     lblTimeLeft: TLabel;

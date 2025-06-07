@@ -8,7 +8,7 @@ uses
   {$ifdef darwin}
   macport,
   {$else}
-  windows,
+  windows, InvisForm,
   {$endif}
   LResources, LCLIntf, Messages, SysUtils, Variants, Classes, Graphics,
   Controls, Forms, Dialogs, StdCtrls, Menus,Clipbrd, ExtCtrls, Buttons,
@@ -18,7 +18,7 @@ type
 
   { TFormFoundCodeListExtra }
 
-  TFormFoundCodeListExtra = class(TForm)
+  TFormFoundCodeListExtra = class(TInvisForm)
     eiImageList: TImageList;
     lblGSBaseKernel: TLabel;
     lblGSBase: TLabel;

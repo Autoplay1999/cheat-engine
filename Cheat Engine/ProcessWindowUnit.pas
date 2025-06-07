@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  jwawindows, windows,
+  jwawindows, windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls,
   Forms, Dialogs, StdCtrls, ExtCtrls, CEFuncProc,CEDebugger, ComCtrls, ImgList,
@@ -59,7 +59,7 @@ type
 
   { TProcessWindow }
 
-  TProcessWindow = class(TForm)
+  TProcessWindow = class(TInvisForm)
     btnNetwork: TButton;
     btnAttachDebugger: TButton;
     CancelButton: TButton;

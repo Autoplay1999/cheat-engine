@@ -5,6 +5,7 @@ unit frmExceptionRegionListUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, Menus,commonTypeDefs, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmExceptionRegionList }
 
-  TfrmExceptionRegionList = class(TForm)
+  TfrmExceptionRegionList = class(TInvisForm)
     btnAdd: TButton;
     cbAutoAddAllocs: TCheckBox;
     edtStart: TEdit;

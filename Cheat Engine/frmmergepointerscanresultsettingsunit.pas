@@ -5,6 +5,7 @@ unit frmMergePointerscanResultSettingsUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   StdCtrls, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmMergePointerscanResultSettings }
 
-  TfrmMergePointerscanResultSettings = class(TForm)
+  TfrmMergePointerscanResultSettings = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     GroupBox1: TGroupBox;

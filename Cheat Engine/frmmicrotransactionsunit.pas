@@ -7,6 +7,7 @@ unit frmMicrotransactionsUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, Buttons, LuaInternet, lua, luahandler, lualib, lauxlib, betterControls;
 
@@ -14,7 +15,7 @@ type
 
   { TfrmMicroTransactions }
 
-  TfrmMicroTransactions = class(TForm)
+  TfrmMicroTransactions = class(TInvisForm)
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;

@@ -5,6 +5,7 @@ unit symbolconfigunit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, LMessages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls,symbolhandler, symbolhandlerstructs, ComCtrls, ExtCtrls,
   Menus, LResources, betterControls;
@@ -13,7 +14,7 @@ type
 
   { TfrmSymbolhandler }
 
-  TfrmSymbolhandler = class(TForm)
+  TfrmSymbolhandler = class(TInvisForm)
     miUnregister: TMenuItem;
     edtSymbolname: TEdit;
     Label4: TLabel;

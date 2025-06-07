@@ -14,7 +14,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ExtCtrls, ComCtrls, CEFuncProc, NewKernelHandler, frmStringMapUnit,
@@ -218,7 +218,7 @@ type
     destructor destroy; override;
   end;
 
-  TfrmStringPointerScan = class(TForm)
+  TfrmStringPointerScan = class(TInvisForm)
     btnNewScan: TButton;
     btnScan: TButton;
     cbCaseSensitive: TCheckBox;

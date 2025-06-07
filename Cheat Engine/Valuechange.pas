@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows,InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, LResources, ExtCtrls, commonTypeDefs,NewKernelHandler, CEFuncProc, betterControls;
@@ -18,7 +18,7 @@ type
 
   { TValueChangeForm }
 
-  TValueChangeForm = class(TForm)
+  TValueChangeForm = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     cbVarType: TComboBox;

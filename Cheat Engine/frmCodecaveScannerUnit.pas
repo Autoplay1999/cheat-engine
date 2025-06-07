@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  jwawindows, windows,
+  jwawindows, windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ComCtrls,{$ifndef net}NewKernelHandler,{$endif}CEFuncProc,
@@ -36,7 +36,7 @@ type
 
   { TfrmCodecaveScanner }
 
-  TfrmCodecaveScanner = class(TForm)
+  TfrmCodecaveScanner = class(TInvisForm)
     btnStart: TButton;
     editSize: TEdit;
     editStart: TEdit;

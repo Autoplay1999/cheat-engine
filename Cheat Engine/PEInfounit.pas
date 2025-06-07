@@ -14,7 +14,7 @@ uses
   macport, math,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, CEFuncProc, NewKernelHandler, Buttons, StdCtrls, ExtCtrls,
@@ -25,7 +25,7 @@ type
 
   { TfrmPEInfo }
 
-  TfrmPEInfo = class(TForm)
+  TfrmPEInfo = class(TInvisForm)
     GroupBox2: TGroupBox;
     peiImageList: TImageList;
     miCopyTab: TMenuItem;

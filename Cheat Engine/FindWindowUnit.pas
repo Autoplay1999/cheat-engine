@@ -5,6 +5,7 @@ unit FindWindowUnit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, LMessages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls,CEFuncProc,ComCtrls, ExtCtrls, LResources, memscan,
   commonTypeDefs, math, {$ifdef windows}win32proc,{$endif} symbolhandler, betterControls;
@@ -14,7 +15,7 @@ type
 
   { TFindWindow }
 
-  TFindWindow = class(TForm)
+  TFindWindow = class(TInvisForm)
     Panel1: TPanel;
     labelType: TLabel;
     Label2: TLabel;

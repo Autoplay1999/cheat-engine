@@ -5,6 +5,7 @@ unit frmD3DHookSnapshotConfigUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, EditBtn,
   StdCtrls, ExtCtrls, CEFuncProc, registry, commonTypeDefs, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmD3DHookSnapshotConfig }
 
-  TfrmD3DHookSnapshotConfig = class(TForm)
+  TfrmD3DHookSnapshotConfig = class(TInvisForm)
     btnClearFullSnapshot: TButton;
     btnClearSmallSnapshot: TButton;
     cbAlsoOutputPng: TCheckBox;

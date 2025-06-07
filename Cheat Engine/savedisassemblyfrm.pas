@@ -5,6 +5,7 @@ unit savedisassemblyfrm;
 interface
 
 uses
+  InvisForm,
   LCLIntf, LResources, Messages, LMessages, SysUtils, Variants, Classes, Graphics,
   Controls, Forms, Dialogs, symbolhandler, symbolhandlerstructs, disassembler,
   StdCtrls, ComCtrls, ActnList, Clipbrd, ExtCtrls, strutils, Parsers, betterControls;
@@ -31,7 +32,7 @@ type
 
   { TfrmSavedisassembly }
 
-  TfrmSavedisassembly = class(TForm)
+  TfrmSavedisassembly = class(TInvisForm)
     Button1: TButton;
     cbAddress: TCheckBox;
     cbBytes: TCheckBox;

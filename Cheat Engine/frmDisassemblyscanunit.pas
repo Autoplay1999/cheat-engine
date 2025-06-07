@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs,disassembler,{$ifndef net}NewKernelHandler,{$endif}CEFuncProc, ExtCtrls, StdCtrls,
@@ -39,7 +39,7 @@ type
 
   { TfrmDisassemblyscan }
 
-  TfrmDisassemblyscan = class(TForm)
+  TfrmDisassemblyscan = class(TInvisForm)
     btnCancel: TButton;
     asImageList: TImageList;
     ListBox1: TListBox;

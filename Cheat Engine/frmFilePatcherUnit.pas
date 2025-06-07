@@ -8,13 +8,14 @@ unit frmFilePatcherUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls, EditBtn, PEInfoFunctions, PEInfounit, betterControls;
 
 type
 
   { TfrmFilePatcher }
 
-  TfrmFilePatcher = class(TForm)
+  TfrmFilePatcher = class(TInvisForm)
     Button1: TButton;
     edtBaseAddress: TEdit;
     filename: TFileNameEdit;

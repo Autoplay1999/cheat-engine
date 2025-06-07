@@ -9,7 +9,7 @@ uses
   macport, macexceptiondebuggerinterface,
   {$endif}
   {$ifdef windows}
-  windows, win32proc,
+  windows, win32proc, InvisForm,
   {$endif}LCLProc, LCLIntf, LCLType, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls,registry, Menus,ComCtrls,CEFuncProc,ExtCtrls,{tlhelp32,}CheckLst,
   Buttons, LResources, frameHotkeyConfigUnit, math,
@@ -27,7 +27,7 @@ type
 
   { TformSettings }
 
-  TformSettings = class(TForm)
+  TformSettings = class(TInvisForm)
     askforreplacewithnops: TCheckBox;
     btnCancel: TButton;
     btnOK: TButton;

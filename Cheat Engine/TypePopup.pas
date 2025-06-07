@@ -7,6 +7,7 @@ unit TypePopup;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls, LResources, MemoryRecordUnit, CEFuncProc, CustomTypeHandler, commonTypeDefs, betterControls;
 
@@ -14,7 +15,7 @@ type
 
   { TTypeForm }
 
-  TTypeForm = class(TForm)
+  TTypeForm = class(TInvisForm)
     bitPanel: TPanel;
     ButtonOK: TButton;
     ButtonCancel: TButton;

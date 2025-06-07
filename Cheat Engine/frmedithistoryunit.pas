@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ComCtrls, ExtCtrls, Menus, NewKernelHandler, syncobjs,
@@ -19,7 +19,7 @@ type
 
   { TfrmEditHistory }
 
-  TfrmEditHistory = class(TForm)
+  TfrmEditHistory = class(TInvisForm)
     Button1: TButton;
     cbLogWrites: TCheckBox;
     edtMaxWriteLogSize: TEdit;

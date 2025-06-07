@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows, DBK32functions, vmxfunctions,
+  windows, DBK32functions, vmxfunctions, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, CEDebugger, debughelper, KernelDebugger, CEFuncProc,
@@ -68,7 +68,7 @@ type
   end;
 
 
-  TfrmModifyRegisters = class(TForm)
+  TfrmModifyRegisters = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     cbAF: TCheckBox;

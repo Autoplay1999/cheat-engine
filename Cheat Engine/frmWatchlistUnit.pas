@@ -5,6 +5,7 @@ unit frmWatchlistUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ValEdit,
   ExtCtrls, ComCtrls, Menus, Clipbrd, NewKernelHandler, commonTypeDefs,strutils,
   ProcessHandlerUnit, byteinterpreter{$ifdef darwin},macport, mactypes{$endif},
@@ -14,7 +15,7 @@ type
 
   { TfrmWatchlist }
 
-  TfrmWatchlist = class(TForm)
+  TfrmWatchlist = class(TInvisForm)
     wlImageList: TImageList;
     lvWatchlist: TListView;
     MenuItem1: TMenuItem;

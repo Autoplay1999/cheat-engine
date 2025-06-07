@@ -5,6 +5,7 @@ unit frmExcludeHideUnit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls,CEFuncProc, ExtCtrls, LResources, betterControls;
 
@@ -12,7 +13,7 @@ type
 
   { TfrmExcludeHide }
 
-  TfrmExcludeHide = class(TForm)
+  TfrmExcludeHide = class(TInvisForm)
     Label4: TLabel;
     Panel1: TPanel;
     Label1: TLabel;

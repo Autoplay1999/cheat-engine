@@ -5,6 +5,7 @@ unit frmDebugEventsUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ExtCtrls, Menus, newkernelhandler{$ifdef darwin},macport{$endif}, betterControls;
 
@@ -20,7 +21,7 @@ type
 
   { TfrmDebugEvents }
 
-  TfrmDebugEvents = class(TForm)
+  TfrmDebugEvents = class(TInvisForm)
     Button1: TButton;
     deImageList: TImageList;
     lbDebugEvents: TListBox;

@@ -11,13 +11,13 @@ uses
   macport, LCLType,
   {$endif}
   {$ifdef windows}
-  Windows,
+  Windows, InvisForm,
   {$endif}
   LCLIntf, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls,CEFuncProc, Menus, LResources, betterControls;
 
 type
-  TformDifferentBitSize = class(TForm)
+  TformDifferentBitSize = class(TInvisForm)
     Labelold: TLabel;
     LabelNew: TLabel;
     Button1: TButton;

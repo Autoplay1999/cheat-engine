@@ -5,11 +5,12 @@ unit tlgUnit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, LResources, betterControls;
 
 type
-  Ttlg = class(TForm)
+  Ttlg = class(TInvisForm)
     Image1: TImage;
     Label1: TLabel;
     Timer1: TTimer;

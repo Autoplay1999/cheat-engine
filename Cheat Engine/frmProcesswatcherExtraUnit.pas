@@ -5,11 +5,12 @@ unit frmProcesswatcherExtraUnit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, LResources, betterControls;
 
 type
-  TfrmProcessWatcherExtra = class(TForm)
+  TfrmProcessWatcherExtra = class(TInvisForm)
     data: TMemo;
   private
     { Private declarations }

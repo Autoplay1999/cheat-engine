@@ -9,7 +9,7 @@ uses
   macport, math,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, LResources, Messages, SysUtils, Variants, Classes, Graphics,
   Controls, Forms, Dialogs, StdCtrls, disassembler, ExtCtrls, Menus,
@@ -81,7 +81,7 @@ type
   {$endif}
 
 
-  TFoundCodeDialog = class(TForm)
+  TFoundCodeDialog = class(TInvisForm)
     FoundCodeList: TListView;
     fcdImageList: TImageList;
     dbvmMissedEntries: TLabel;

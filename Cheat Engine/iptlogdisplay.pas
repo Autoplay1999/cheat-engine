@@ -7,6 +7,7 @@ unit iptlogdisplay;
 interface
 
 uses
+  InvisForm,
   {$ifdef windows}windows,{$endif} ProcessHandlerUnit, Classes, SysUtils, LResources, Forms, Controls,
   Graphics, Dialogs, StdCtrls, ComCtrls, ExtCtrls, Menus, betterControls,
   libipt, pagemap, Contnrs, syncobjs,maps;
@@ -86,7 +87,7 @@ type
     property OnDataReady: TIPTLogDataReadyEvent read fOnDataReady write fOnDataReady;
   end;
 {$endif}
-  TfrmIPTLogDisplay = class(TForm)
+  TfrmIPTLogDisplay = class(TInvisForm)
     btnFetchMore: TButton;
     btnFetchAll: TButton;
     lblCount: TLabel;

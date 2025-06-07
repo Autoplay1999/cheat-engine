@@ -5,6 +5,7 @@ unit frmcodefilterunit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ComCtrls, ExtCtrls, maps, Menus, syncobjs, newkernelhandler,
   ProcessHandlerUnit, CodeFilterCallOrAllDialog, PEInfoFunctions, PEInfounit,
@@ -14,7 +15,7 @@ type
 
   { TfrmCodeFilter }
 
-  TfrmCodeFilter = class(TForm)
+  TfrmCodeFilter = class(TInvisForm)
     btnCancel: TButton;
     btnFilterOutExecutedAddresses: TButton;
     btnFilterOutNonExecutedAddresses: TButton;

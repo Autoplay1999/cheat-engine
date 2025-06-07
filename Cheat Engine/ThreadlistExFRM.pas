@@ -9,14 +9,14 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  jwawindows, windows,
+  jwawindows, windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ComCtrls,NewKernelHandler,{tlhelp32,}CEFuncProc,
   ExtCtrls, LResources, betterControls;
 
 type
-  TfrmThreadlistEx = class(TForm)
+  TfrmThreadlistEx = class(TInvisForm)
     TreeView1: TTreeView;
     Panel1: TPanel;
     Button1: TButton;

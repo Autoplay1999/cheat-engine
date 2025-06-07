@@ -5,11 +5,12 @@ unit frmIDTunit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, ComCtrls,CEFuncProc,NewKernelHandler, StdCtrls, LResources, commonTypeDefs, betterControls;
 
 type
-  TfrmIDT = class(TForm)
+  TfrmIDT = class(TInvisForm)
     tvIDT: TTreeView;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

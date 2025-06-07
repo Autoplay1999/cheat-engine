@@ -9,7 +9,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls,CEFuncProc, ComCtrls, Menus,OpenSave,NewKernelHandler, LResources, betterControls;
@@ -27,7 +27,7 @@ type
 
   { TFormMemoryRegions }
 
-  TFormMemoryRegions = class(TForm)
+  TFormMemoryRegions = class(TInvisForm)
     Button1: TButton;
     mrImageList: TImageList;
     ListView1: TListView;

@@ -8,7 +8,7 @@ uses
   {$ifdef darwin}
   macport,
   {$else}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ComCtrls,
   cefuncproc, newkernelhandler, frmStringMapUnit, MemFuncs, AvgLvlTree, Menus,
@@ -258,7 +258,7 @@ type
     destructor destroy; override;
   end;
 
-  TfrmStructureCompare = class(TForm)
+  TfrmStructureCompare = class(TInvisForm)
     btnAddAddressLF: TButton;
     btnAddAddressNLF: TButton;
     btnNewScan: TButton;

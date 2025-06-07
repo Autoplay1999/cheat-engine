@@ -5,6 +5,7 @@ unit frmProcessWatcherUnit;
 interface
 
 uses
+  InvisForm,
   {$ifdef darwin}
   macport,
   {$endif}
@@ -47,7 +48,7 @@ type
 
   { TfrmProcessWatcher }
 
-  TfrmProcessWatcher = class(TForm)
+  TfrmProcessWatcher = class(TInvisForm)
     btnAttach: TButton;
     btnOpen: TButton;
     pwImageList: TImageList;

@@ -6,6 +6,7 @@ unit PointerscannerSettingsFrm;
 interface
 
 uses
+  InvisForm,
   {$ifdef darwin}
   macport,
   {$else}
@@ -95,7 +96,7 @@ type
 
   { TfrmPointerScannerSettings }
 
-  TfrmPointerScannerSettings = class(TForm)
+  TfrmPointerScannerSettings = class(TInvisForm)
     btnCancel: TButton;
     btnOk: TButton;
     cbAcceptNonModuleVtable: TCheckBox;

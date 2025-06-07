@@ -5,6 +5,7 @@ unit formProcessInfo;
 interface
 
 uses
+  InvisForm,
   LCLIntf, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, CEFuncProc, NewKernelHandler, LResources, ExtCtrls,
   memorybrowserformunit, betterControls;
@@ -13,7 +14,7 @@ type
 
   { TfrmProcessInfo }
 
-  TfrmProcessInfo = class(TForm)
+  TfrmProcessInfo = class(TInvisForm)
     Button1: TButton;
     Button2: TButton;
     Label1: TLabel;

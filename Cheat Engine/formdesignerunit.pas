@@ -6,6 +6,7 @@ unit formdesignerunit;
 interface
 
 uses
+  InvisForm,
   LCLIntf, LCLStrConsts,strutils, Classes, SysUtils, FileUtil, Forms, Controls, Graphics,
   Dialogs, ComCtrls, StdCtrls, ExtCtrls, Buttons, Menus, JvDesignSurface,
   JvDesignImp, JvDesignUtils, typinfo, PropEdits, ObjectInspector, LResources,
@@ -21,7 +22,7 @@ type
 
   { TFormDesigner }
 
-  TFormDesigner = Class(TForm)
+  TFormDesigner = Class(TInvisForm)
     LazVirtualStringTree: TToolButton;
     FindDialog: TToolButton;
     ImageList1: TImageList;

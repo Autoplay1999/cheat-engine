@@ -5,6 +5,7 @@ unit frmAdConfigUnit;
 interface
 
 uses
+  InvisForm,
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ExtCtrls, ComCtrls, cesupport, betterControls;
 
@@ -15,7 +16,7 @@ type
 
   { TfrmAdConfig }
 
-  TfrmAdConfig = class(TForm)
+  TfrmAdConfig = class(TInvisForm)
     cbOwnUrl: TCheckBox;
     cbCanClose: TCheckBox;
     ComboBox1: TComboBox;

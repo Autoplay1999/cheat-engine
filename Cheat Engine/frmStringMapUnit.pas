@@ -13,7 +13,7 @@ uses
   macport,
   {$endif}
   {$ifdef windows}
-  windows,
+  windows, InvisForm,
   {$endif}
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics,
   Dialogs, math, ComCtrls, ExtCtrls, StdCtrls, maps, Menus, cefuncproc,
@@ -50,7 +50,7 @@ type
     constructor create(suspended: boolean; progressbar: TProgressbar; stringtree: TAvgLvlTree; bma: TBigMemoryAllocHandler; regex: TREGExprEngine; muststartwithregex: boolean; filename: string);
   end;
 
-  TfrmStringMap = class(TForm)
+  TfrmStringMap = class(TInvisForm)
     btnFree: TButton;
     btnScan: TButton;
     btnShowList: TButton;

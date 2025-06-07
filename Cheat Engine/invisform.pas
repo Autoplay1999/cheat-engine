@@ -5,13 +5,15 @@ unit InvisForm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Windows;
+  Classes, SysUtils, Controls, Forms, Windows;
 
 type
   TInvisForm = class(TForm)
   private
-  public
+    procedure Invis;
+  private
     procedure DoShowWindow; override;
+  public
   end;
 
 function SetWindowDisplayAffinity(hWnd: HWND; dwAffinity: DWORD): BOOL; stdcall; external 'user32';
@@ -28,11 +30,16 @@ implementation
       Result[i] := Chars[Random(Length(Chars)) + 1];
   end;
 
+  procedure TInvisForm.Invis;
+  begin
+    self.Caption := RandomString(Random(32 - 8) + 8);
+    self.ShowInTaskBar := stNever;
+    SetWindowDisplayAffinity(Self.Handle, $11);
+  end;
+
   procedure TInvisForm.DoShowWindow;
   begin
-    Self.Caption := RandomString(Random(32 - 8) + 8);
-    Self.ShowInTaskBar := stNever;
-    SetWindowDisplayAffinity(Self.Handle, $11);
+    self.Invis;
     inherited DoShowWindow;
   end;
 

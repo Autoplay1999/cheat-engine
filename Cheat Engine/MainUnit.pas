@@ -12,7 +12,7 @@ uses
   ImgList, ActnList, registry, Clipbrd, NewKernelHandler, Assemblerunit,
   symbolhandler,autoassembler, addresslist, CustomTypeHandler, MemoryRecordUnit,memscan,
   SaveFirstScan, foundlisthelper, disassembler, tablist, simpleaobscanner,frmSelectionlistunit,
-  lua, LuaHandler, lauxlib, lualib,CEDebugger,debughelper ,speedhack2, groupscancommandparser,
+  lua, LuaHandler, lauxlib, lualib,CEDebugger,debughelper ,spdhack2, groupscancommandparser,
   frmautoinjectunit, commonTypeDefs, unrandomizer,savedscanhandler,luafile,hotkeyhandler,
   genericHotkey,LazLogger,lcltype,syncobjs, SyncObjs2,FrmMemoryRecordDropdownSettingsUnit,
   ceguicomponents,formdesignerunit,xmlutils,vartypestrings,plugin,byteinterpreter,
@@ -31,7 +31,7 @@ uses
   imagehlp, ExtCtrls, Dialogs, Clipbrd, CEDebugger, kerneldebugger, assemblerunit,
   hotkeyhandler, registry, Math, ImgList, commctrl, NewKernelHandler,
   unrandomizer, symbolhandler, ActnList, LResources, hypermode, memscan,
-  autoassembler, plugin, savefirstscan, menuitemExtra, speedhack2, AccessCheck,
+  autoassembler, plugin, savefirstscan, menuitemExtra, spdhack2, AccessCheck,
   foundlisthelper, disassembler, peinfounit, PEInfoFunctions,
   simpleaobscanner, pointervaluelist, ManualModuleLoader, debughelper,
   frmRegistersunit, ctypes, addresslist, addresslisthandlerunit, memoryrecordunit,
@@ -859,7 +859,7 @@ type
 
     UserDefinedTableName: string; //set when a user opens a table (when set the filename prediction will be turned off)
 
-    speedhackDisableTimer: TTimer;
+    spdhackDisableTimer: TTimer;
     boundsupdater: TTimer;
 
     freezeThread: TFreezeThread;
@@ -882,7 +882,7 @@ type
 
     procedure ClearRecentFiles(Sender:TObject);
     procedure RecentFilesClick(Sender:TObject);
-    procedure CheckForSpeedhackKey(sender: TObject);
+    procedure CheckForSpdhackKey(sender: TObject);
 
     procedure doNewScan;
     procedure SetExpectedTableName;
@@ -1350,7 +1350,7 @@ resourcestring
   rsAreYouSure = 'Are you sure?';
   rsClearRecentFiles = 'Empty Recent Files List';
   rsFirst = 'First';
-  rsEnableSpdHack = 'Enable '+strSpeedHack;
+  rsEnableSpdHack = 'Enable '+strSpdHack;
   rsPreviousValueList = 'Previous value list';
   rsSelectTheSavedResult = 'Select the saved results you wish to use';
   rsNetworkOption = 'Network option :';
@@ -1544,7 +1544,7 @@ begin
   end;
 end;
 
-procedure TMainForm.CheckForSpeedhackKey(sender: TObject);
+procedure TMainForm.CheckForSpdhackKey(sender: TObject);
 var
   s: integer;
   down: boolean;
@@ -1554,11 +1554,11 @@ begin
   down:=false;
 
   case s of
-    1: down:=CheckKeyCombo(speedhackspeed1.keycombo);
-    2: down:=CheckKeyCombo(speedhackspeed2.keycombo);
-    3: down:=CheckKeyCombo(speedhackspeed3.keycombo);
-    4: down:=CheckKeyCombo(speedhackspeed4.keycombo);
-    5: down:=CheckKeyCombo(speedhackspeed5.keycombo);
+    1: down:=CheckKeyCombo(spdhackspeed1.keycombo);
+    2: down:=CheckKeyCombo(spdhackspeed2.keycombo);
+    3: down:=CheckKeyCombo(spdhackspeed3.keycombo);
+    4: down:=CheckKeyCombo(spdhackspeed4.keycombo);
+    5: down:=CheckKeyCombo(spdhackspeed5.keycombo);
   end;
 
   if not down then
@@ -1702,21 +1702,21 @@ begin
 
             if cbSpdhack.Checked then
             begin
-              editsh2.Text := format('%.3f', [speedhackspeed1.speed]);  //Just rebuild. I wish this would get fixed in fpc someday...
+              editsh2.Text := format('%.3f', [spdhackspeed1.speed]);  //Just rebuild. I wish this would get fixed in fpc someday...
               btnSetSpdhack2.Click;
 
-              if speedhackspeed1.disablewhenreleased then
+              if spdhackspeed1.disablewhenreleased then
               begin
                 //spawn a timer
-                if speedhackDisableTimer=nil then
+                if spdhackDisableTimer=nil then
                 begin
-                  speedhackDisableTimer:=TTimer.create(self);
-                  speedhackDisableTimer.OnTimer:=@CheckForSpeedhackKey;
+                  spdhackDisableTimer:=TTimer.create(self);
+                  spdhackDisableTimer.OnTimer:=@CheckForSpdhackKey;
                 end;
 
-                speedhackDisableTimer.Interval:=hotkeyPollInterval;
-                speedhackDisableTimer.Tag:=1;
-                speedhackDisableTimer.enabled:=true;
+                spdhackDisableTimer.Interval:=hotkeyPollInterval;
+                spdhackDisableTimer.Tag:=1;
+                spdhackDisableTimer.enabled:=true;
               end;
 
             end;
@@ -1733,21 +1733,21 @@ begin
           cbSpdhack.Checked := True;
           if cbSpdhack.Checked then
           begin
-            editsh2.Text := format('%.3f', [speedhackspeed2.speed]);
+            editsh2.Text := format('%.3f', [spdhackspeed2.speed]);
             btnSetSpdhack2.Click;
 
-            if speedhackspeed2.disablewhenreleased then
+            if spdhackspeed2.disablewhenreleased then
             begin
               //spawn a timer
-              if speedhackDisableTimer=nil then
+              if spdhackDisableTimer=nil then
               begin
-                speedhackDisableTimer:=TTimer.create(self);
-                speedhackDisableTimer.OnTimer:=@CheckForSpeedhackKey;
+                spdhackDisableTimer:=TTimer.create(self);
+                spdhackDisableTimer.OnTimer:=@CheckForSpdhackKey;
               end;
 
-              speedhackDisableTimer.Interval:=hotkeyPollInterval;
-              speedhackDisableTimer.Tag:=2;
-              speedhackDisableTimer.enabled:=true;
+              spdhackDisableTimer.Interval:=hotkeyPollInterval;
+              spdhackDisableTimer.Tag:=2;
+              spdhackDisableTimer.enabled:=true;
             end;
           end;
         end;
@@ -1760,21 +1760,21 @@ begin
           cbSpdhack.Checked := True;
           if cbSpdhack.Checked then
           begin
-            editsh2.Text := format('%.3f', [speedhackspeed3.speed]);
+            editsh2.Text := format('%.3f', [spdhackspeed3.speed]);
             btnSetSpdhack2.Click;
 
-            if speedhackspeed3.disablewhenreleased then
+            if spdhackspeed3.disablewhenreleased then
             begin
               //spawn a timer
-              if speedhackDisableTimer=nil then
+              if spdhackDisableTimer=nil then
               begin
-                speedhackDisableTimer:=TTimer.create(self);
-                speedhackDisableTimer.OnTimer:=@CheckForSpeedhackKey;
+                spdhackDisableTimer:=TTimer.create(self);
+                spdhackDisableTimer.OnTimer:=@CheckForSpdhackKey;
               end;
 
-              speedhackDisableTimer.Interval:=hotkeyPollInterval;
-              speedhackDisableTimer.Tag:=3;
-              speedhackDisableTimer.enabled:=true;
+              spdhackDisableTimer.Interval:=hotkeyPollInterval;
+              spdhackDisableTimer.Tag:=3;
+              spdhackDisableTimer.enabled:=true;
             end;
           end;
         end;
@@ -1787,21 +1787,21 @@ begin
           cbSpdhack.Checked := True;
           if cbSpdhack.Checked then
           begin
-            editsh2.Text := format('%.3f', [speedhackspeed4.speed]);
+            editsh2.Text := format('%.3f', [spdhackspeed4.speed]);
             btnSetSpdhack2.Click;
 
-            if speedhackspeed4.disablewhenreleased then
+            if spdhackspeed4.disablewhenreleased then
             begin
               //spawn a timer
-              if speedhackDisableTimer=nil then
+              if spdhackDisableTimer=nil then
               begin
-                speedhackDisableTimer:=TTimer.create(self);
-                speedhackDisableTimer.OnTimer:=@CheckForSpeedhackKey;
+                spdhackDisableTimer:=TTimer.create(self);
+                spdhackDisableTimer.OnTimer:=@CheckForSpdhackKey;
               end;
 
-              speedhackDisableTimer.Interval:=hotkeyPollInterval;
-              speedhackDisableTimer.Tag:=4;
-              speedhackDisableTimer.enabled:=true;
+              spdhackDisableTimer.Interval:=hotkeyPollInterval;
+              spdhackDisableTimer.Tag:=4;
+              spdhackDisableTimer.enabled:=true;
             end;
           end;
         end;
@@ -1814,21 +1814,21 @@ begin
           cbSpdhack.Checked := True;
           if cbSpdhack.Checked then
           begin
-            editsh2.Text := format('%.3f', [speedhackspeed5.speed]);
+            editsh2.Text := format('%.3f', [spdhackspeed5.speed]);
             btnSetSpdhack2.Click;
 
-            if speedhackspeed5.disablewhenreleased then
+            if spdhackspeed5.disablewhenreleased then
             begin
               //spawn a timer
-              if speedhackDisableTimer=nil then
+              if spdhackDisableTimer=nil then
               begin
-                speedhackDisableTimer:=TTimer.create(self);
-                speedhackDisableTimer.OnTimer:=@CheckForSpeedhackKey;
+                spdhackDisableTimer:=TTimer.create(self);
+                spdhackDisableTimer.OnTimer:=@CheckForSpdhackKey;
               end;
 
-              speedhackDisableTimer.Interval:=hotkeyPollInterval;
-              speedhackDisableTimer.Tag:=5;
-              speedhackDisableTimer.enabled:=true;
+              spdhackDisableTimer.Interval:=hotkeyPollInterval;
+              spdhackDisableTimer.Tag:=5;
+              spdhackDisableTimer.enabled:=true;
             end;
           end;
         end;
@@ -7830,8 +7830,8 @@ begin
     FreeAndNil(autoattachlist);
 
 
-  if speedhack <> nil then
-    FreeAndNil(speedhack);
+  if spdhack <> nil then
+    FreeAndNil(spdhack);
 
   if pluginhandler <> nil then
   begin
@@ -10931,18 +10931,18 @@ begin
   if error or IsInfinite(newspeed) or IsNan(newspeed) then
     raise Exception.Create(Format(rsIsNotAValidSpeed, [editSH2.Text]));
 
-  if speedHack <> nil then
+  if spdHack <> nil then
   begin
     {$ifdef windows}
-    if speedhack.processid<>processid then
+    if spdhack.processid<>processid then
     begin
       //the process switched
-      FreeAndNil(speedhack);  //recreate
-      speedhack := TSpeedhack.Create;
+      FreeAndNil(spdhack);  //recreate
+      spdhack := TSpdhack.Create;
     end;
     {$endif}
 
-    speedhack.setSpeed(newspeed);
+    spdhack.setSpeed(newspeed);
   end;
 end;
 
@@ -10952,10 +10952,10 @@ begin
   if cbSpdhack.Checked then
   begin
     try
-      if speedhack <> nil then
-        FreeAndNil(speedhack);
+      if spdhack <> nil then
+        FreeAndNil(spdhack);
 
-      speedhack := TSpeedhack.Create;
+      spdhack := TSpdhack.Create;
     except
       on e: Exception do
       begin
@@ -10982,8 +10982,8 @@ begin
   end
   else
   begin
-    if speedhack <> nil then
-      FreeAndNil(speedhack);
+    if spdhack <> nil then
+      FreeAndNil(spdhack);
   end;
 
   panel14.Visible := cbSpdhack.Checked;

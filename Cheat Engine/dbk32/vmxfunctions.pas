@@ -557,7 +557,7 @@ procedure dbvm_ept_reset;
 function dbvm_get_statistics(out statistics: TDBVMStatistics):qword;
 
 procedure dbvm_setTSCAdjust(enabled: boolean; timeout: integer);
-procedure dbvm_speedhack_setSpeed(speed: double);
+procedure dbvm_spdhack_setSpeed(speed: double);
 procedure dbvm_enableTSCHook;
 function dbvm_disableTSCHook: boolean;
 
@@ -2363,7 +2363,7 @@ begin
   vmcall(@vmcallinfo);
 end;
 
-procedure dbvm_speedhack_setSpeed(speed: double);
+procedure dbvm_spdhack_setSpeed(speed: double);
 var vmcallinfo: packed record
   structsize: dword;
   level2pass: dword;

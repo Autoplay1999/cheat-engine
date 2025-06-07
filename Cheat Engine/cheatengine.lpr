@@ -28,7 +28,7 @@ uses
   frmProcessWatcherUnit, ModuleSafetyUnit, frmExcludeHideUnit, HotKeys,
   TypePopup, CommentsUnit, FoundCodeUnit, foundlisthelper, unrandomizer,
   SaveFirstScan, savedscanhandler, memscan, KernelDebugger,
-  formDifferentBitSizeUnit, formAddressChangeUnit, Changeoffsetunit, speedhack2,
+  formDifferentBitSizeUnit, formAddressChangeUnit, Changeoffsetunit, spdhack2,
   formPointerOrPointeeUnit, AccessCheck, formmemoryregionsunit, OpenSave,
   formProcessInfo, frmautoinjectunit, MenuItemExtra, MemoryBrowserFormUnit,
   disassemblerviewlinesunit, disassemblerviewunit, PasteTableentryFRM,

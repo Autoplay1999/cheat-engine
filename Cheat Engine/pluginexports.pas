@@ -110,7 +110,7 @@ procedure ce_control_onClickLua(c: pointer; f: integer); stdcall;
 procedure ce_object_destroy(o: pointer); stdcall;
 function ce_messageDialog(message: pchar; messagetype: integer; buttoncombination: integer): integer; stdcall;
 function ce_messageDialog_Lua(message: pchar; messagetype: integer; buttoncombination: TMsgDlgButtons): integer;
-function ce_speedhack_setSpeed(speed: single): BOOL; stdcall;
+function ce_spdhack_setSpeed(speed: single): BOOL; stdcall;
 
 function ce_getAutoAttachList: pointer; stdcall;
 function ce_stringlist_getCount(c: pointer): integer; stdcall;
@@ -2265,7 +2265,7 @@ begin
 
 end;
 
-function ce_speedhack2_setSpeed(params: pointer): pointer;
+function ce_spdhack2_setSpeed(params: pointer): pointer;
 var speed: psingle;
   s: string;
 begin
@@ -2286,9 +2286,9 @@ begin
   end;
 end;
 
-function ce_speedhack_setSpeed(speed: single): BOOL; stdcall;
+function ce_spdhack_setSpeed(speed: single): BOOL; stdcall;
 begin
-  result:=pluginsync(ce_speedhack2_setSpeed, @speed)<>nil;
+  result:=pluginsync(ce_spdhack2_setSpeed, @speed)<>nil;
 end;
 
 type TOnclick=record

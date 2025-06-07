@@ -30,7 +30,7 @@ const
   strTrainer='Modifier';
   strTrainerLower='modifier';
   strMyCheatTables='My Mod Tables';
-  strSpeedHack='Speedmodifier';
+  strSpdHack='Speedmodifier';
 {$else}
   strCheatEngine='Cheat Engine';
   strCheatTable='Cheat Table';
@@ -39,7 +39,7 @@ const
   strTrainer='Trainer';
   strTrainerLower='trainer';
   strMyCheatTables='My Cheat Tables';
-  strSpeedHack='Speedhack';
+  strSpdHack='Speedhack';
 {$endif}
 
 resourcestring
@@ -100,18 +100,18 @@ resourcestring
     +'that change the watched address.';
   rsSelectAnItemFromTheListForASmallDescription = 'Select an item from the list for a small description';
   rsNoHotkey = 'No hotkey';
-  rsEnableDisableSpeedhack = 'Enable/Disable speedhack.';
+  rsEnableDisableSpdhack = 'Enable/Disable spdhack.';
   rsM2NoHotkey = ' (No hotkey)';
   rsWontHaveAnyEffectUntilYouOpenANewProcess = '(Won''t have any effect until you (re)open a process)';
   rsDBVMMissedEntries = 'Missed %d entries due to a too small buffer or slow copy operation';
 
 
   var
-    speedhackspeed1: tspeedhackspeed;
-    speedhackspeed2: tspeedhackspeed;
-    speedhackspeed3: tspeedhackspeed;
-    speedhackspeed4: tspeedhackspeed;
-    speedhackspeed5: tspeedhackspeed;
+    spdhackspeed1: tspdhackspeed;
+    spdhackspeed2: tspdhackspeed;
+    spdhackspeed3: tspdhackspeed;
+    spdhackspeed4: tspdhackspeed;
+    spdhackspeed5: tspdhackspeed;
 
     speedupdelta: single;
     slowdowndelta: single;
@@ -274,59 +274,59 @@ begin
 
 
 
-          if reg.ValueExists('Speedhack 1 speed') then
-            speedhackspeed1.speed:={$ifdef windows}reg.ReadFloat('Speedhack 1 speed'){$else}strtofloat(reg.ReadString('Speedhack 1 speed')){$endif} //readString as there is a stack corruption in readFloat on unix
+          if reg.ValueExists('Spdhack 1 speed') then
+            spdhackspeed1.speed:={$ifdef windows}reg.ReadFloat('Spdhack 1 speed'){$else}strtofloat(reg.ReadString('Spdhack 1 speed')){$endif} //readString as there is a stack corruption in readFloat on unix
           else
-            speedhackspeed1.speed:=1;
+            spdhackspeed1.speed:=1;
 
-          if reg.ValueExists('Speedhack 1 disablewhenreleased') then
-            speedhackspeed1.disablewhenreleased:=reg.ReadBool('Speedhack 1 disablewhenreleased');
+          if reg.ValueExists('Spdhack 1 disablewhenreleased') then
+            spdhackspeed1.disablewhenreleased:=reg.ReadBool('Spdhack 1 disablewhenreleased');
 
 
-          if reg.ValueExists('Speedhack 2 speed') then
-            speedhackspeed2.speed:={$ifdef windows}reg.ReadFloat('Speedhack 2 speed'){$else}strtofloat(reg.ReadString('Speedhack 2 speed')){$endif}
+          if reg.ValueExists('Spdhack 2 speed') then
+            spdhackspeed2.speed:={$ifdef windows}reg.ReadFloat('Spdhack 2 speed'){$else}strtofloat(reg.ReadString('Spdhack 2 speed')){$endif}
           else
-            speedhackspeed2.speed:=1;
+            spdhackspeed2.speed:=1;
 
-          if reg.ValueExists('Speedhack 2 disablewhenreleased') then
-            speedhackspeed2.disablewhenreleased:=reg.ReadBool('Speedhack 2 disablewhenreleased');
+          if reg.ValueExists('Spdhack 2 disablewhenreleased') then
+            spdhackspeed2.disablewhenreleased:=reg.ReadBool('Spdhack 2 disablewhenreleased');
 
 
 
-          if reg.ValueExists('Speedhack 3 speed') then
-            speedhackspeed3.speed:={$ifdef windows}reg.ReadFloat('Speedhack 3 speed'){$else}strtofloat(reg.ReadString('Speedhack 3 speed')){$endif}
+          if reg.ValueExists('Spdhack 3 speed') then
+            spdhackspeed3.speed:={$ifdef windows}reg.ReadFloat('Spdhack 3 speed'){$else}strtofloat(reg.ReadString('Spdhack 3 speed')){$endif}
           else
-            speedhackspeed3.speed:=1;
+            spdhackspeed3.speed:=1;
 
-          if reg.ValueExists('Speedhack 3 disablewhenreleased') then
-            speedhackspeed3.disablewhenreleased:=reg.ReadBool('Speedhack 3 disablewhenreleased');
+          if reg.ValueExists('Spdhack 3 disablewhenreleased') then
+            spdhackspeed3.disablewhenreleased:=reg.ReadBool('Spdhack 3 disablewhenreleased');
 
-          if reg.ValueExists('Speedhack 4 speed') then
-            speedhackspeed4.speed:={$ifdef windows}reg.ReadFloat('Speedhack 4 speed'){$else}strtofloat(reg.ReadString('Speedhack 4 speed')){$endif}
+          if reg.ValueExists('Spdhack 4 speed') then
+            spdhackspeed4.speed:={$ifdef windows}reg.ReadFloat('Spdhack 4 speed'){$else}strtofloat(reg.ReadString('Spdhack 4 speed')){$endif}
           else
-            speedhackspeed4.speed:=1;
+            spdhackspeed4.speed:=1;
 
-          if reg.ValueExists('Speedhack 4 disablewhenreleased') then
-            speedhackspeed4.disablewhenreleased:=reg.ReadBool('Speedhack 4 disablewhenreleased');
+          if reg.ValueExists('Spdhack 4 disablewhenreleased') then
+            spdhackspeed4.disablewhenreleased:=reg.ReadBool('Spdhack 4 disablewhenreleased');
 
 
-          if reg.ValueExists('Speedhack 5 speed') then
-            speedhackspeed5.speed:={$ifdef windows}reg.ReadFloat('Speedhack 5 speed'){$else}strtofloat(reg.ReadString('Speedhack 4 speed')){$endif}
+          if reg.ValueExists('Spdhack 5 speed') then
+            spdhackspeed5.speed:={$ifdef windows}reg.ReadFloat('Spdhack 5 speed'){$else}strtofloat(reg.ReadString('Spdhack 4 speed')){$endif}
           else
-            speedhackspeed5.speed:=1;
+            spdhackspeed5.speed:=1;
 
-          if reg.ValueExists('Speedhack 5 disablewhenreleased') then
-            speedhackspeed5.disablewhenreleased:=reg.ReadBool('Speedhack 5 disablewhenreleased');
+          if reg.ValueExists('Spdhack 5 disablewhenreleased') then
+            spdhackspeed5.disablewhenreleased:=reg.ReadBool('Spdhack 5 disablewhenreleased');
 
 
 
-          if reg.ValueExists('Increase Speedhack delta') then
-            speedupdelta:={$ifdef windows}reg.ReadFloat('Increase Speedhack delta'){$else}strtofloat(reg.ReadString('Increase Speedhack delta')){$endif}
+          if reg.ValueExists('Increase Spdhack delta') then
+            speedupdelta:={$ifdef windows}reg.ReadFloat('Increase Spdhack delta'){$else}strtofloat(reg.ReadString('Increase Spdhack delta')){$endif}
           else
             speedupdelta:=1;
 
-          if reg.ValueExists('Decrease Speedhack delta') then
-            slowdowndelta:={$ifdef windows}reg.ReadFloat('Decrease Speedhack delta'){$else}strtofloat(reg.ReadString('Decrease Speedhack delta')){$endif}
+          if reg.ValueExists('Decrease Spdhack delta') then
+            slowdowndelta:={$ifdef windows}reg.ReadFloat('Decrease Spdhack delta'){$else}strtofloat(reg.ReadString('Decrease Spdhack delta')){$endif}
           else
             slowdowndelta:=1;
 
@@ -361,70 +361,70 @@ begin
 
 
 
-          if reg.ValueExists('Toggle speedhack Hotkey') then
+          if reg.ValueExists('Toggle spdhack Hotkey') then
             {$ifdef windows}
-            reg.ReadBinaryData('Toggle speedhack Hotkey',temphotkeylist[3][0],10);
+            reg.ReadBinaryData('Toggle spdhack Hotkey',temphotkeylist[3][0],10);
             {$else}
-            HexToBin(pchar(reg.ReadString('Toggle speedhack Hotkey')),pchar(@temphotkeylist[3][0]),10);
+            HexToBin(pchar(reg.ReadString('Toggle spdhack Hotkey')),pchar(@temphotkeylist[3][0]),10);
             {$endif}
 
-          if reg.ValueExists('Set Speedhack speed 1 Hotkey') then
+          if reg.ValueExists('Set Spdhack speed 1 Hotkey') then
             {$ifdef windows}
-            reg.ReadBinaryData('Set Speedhack speed 1 Hotkey',temphotkeylist[4][0],10);
+            reg.ReadBinaryData('Set Spdhack speed 1 Hotkey',temphotkeylist[4][0],10);
             {$else}
-            HexToBin(pchar(reg.ReadString('Set Speedhack speed 1 Hotkey')),pchar(@temphotkeylist[4][0]),10);
+            HexToBin(pchar(reg.ReadString('Set Spdhack speed 1 Hotkey')),pchar(@temphotkeylist[4][0]),10);
             {$endif}
 
-          speedhackspeed1.keycombo:=temphotkeylist[4];
+          spdhackspeed1.keycombo:=temphotkeylist[4];
 
-          if reg.ValueExists('Set Speedhack speed 2 Hotkey') then
+          if reg.ValueExists('Set Spdhack speed 2 Hotkey') then
             {$ifdef windows}
-            reg.ReadBinaryData('Set Speedhack speed 2 Hotkey',temphotkeylist[5][0],10);
+            reg.ReadBinaryData('Set Spdhack speed 2 Hotkey',temphotkeylist[5][0],10);
             {$else}
-            HexToBin(pchar(reg.ReadString('Set Speedhack speed 2 Hotkey')),pchar(@temphotkeylist[5][0]),10);
+            HexToBin(pchar(reg.ReadString('Set Spdhack speed 2 Hotkey')),pchar(@temphotkeylist[5][0]),10);
             {$endif}
 
-          speedhackspeed2.keycombo:=temphotkeylist[5];
+          spdhackspeed2.keycombo:=temphotkeylist[5];
 
-          if reg.ValueExists('Set Speedhack speed 3 Hotkey') then
+          if reg.ValueExists('Set Spdhack speed 3 Hotkey') then
             {$ifdef windows}
-            reg.ReadBinaryData('Set Speedhack speed 3 Hotkey',temphotkeylist[6][0],10);
+            reg.ReadBinaryData('Set Spdhack speed 3 Hotkey',temphotkeylist[6][0],10);
             {$else}
-            HexToBin(pchar(reg.ReadString('Set Speedhack speed 3 Hotkey')),pchar(@temphotkeylist[6][0]),10);
+            HexToBin(pchar(reg.ReadString('Set Spdhack speed 3 Hotkey')),pchar(@temphotkeylist[6][0]),10);
             {$endif}
 
-          speedhackspeed3.keycombo:=temphotkeylist[6];
+          spdhackspeed3.keycombo:=temphotkeylist[6];
 
-          if reg.ValueExists('Set Speedhack speed 4 Hotkey') then
+          if reg.ValueExists('Set Spdhack speed 4 Hotkey') then
             {$ifdef windows}
-            reg.ReadBinaryData('Set Speedhack speed 4 Hotkey',temphotkeylist[7][0],10);
+            reg.ReadBinaryData('Set Spdhack speed 4 Hotkey',temphotkeylist[7][0],10);
             {$else}
-            HexToBin(pchar(reg.ReadString('Set Speedhack speed 4 Hotkey')),pchar(@temphotkeylist[7][0]),10);
+            HexToBin(pchar(reg.ReadString('Set Spdhack speed 4 Hotkey')),pchar(@temphotkeylist[7][0]),10);
             {$endif}
 
-          speedhackspeed4.keycombo:=temphotkeylist[7];
+          spdhackspeed4.keycombo:=temphotkeylist[7];
 
-          if reg.ValueExists('Set Speedhack speed 5 Hotkey') then
+          if reg.ValueExists('Set Spdhack speed 5 Hotkey') then
             {$ifdef windows}
-            reg.ReadBinaryData('Set Speedhack speed 5 Hotkey',temphotkeylist[8][0],10);
+            reg.ReadBinaryData('Set Spdhack speed 5 Hotkey',temphotkeylist[8][0],10);
             {$else}
-            HexToBin(pchar(reg.ReadString('Set Speedhack speed 5 Hotkey')),pchar(@temphotkeylist[8][0]),10);
+            HexToBin(pchar(reg.ReadString('Set Spdhack speed 5 Hotkey')),pchar(@temphotkeylist[8][0]),10);
             {$endif}
 
-          speedhackspeed5.keycombo:=temphotkeylist[8];
+          spdhackspeed5.keycombo:=temphotkeylist[8];
 
-          if reg.ValueExists('Increase Speedhack speed') then
+          if reg.ValueExists('Increase Spdhack speed') then
             {$ifdef windows}
-            reg.ReadBinaryData('Increase Speedhack speed',temphotkeylist[9][0],10);
+            reg.ReadBinaryData('Increase Spdhack speed',temphotkeylist[9][0],10);
             {$else}
-            HexToBin(pchar(reg.ReadString('Increase Speedhack speed')),pchar(@temphotkeylist[9][0]),10);
+            HexToBin(pchar(reg.ReadString('Increase Spdhack speed')),pchar(@temphotkeylist[9][0]),10);
             {$endif}
 
-          if reg.ValueExists('Decrease Speedhack speed') then
+          if reg.ValueExists('Decrease Spdhack speed') then
             {$ifdef windows}
-            reg.ReadBinaryData('Decrease Speedhack speed',temphotkeylist[10][0],10);
+            reg.ReadBinaryData('Decrease Spdhack speed',temphotkeylist[10][0],10);
             {$else}
-            HexToBin(pchar(reg.ReadString('Decrease Speedhack speed')),pchar(@temphotkeylist[10][0]),10);
+            HexToBin(pchar(reg.ReadString('Decrease Spdhack speed')),pchar(@temphotkeylist[10][0]),10);
             {$endif}
 
           if reg.ValueExists('Binary Hotkey') then
@@ -615,10 +615,10 @@ begin
 
 
           if temphotkeylist[3][0]<>0 then
-            mainform.cbSpdhack.Hint:=rsEnableDisableSpeedhack+' ('+
+            mainform.cbSpdhack.Hint:=rsEnableDisableSpdhack+' ('+
               ConvertKeyComboToString(temphotkeylist[3])+')'
           else
-            mainform.cbSpdhack.Hint:=rsEnableDisableSpeedhack+rsM2NoHotkey;
+            mainform.cbSpdhack.Hint:=rsEnableDisableSpdhack+rsM2NoHotkey;
 
 
           ResumeHotkeyHandler;

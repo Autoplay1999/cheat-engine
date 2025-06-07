@@ -310,12 +310,12 @@ object formSettings: TformSettings
           Caption = 'Save window positions'
           TabOrder = 13
         end
-        object cbOldSpeedhack: TCheckBox
+        object cbOldSpdhack: TCheckBox
           Left = 1
           Top = 118
           Width = 601
           Height = 21
-          Caption = 'Use old speedhack'
+          Caption = 'Use old spdhack'
           TabOrder = 14
         end
         object cbProcessIcons: TCheckBox

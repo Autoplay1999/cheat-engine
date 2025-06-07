@@ -3945,7 +3945,7 @@ int handleSingleStep(pcpuinfo currentcpuinfo, VMRegisters *vmregisters, FXSAVE64
   return 0;
 }
 
-void speedhack_setspeed(double speed)
+void spdhack_setspeed(double speed)
 {
   if (TSCHooked)
   {

@@ -364,7 +364,7 @@ begin
               addfile(cheatenginedir+'win32\dbghelp.dll','win32');
 
               if cbSpdhack.checked then
-                addfile(cheatenginedir+'speedhack-i386.dll');
+                addfile(cheatenginedir+'spdhack-i386.dll');
 
               if cbvehdebug.checked then
                 addfile(cheatenginedir+'vehdebug-i386.dll');
@@ -389,7 +389,7 @@ begin
               addfile(cheatenginedir+'lua53-64.dll');
 
               if cbSpdhack.checked then
-                addfile(cheatenginedir+'speedhack-x86_64.dll');
+                addfile(cheatenginedir+'spdhack-x86_64.dll');
 
               if cbvehdebug.checked then
                 addfile(cheatenginedir+'vehdebug-x86_64.dll');
@@ -750,7 +750,7 @@ begin
   //scan the current script for markers that might indicate a used feature
   s:=lowercase(mainform.frmLuaTableScript.assemblescreen.Text);
 
-  cbSpdhack.checked:=pos('speedhack_',s)>0;
+  cbSpdhack.checked:=pos('spdhack_',s)>0;
   cbModPlayer.checked:=(pos('xmplayer_',s)>0) or (pos('xmplayer.',s)>0);
   cbKernelDebug.checked:=pos('dbk_',s)>0;
   cbD3DHook.checked:=pos('created3dhook',s)>0;

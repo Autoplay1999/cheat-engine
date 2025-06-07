@@ -68,11 +68,11 @@ type
   public
     { Public declarations }
     newhotkeys: array [0..cehotkeycount-1] of tkeycombo;
-    newspeedhackspeed1: tspeedhackspeed;
-    newspeedhackspeed2: tspeedhackspeed;
-    newspeedhackspeed3: tspeedhackspeed;
-    newspeedhackspeed4: tspeedhackspeed;
-    newspeedhackspeed5: tspeedhackspeed;
+    newspdhackspeed1: tspdhackspeed;
+    newspdhackspeed2: tspdhackspeed;
+    newspdhackspeed3: tspdhackspeed;
+    newspdhackspeed4: tspdhackspeed;
+    newspdhackspeed5: tspdhackspeed;
     speedupdelta:       single;
     slowdowndelta:      single;
   end;
@@ -100,33 +100,33 @@ begin
   begin
     if currentspeed=1 then
     begin
-      newspeedhackspeed1.speed:=StrToFloat(edtSHspeed.Text);
-      newspeedhackspeed1.disablewhenreleased:=cbStopOnRelease.checked;
-      newspeedhackspeed1.keycombo:=newhotkeys[currentspeed+3];
+      newspdhackspeed1.speed:=StrToFloat(edtSHspeed.Text);
+      newspdhackspeed1.disablewhenreleased:=cbStopOnRelease.checked;
+      newspdhackspeed1.keycombo:=newhotkeys[currentspeed+3];
     end else
     if currentspeed=2 then
     begin
-      newspeedhackspeed2.speed:=StrToFloat(edtSHspeed.Text);
-      newspeedhackspeed2.disablewhenreleased:=cbStopOnRelease.checked;
-      newspeedhackspeed2.keycombo:=newhotkeys[currentspeed+3];
+      newspdhackspeed2.speed:=StrToFloat(edtSHspeed.Text);
+      newspdhackspeed2.disablewhenreleased:=cbStopOnRelease.checked;
+      newspdhackspeed2.keycombo:=newhotkeys[currentspeed+3];
     end else
     if currentspeed=3 then
     begin
-      newspeedhackspeed3.speed:=StrToFloat(edtSHspeed.Text);
-      newspeedhackspeed3.disablewhenreleased:=cbStopOnRelease.checked;
-      newspeedhackspeed3.keycombo:=newhotkeys[currentspeed+3];
+      newspdhackspeed3.speed:=StrToFloat(edtSHspeed.Text);
+      newspdhackspeed3.disablewhenreleased:=cbStopOnRelease.checked;
+      newspdhackspeed3.keycombo:=newhotkeys[currentspeed+3];
     end else
     if currentspeed=4 then
     begin
-      newspeedhackspeed4.speed:=StrToFloat(edtSHspeed.Text);
-      newspeedhackspeed4.disablewhenreleased:=cbStopOnRelease.checked;
-      newspeedhackspeed4.keycombo:=newhotkeys[currentspeed+3];
+      newspdhackspeed4.speed:=StrToFloat(edtSHspeed.Text);
+      newspdhackspeed4.disablewhenreleased:=cbStopOnRelease.checked;
+      newspdhackspeed4.keycombo:=newhotkeys[currentspeed+3];
     end else
     if currentspeed=5 then
     begin
-      newspeedhackspeed5.speed:=StrToFloat(edtSHspeed.Text);
-      newspeedhackspeed5.disablewhenreleased:=cbStopOnRelease.checked;
-      newspeedhackspeed5.keycombo:=newhotkeys[currentspeed+3];
+      newspdhackspeed5.speed:=StrToFloat(edtSHspeed.Text);
+      newspdhackspeed5.disablewhenreleased:=cbStopOnRelease.checked;
+      newspdhackspeed5.keycombo:=newhotkeys[currentspeed+3];
     end;
   end;
 
@@ -136,32 +136,32 @@ begin
     case currentspeed of
       1:
       begin
-        edtSHSpeed.text:=format('%.3f',[newspeedhackspeed1.speed]);
-        cbStopOnRelease.checked:=newspeedhackspeed1.disablewhenreleased;
+        edtSHSpeed.text:=format('%.3f',[newspdhackspeed1.speed]);
+        cbStopOnRelease.checked:=newspdhackspeed1.disablewhenreleased;
       end;
 
       2:
       begin
-        edtSHSpeed.text:=format('%.3f',[newspeedhackspeed2.speed]);
-        cbStopOnRelease.checked:=newspeedhackspeed2.disablewhenreleased;
+        edtSHSpeed.text:=format('%.3f',[newspdhackspeed2.speed]);
+        cbStopOnRelease.checked:=newspdhackspeed2.disablewhenreleased;
       end;
 
       3:
       begin
-        edtSHSpeed.text:=format('%.3f',[newspeedhackspeed3.speed]);
-        cbStopOnRelease.checked:=newspeedhackspeed3.disablewhenreleased;
+        edtSHSpeed.text:=format('%.3f',[newspdhackspeed3.speed]);
+        cbStopOnRelease.checked:=newspdhackspeed3.disablewhenreleased;
       end;
 
       4:
       begin
-        edtSHSpeed.text:=format('%.3f',[newspeedhackspeed4.speed]);
-        cbStopOnRelease.checked:=newspeedhackspeed4.disablewhenreleased;
+        edtSHSpeed.text:=format('%.3f',[newspdhackspeed4.speed]);
+        cbStopOnRelease.checked:=newspdhackspeed4.disablewhenreleased;
       end;
 
       5:
       begin
-        edtSHSpeed.text:=format('%.3f',[newspeedhackspeed5.speed]);
-        cbStopOnRelease.checked:=newspeedhackspeed5.disablewhenreleased;
+        edtSHSpeed.text:=format('%.3f',[newspdhackspeed5.speed]);
+        cbStopOnRelease.checked:=newspdhackspeed5.disablewhenreleased;
       end;
     end;
 

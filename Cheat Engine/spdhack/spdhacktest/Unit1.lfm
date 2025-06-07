@@ -3,7 +3,7 @@ object Form1: TForm1
   Height = 202
   Top = 177
   Width = 475
-  Caption = 'speedhack test'
+  Caption = 'spdhack test'
   ClientHeight = 202
   ClientWidth = 475
   Font.Height = -11

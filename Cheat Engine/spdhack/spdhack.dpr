@@ -1,4 +1,4 @@
-library speedhack;
+library spdhack;
 
 { Important note about DLL memory management: ShareMem must be the
   first unit in your library's USES clause AND your project's (select
@@ -14,15 +14,15 @@ uses
   SysUtils,
   Classes,
   windows,
-  speedhackmain in 'speedhackmain.pas';
+  spdhackmain in 'spdhackmain.pas';
 
 {$R *.res}
 
-exports InitializeSpeedhack;
+exports InitializeSpdhack;
 exports realGetTickCount;
 exports realQueryPerformanceCounter;
-exports speedhackversion_GetTickCount;
-exports speedhackversion_QueryPerformanceCounter;
+exports spdhackversion_GetTickCount;
+exports spdhackversion_QueryPerformanceCounter;
 
 
 begin

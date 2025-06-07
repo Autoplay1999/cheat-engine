@@ -333,7 +333,7 @@ type Tcontrol_onClick=procedure(c: pointer; f: pointer); stdcall;
 
 type Tobject_destroy=procedure(o: pointer); stdcall;
 type TmessageDialog=function(message: pchar; messagetype: integer; buttoncombination: integer): integer; stdcall;
-type Tspeedhack_setSpeed=function(speed: single): BOOL; stdcall;
+type Tspdhack_setSpeed=function(speed: single): BOOL; stdcall;
 
 type TUserdefinedInterruptHook=function(interruptnr: integer; newCS: word; newEIP: system.qword; addressofjumpback: system.qword):boolean; stdcall;
 type TExecuteKernelCode=function(address: system.qword; parameters: system.qword): BOOL; stdcall;
@@ -524,7 +524,7 @@ type TExportedFunctions = record
 
   object_destroy: Tobject_destroy;
   messageDialog: TmessageDialog;
-  speedhack_setSpeed: Tspeedhack_setSpeed;
+  spdhack_setSpeed: Tspdhack_setSpeed;
 
   //version 5
   ExecuteKernelCode: TExecuteKernelCode;

@@ -1,4 +1,4 @@
-library speedhack;
+library spdhack;
 
 {$MODE Delphi}
 
@@ -19,15 +19,15 @@ uses
   {$ifdef USECS}
   syncobjs,
   {$endif}
-  speedhackmain in 'speedhackmain.pas';
+  spdhackmain in 'spdhackmain.pas';
 
-exports InitializeSpeedhack;
+exports InitializeSpdhack;
 exports realGetTickCount;
 exports realGetTickCount64;
 exports realQueryPerformanceCounter;
-exports speedhackversion_GetTickCount;
-exports speedhackversion_GetTickCount64;
-exports speedhackversion_QueryPerformanceCounter;
+exports spdhackversion_GetTickCount;
+exports spdhackversion_GetTickCount64;
+exports spdhackversion_QueryPerformanceCounter;
 
 exports initdll;
 

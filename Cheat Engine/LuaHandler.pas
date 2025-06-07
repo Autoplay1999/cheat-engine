@@ -125,7 +125,7 @@ uses autoassembler, MainUnit, MainUnit2, LuaClass, frmluaengineunit, plugin, plu
   LuaCommonDialog, LuaFindDialog, LuaSettings, LuaPageControl, LuaStructureFrm,
   LuaInternet, SymbolListHandler, ProcessHandlerUnit, processlist,
   DebuggerInterface, WindowsDebugger, VEHDebugger, KernelDebuggerInterface,
-  DebuggerInterfaceAPIWrapper, Globals, math, speedhack2, CETranslator, binutils,
+  DebuggerInterfaceAPIWrapper, Globals, math, spdhack2, CETranslator, binutils,
   xinput, winsapi, frmExeTrainerGeneratorUnit, CustomBase85, FileUtil, networkConfig,
   LuaCustomType, Filehandler, LuaSQL, frmSelectionlistunit, cpuidUnit, LuaRemoteThread,
   LuaManualModuleLoader, pointervaluelist, frmEditHistoryUnit, LuaCheckListBox,
@@ -3908,13 +3908,13 @@ begin
   end else lua_pop(L, parameters);
 end;
 
-function speedhack_getSpeed(L: PLua_State): integer; cdecl;
+function spdhack_getSpeed(L: PLua_State): integer; cdecl;
 begin
-  lua_pushnumber(L, speedhack.getSpeed);
+  lua_pushnumber(L, spdhack.getSpeed);
   result:=1;
 end;
 
-function speedhack_setSpeed(L: PLua_State): integer; cdecl;
+function spdhack_setSpeed(L: PLua_State): integer; cdecl;
 var
   parameters: integer;
   speed: single;
@@ -3924,7 +3924,7 @@ begin
   if parameters=1 then
   begin
     speed:=lua_tonumber(L,-1);
-    ce_speedhack_setSpeed(speed);
+    ce_spdhack_setSpeed(speed);
   end;
   lua_pop(L, parameters);
 end;
@@ -7122,14 +7122,14 @@ begin
   end;
 end;
 
-function lua_dbvm_speedhack_setSpeed(L: PLua_State): integer; cdecl;
+function lua_dbvm_spdhack_setSpeed(L: PLua_State): integer; cdecl;
 var speed: double;
 begin
   result:=0;
   if lua_gettop(L)>=1 then
   begin
     speed:=lua_tonumber(L,1);
-    dbvm_speedhack_setSpeed(speed);
+    dbvm_spdhack_setSpeed(speed);
   end;
 
 end;
@@ -9948,7 +9948,7 @@ end;
 //----
 
 
-function lua_registerSpeedhackCallbacks(L: PLua_State): integer; cdecl;
+function lua_registerSpdhackCallbacks(L: PLua_State): integer; cdecl;
 var
   f: integer;
   routine: string;
@@ -9991,20 +9991,20 @@ begin
     end
     else exit;
 
-    lua_pushinteger(L, registerSpeedhackCallbacks(lc.SpeedHackOnActivate, lc2.SpeedHackSetSpeedEvent));
+    lua_pushinteger(L, registerSpdhackCallbacks(lc.SpdHackOnActivate, lc2.SpdHackSetSpeedEvent));
     result:=1;
   end;
 
 end;
 
-function lua_unregisterSpeedhackCallbacks(L: PLua_State): integer; cdecl;
+function lua_unregisterSpdhackCallbacks(L: PLua_State): integer; cdecl;
 var i: integer;
 begin
   result:=0;
   if lua_gettop(L)>=1 then
   begin
     i:=lua_tointeger(L,1);
-    unregisterSpeedhackCallbacks(i);
+    unregisterSpdhackCallbacks(i);
   end;
 end;
 
@@ -16482,8 +16482,8 @@ begin
     lua_register(L, 'createPaintBox', createPaintBox);
 
     lua_register(L, 'messageDialog', messageDialog);
-    lua_register(L, 'speedhack_setSpeed', speedhack_setSpeed);
-    lua_register(L, 'speedhack_getSpeed', speedhack_getSpeed);
+    lua_register(L, 'spdhack_setSpeed', spdhack_setSpeed);
+    lua_register(L, 'spdhack_getSpeed', spdhack_getSpeed);
 
     lua_register(L, 'getAutoAttachList', getAutoAttachList);
 
@@ -16717,7 +16717,7 @@ begin
     lua_register(L, 'dbvm_ultimap_getDebugInfo', lua_dbvm_ultimap_getDebugInfo); //more debugging
 
     lua_register(L, 'dbvm_setTSCAdjust', lua_dbvm_setTSCAdjust);
-    lua_register(L, 'dbvm_speedhack_setSpeed', lua_dbvm_speedhack_setSpeed);
+    lua_register(L, 'dbvm_spdhack_setSpeed', lua_dbvm_spdhack_setSpeed);
 
 
     lua_register(L, 'dbvm_enableTSCHook', lua_dbvm_enableTSCHook);
@@ -16871,8 +16871,8 @@ begin
     lua_register(L, 'unregisterStructureAndElementListCallback', lua_unregisterStructureAndElementListCallback);
 
 
-    lua_register(L, 'registerSpeedhackCallbacks', lua_registerSpeedhackCallbacks);
-    lua_register(L, 'unregisterSpeedhackCallbacks', lua_unregisterSpeedhackCallbacks);
+    lua_register(L, 'registerSpdhackCallbacks', lua_registerSpdhackCallbacks);
+    lua_register(L, 'unregisterSpdhackCallbacks', lua_unregisterSpdhackCallbacks);
 
 
 

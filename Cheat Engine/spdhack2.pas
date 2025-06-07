@@ -50,7 +50,7 @@ var
   spdhackCallbacks: array of TSpdhackCallback;
 
 
-function registerSpackCallbacks(OnActivate: TSpdHackActivateEvent; OnSetSpeed: TSpdHackSetSpeedEvent): integer;
+function registerSpdhackCallbacks(OnActivate: TSpdHackActivateEvent; OnSetSpeed: TSpdHackSetSpeedEvent): integer;
 var i: integer;
 begin
   for i:=0 to length(spdhackCallbacks)-1 do

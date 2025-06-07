@@ -1,4 +1,4 @@
-unit speedhackmain;
+unit spdhackmain;
 
 {$MODE Delphi}
 
@@ -6,7 +6,7 @@ unit speedhackmain;
 interface
 uses windows, classes, sysutils{$ifdef USECS},syncobjs{$endif};
 
-procedure InitializeSpeedhack(speed: single); stdcall;
+procedure InitializeSpdhack(speed: single); stdcall;
 
 procedure InitDLL;
 
@@ -14,9 +14,9 @@ type TGetTickCount=function: DWORD; stdcall;
 type TGetTickCount64=function: QWORD; stdcall;
 type TQueryPerformanceCounter=function(var x: int64): BOOL; stdcall;
 
-function speedhackversion_GetTickCount: DWORD; stdcall;
-function speedhackversion_GetTickCount64: QWORD; stdcall;
-function speedhackversion_QueryPerformanceCounter(var x: int64): BOOL; stdcall;
+function spdhackversion_GetTickCount: DWORD; stdcall;
+function spdhackversion_GetTickCount64: QWORD; stdcall;
+function spdhackversion_QueryPerformanceCounter(var x: int64): BOOL; stdcall;
 
 type TSimpleLock=record
 {$ifdef USECS}
@@ -42,7 +42,7 @@ var CETick: dword;
     sleeptime: dword;
     slow: boolean;
     tickerstopped: boolean;
-    speedhackenabled: boolean;
+    spdhackenabled: boolean;
 
 
    { timeGetTimeInfo:TAPiInfo;
@@ -105,7 +105,7 @@ begin
   {$endif}
 end;
 
-function speedhackversion_GetTickCount: DWORD; stdcall;
+function spdhackversion_GetTickCount: DWORD; stdcall;
 var currentTime: dword;
 begin
   //also used for timeGetTime
@@ -119,7 +119,7 @@ begin
   unlock(GTCLock);
 end;
 
-function speedhackversion_GetTickCount64: QWORD; stdcall;
+function spdhackversion_GetTickCount64: QWORD; stdcall;
 var currentTime: qword;
 begin
   //also used for timeGetTime
@@ -133,7 +133,7 @@ begin
   unlock(GTCLock);
 end;
 
-function speedhackversion_QueryPerformanceCounter(var x: int64): BOOL; stdcall;
+function spdhackversion_QueryPerformanceCounter(var x: int64): BOOL; stdcall;
 var currentTime64: int64;
     newx: int64;
 begin
@@ -153,7 +153,7 @@ begin
   x:=newx; //access violation possible here
 end;
 
-procedure InitializeSpeedhack(speed: single); stdcall;
+procedure InitializeSpdhack(speed: single); stdcall;
 {
 Called by createremotethread
 }

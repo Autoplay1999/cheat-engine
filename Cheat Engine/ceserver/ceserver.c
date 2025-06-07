@@ -1273,14 +1273,14 @@ case CMD_SETTHREADCONTEXT:
       break;
     }
 
-    case CMD_SPEEDHACK_SETSPEED:
+    case CMD_SPDHACK_SETSPEED:
     {
-      CeSpeedhackSetSpeedInput c;
-      debug_log("CESERVER: CMD_SPEEDHACK_SETSPEED\n");
+      CeSpdhackSetSpeedInput c;
+      debug_log("CESERVER: CMD_SPDHACK_SETSPEED\n");
       if (recvall(currentsocket, &c, sizeof(c),0)>0)
       {
         uint32_t r;
-        r=ext_speedhack_setSpeed(c.hProcess, c.speed);
+        r=ext_spdhack_setSpeed(c.hProcess, c.speed);
 
         sendall(currentsocket, &r, sizeof(r),0);
       }

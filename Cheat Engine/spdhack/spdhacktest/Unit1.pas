@@ -15,7 +15,7 @@ uses
   Dialogs, StdCtrls, ExtCtrls, LResources, dynlibs;
 
 type
-  TSpeedhackTest=class(tthread)
+  TSpdhackTest=class(tthread)
   private
     laste: Exception;
     procedure died;
@@ -68,12 +68,12 @@ var
 
 implementation
 
-procedure TSpeedhackTest.died;
+procedure TSpdhackTest.died;
 begin
   ShowMessage('testthread died:'+laste.message);
 end;
 
-procedure TSpeedhackTest.execute;
+procedure TSpdhackTest.execute;
 var
   oldtick, newtick: dword;
   oldperf, newperf: int64;
@@ -327,7 +327,7 @@ end;
 procedure TForm1.Button1Click(Sender: TObject);
 var x: TLibHandle;
 begin
-  x:=loadlibrary('libspeedhack.dylib');
+  x:=loadlibrary('libspdhack.dylib');
   showmessage(inttohex(x,8));
 end;
 
@@ -343,7 +343,7 @@ begin
   {$endif}
 
   for i:=0 to 2 do
-    TSpeedhackTest.create(false);
+    TSpdhackTest.create(false);
 
 
 end;

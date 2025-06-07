@@ -333,8 +333,8 @@ type
     temppopupmodifier:dword;
     tempstatePause:word;
     tempPausemodifier:dword;
-    tempstateSpeedhack:word;
-    tempSpeedhackmodifier:dword;
+    tempstateSpdhack:word;
+    tempSpdhackmodifier:dword;
 
 
     tempmodulelist: pchar;
@@ -367,8 +367,8 @@ type
     lastpopupmodifier:dword;
     laststatePause:word;
     lastPausemodifier:dword;
-    laststateSpeedhack:word;
-    lastSpeedhackmodifier:dword;
+    laststateSpdhack:word;
+    lastSpdhackmodifier:dword;
     Loadingsettingsfromregistry: boolean;
 
     unrandomizersettings: record
@@ -471,8 +471,8 @@ resourcestring
   rsAttachToForegroundProcess = 'Attach to current foreground process';
   rsPopupHideMonoEngine = 'Popup/Hide '+strCheatEngine;
   rsPauseTheSelectedProcess = 'Pause the selected process';
-  rsToggleTheSpeedhack = 'Toggle the speedhack';
-  rsSpeedhackSpeed = 'Speedhack speed';
+  rsToggleTheSpdhack = 'Toggle the spdhack';
+  rsSpdhackSpeed = 'Spdhack speed';
   rsChangeTypeTo = 'Change type to';
   rsBinary = 'Binary';
   rsByte = 'Byte';
@@ -819,38 +819,38 @@ begin
           reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Attach to foregroundprocess Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[0][0],10){$ifndef windows}){$endif};
           reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Show '+strCheatEngine+' Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[1][0],10){$ifndef windows}){$endif};
           reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Pause process Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[2][0],10){$ifndef windows}){$endif};
-          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Toggle speedhack Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[3][0],10){$ifndef windows}){$endif};
+          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Toggle spdhack Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[3][0],10){$ifndef windows}){$endif};
 
-          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Speedhack 1 speed',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.newspeedhackspeed1.speed{$ifndef windows}){$endif});
-          reg.WriteBool('Speedhack 1 disablewhenreleased',frameHotkeyConfig.newspeedhackspeed1.disablewhenreleased);
-          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Speedhack 2 speed',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.newspeedhackspeed2.speed{$ifndef windows}){$endif});
-          reg.WriteBool('Speedhack 2 disablewhenreleased',frameHotkeyConfig.newspeedhackspeed2.disablewhenreleased);
-          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Speedhack 3 speed',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.newspeedhackspeed3.speed{$ifndef windows}){$endif});
-          reg.WriteBool('Speedhack 3 disablewhenreleased',frameHotkeyConfig.newspeedhackspeed3.disablewhenreleased);
-          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Speedhack 4 speed',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.newspeedhackspeed4.speed{$ifndef windows}){$endif});
-          reg.WriteBool('Speedhack 4 disablewhenreleased',frameHotkeyConfig.newspeedhackspeed4.disablewhenreleased);
-          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Speedhack 5 speed',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.newspeedhackspeed5.speed{$ifndef windows}){$endif});
-          reg.WriteBool('Speedhack 5 disablewhenreleased',frameHotkeyConfig.newspeedhackspeed5.disablewhenreleased);
+          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Spdhack 1 speed',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.newspdhackspeed1.speed{$ifndef windows}){$endif});
+          reg.WriteBool('Spdhack 1 disablewhenreleased',frameHotkeyConfig.newspdhackspeed1.disablewhenreleased);
+          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Spdhack 2 speed',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.newspdhackspeed2.speed{$ifndef windows}){$endif});
+          reg.WriteBool('Spdhack 2 disablewhenreleased',frameHotkeyConfig.newspdhackspeed2.disablewhenreleased);
+          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Spdhack 3 speed',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.newspdhackspeed3.speed{$ifndef windows}){$endif});
+          reg.WriteBool('Spdhack 3 disablewhenreleased',frameHotkeyConfig.newspdhackspeed3.disablewhenreleased);
+          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Spdhack 4 speed',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.newspdhackspeed4.speed{$ifndef windows}){$endif});
+          reg.WriteBool('Spdhack 4 disablewhenreleased',frameHotkeyConfig.newspdhackspeed4.disablewhenreleased);
+          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Spdhack 5 speed',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.newspdhackspeed5.speed{$ifndef windows}){$endif});
+          reg.WriteBool('Spdhack 5 disablewhenreleased',frameHotkeyConfig.newspdhackspeed5.disablewhenreleased);
 
-          mainunit2.speedhackspeed1:=frameHotkeyConfig.newspeedhackspeed1;
-          mainunit2.speedhackspeed2:=frameHotkeyConfig.newspeedhackspeed2;
-          mainunit2.speedhackspeed3:=frameHotkeyConfig.newspeedhackspeed3;
-          mainunit2.speedhackspeed4:=frameHotkeyConfig.newspeedhackspeed4;
-          mainunit2.speedhackspeed5:=frameHotkeyConfig.newspeedhackspeed5;
+          mainunit2.spdhackspeed1:=frameHotkeyConfig.newspdhackspeed1;
+          mainunit2.spdhackspeed2:=frameHotkeyConfig.newspdhackspeed2;
+          mainunit2.spdhackspeed3:=frameHotkeyConfig.newspdhackspeed3;
+          mainunit2.spdhackspeed4:=frameHotkeyConfig.newspdhackspeed4;
+          mainunit2.spdhackspeed5:=frameHotkeyConfig.newspdhackspeed5;
 
-          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Set Speedhack speed 1 Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[4][0],10){$ifndef windows}){$endif};
-          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Set Speedhack speed 2 Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[5][0],10){$ifndef windows}){$endif};
-          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Set Speedhack speed 3 Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[6][0],10){$ifndef windows}){$endif};
-          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Set Speedhack speed 4 Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[7][0],10){$ifndef windows}){$endif};
-          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Set Speedhack speed 5 Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[8][0],10){$ifndef windows}){$endif};
+          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Set Spdhack speed 1 Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[4][0],10){$ifndef windows}){$endif};
+          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Set Spdhack speed 2 Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[5][0],10){$ifndef windows}){$endif};
+          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Set Spdhack speed 3 Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[6][0],10){$ifndef windows}){$endif};
+          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Set Spdhack speed 4 Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[7][0],10){$ifndef windows}){$endif};
+          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Set Spdhack speed 5 Hotkey',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[8][0],10){$ifndef windows}){$endif};
 
 
 
-          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Increase Speedhack speed',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[9][0],10){$ifndef windows}){$endif};
-          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Increase Speedhack delta',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.speedupdelta{$ifndef windows}){$endif});
+          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Increase Spdhack speed',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[9][0],10){$ifndef windows}){$endif};
+          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Increase Spdhack delta',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.speedupdelta{$ifndef windows}){$endif});
 
-          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Decrease Speedhack speed',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[10][0],10){$ifndef windows}){$endif};
-          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Decrease Speedhack delta',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.slowdowndelta{$ifndef windows}){$endif});
+          reg.{$ifdef windows}WriteBinaryData{$else}WriteString{$endif}('Decrease Spdhack speed',{$ifndef windows}bintohexs({$endif}frameHotkeyConfig.newhotkeys[10][0],10){$ifndef windows}){$endif};
+          reg.{$ifdef windows}WriteFloat{$else}WriteString{$endif}('Decrease Spdhack delta',{$ifndef windows}FloatToStr({$endif}frameHotkeyConfig.slowdowndelta{$ifndef windows}){$endif});
 
           mainunit2.speedupdelta:=frameHotkeyConfig.speedupdelta;
           mainunit2.slowdowndelta:=frameHotkeyConfig.slowdowndelta;
@@ -1184,8 +1184,8 @@ begin
     lastpopupmodifier:=temppopupmodifier;
     laststatePause:=tempstatepause;
     lastPausemodifier:=temppausemodifier;
-    laststateSpeedhack:=tempstatespeedhack;
-    lastSpeedhackmodifier:=tempspeedhackmodifier;
+    laststateSpdhack:=tempstatespdhack;
+    lastSpdhackmodifier:=tempspdhackmodifier;
 
     mainform.autoattachlist.DelimitedText:=formsettings.EditAutoAttach.Text;
 
@@ -1562,8 +1562,8 @@ begin
   temppopupmodifier:=lastpopupmodifier;
   tempstatepause:=laststatePause;
   temppausemodifier:=lastPausemodifier;
-  tempstatespeedhack:=laststateSpeedhack;
-  tempspeedhackmodifier:=lastSpeedhackmodifier;
+  tempstatespdhack:=laststateSpdhack;
+  tempspdhackmodifier:=lastSpdhackmodifier;
 
   {$ifndef net}
   setlength(tempdonthidelist,length(donthidelist));
@@ -1588,11 +1588,11 @@ begin
         framehotkeyconfig.newhotkeys[hotkeythread.hotkeylist[i].id]:=hotkeythread.hotkeylist[i].keys;
     end;
 
-  framehotkeyconfig.newspeedhackspeed1:=speedhackspeed1;
-  framehotkeyconfig.newspeedhackspeed2:=speedhackspeed2;
-  framehotkeyconfig.newspeedhackspeed3:=speedhackspeed3;
-  framehotkeyconfig.newspeedhackspeed4:=speedhackspeed4;
-  framehotkeyconfig.newspeedhackspeed5:=speedhackspeed5;
+  framehotkeyconfig.newspdhackspeed1:=spdhackspeed1;
+  framehotkeyconfig.newspdhackspeed2:=spdhackspeed2;
+  framehotkeyconfig.newspdhackspeed3:=spdhackspeed3;
+  framehotkeyconfig.newspdhackspeed4:=spdhackspeed4;
+  framehotkeyconfig.newspdhackspeed5:=spdhackspeed5;
 
   framehotkeyconfig.speedupdelta:=speedupdelta;
   framehotkeyconfig.slowdowndelta:=slowdowndelta;
@@ -1933,14 +1933,14 @@ begin
     add(rsAttachToForegroundProcess);
     add(rsPopupHideMonoEngine);
     add(rsPauseTheSelectedProcess);
-    add(rsToggleTheSpeedhack);
-    add(rsSpeedhackSpeed+' 1');
-    add(rsSpeedhackSpeed+' 2');
-    add(rsSpeedhackSpeed+' 3');
-    add(rsSpeedhackSpeed+' 4');
-    add(rsSpeedhackSpeed+' 5');
-    add(rsSpeedhackSpeed+' +');
-    add(rsSpeedhackSpeed+' -');
+    add(rsToggleTheSpdhack);
+    add(rsSpdhackSpeed+' 1');
+    add(rsSpdhackSpeed+' 2');
+    add(rsSpdhackSpeed+' 3');
+    add(rsSpdhackSpeed+' 4');
+    add(rsSpdhackSpeed+' 5');
+    add(rsSpdhackSpeed+' +');
+    add(rsSpdhackSpeed+' -');
     add(rsChangeTypeTo+' '+rsBinary);
     add(rsChangeTypeTo+' '+rsByte);
     add(rsChangeTypeTo+' '+rs2Bytes);
@@ -1989,8 +1989,8 @@ begin
   laststatepause:=ord('P');
   lastpausemodifier:=MOD_CONTROL or MOD_ALT;
 
-  laststateSpeedhack:=ord('S');
-  laststateSpeedhack:=MOD_CONTROL or MOD_ALT;
+  laststateSpdhack:=ord('S');
+  laststateSpdhack:=MOD_CONTROL or MOD_ALT;
 
   deletedmodules:=TStringlist.Create;
 

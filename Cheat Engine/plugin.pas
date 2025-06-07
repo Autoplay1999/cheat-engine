@@ -216,7 +216,7 @@ type
 
     object_destroy: pointer;
     messageDialog: pointer;
-    speedhack_setSpeed: pointer;
+    spdhack_setSpeed: pointer;
 
     //version 5
     ExecuteKernelCode: pointer;
@@ -402,7 +402,7 @@ type TExportedFunctions4 = record
 
   object_destroy: pointer;
   messageDialog: pointer;
-  speedhack_setSpeed: pointer;
+  spdhack_setSpeed: pointer;
 
 end;
 type PExportedFunctions4 = ^TExportedFunctions4;
@@ -2034,7 +2034,7 @@ begin
 
   exportedfunctions.object_destroy:=@ce_object_destroy;
   exportedfunctions.messageDialog:=@ce_messageDialog;
-  exportedfunctions.speedhack_setSpeed:=@ce_speedhack_setSpeed;
+  exportedfunctions.spdhack_setSpeed:=@ce_spdhack_setSpeed;
 
   //version 5
   {$ifdef windows}

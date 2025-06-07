@@ -19,11 +19,11 @@
 
 //todo: Make all of these fail if the debugger is waiting to continue from a debug event (or perhaps the pipe server thread can keep running)
 
-int ext_speedhack_setSpeed(HANDLE hProcess, float speed)
+int ext_spdhack_setSpeed(HANDLE hProcess, float speed)
 {
   uint32_t result=0;
 
-  debug_log("ext_speedhack_setSpeed(%d, %f)\n", hProcess, speed);
+  debug_log("ext_spdhack_setSpeed(%d, %f)\n", hProcess, speed);
 
   if (GetHandleType(hProcess) == htProcesHandle )
   {

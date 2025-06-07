@@ -2060,7 +2060,7 @@ int _handleVMCallInstruction(pcpuinfo currentcpuinfo, VMRegisters *vmregisters, 
     case VMCALL_SETSPEEDHACK:
     {
       PVMCALL_SETSPEEDHACK_PARAM p=(PVMCALL_SETSPEEDHACK_PARAM)vmcall_instruction;
-      speedhack_setspeed(p->speedhackspeed);
+      spdhack_setspeed(p->spdhackspeed);
       break;
     }
 
@@ -2252,7 +2252,7 @@ int _handleVMCallInstruction(pcpuinfo currentcpuinfo, VMRegisters *vmregisters, 
 
     case VMCALL_DISABLETSCHOOK:
     {
-      if (useSpeedhack==FALSE)
+      if (useSpdhack==FALSE)
       {
         vmx_disableTSCHook(currentcpuinfo);
         vmregisters->rax=1;

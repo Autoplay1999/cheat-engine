@@ -1063,7 +1063,7 @@
         <ResourceBaseClass Value="Form"/>
       </Unit43>
       <Unit44>
-        <Filename Value="speedhack2.pas"/>
+        <Filename Value="spdhack2.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit44>
       <Unit45>

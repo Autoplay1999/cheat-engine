@@ -177,7 +177,7 @@ int new_gettimeofday(struct timeval *tv, struct timezone *tz)
   return r;
 }
 
-int speedhack_initializeSpeed(float speed)
+int spdhack_initializeSpeed(float speed)
 {
 
  // printf("speedhack_initializeSpeed(%f)\n", speed);

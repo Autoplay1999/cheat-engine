@@ -171,7 +171,7 @@ var
   NearbyAllocationFailureFatal: boolean=true;
 
   {$ifdef darwin}
-  speedhack_HookMachAbsoluteTime:boolean;
+  spdhack_HookMachAbsoluteTime:boolean;
   {$endif}
 
   {$ifdef USELAZFREETYPE}

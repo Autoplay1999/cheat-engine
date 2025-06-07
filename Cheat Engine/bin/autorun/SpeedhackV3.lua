@@ -39,7 +39,7 @@ end
 
 function hookSpeedFunctions()
  -- print("hookSpeedFunctions")
-  if getAddressSafe("new_gettickcount")~=nil and getAddressSafe("speedhack_wantedspeed")~=nil then
+  if getAddressSafe("new_gettickcount")~=nil and getAddressSafe("spdhack_wantedspeed")~=nil then
   --  print("already hooked")
     return true
   end
@@ -52,8 +52,8 @@ function hookSpeedFunctions()
   end
   
   local result, data=autoAssemble([[
-    globalalloc(speedhack_wantedspeed,4)
-    speedhack_wantedspeed:
+    globalalloc(spdhack_wantedspeed,4)
+    spdhack_wantedspeed:
     dd (float)1
 
 
@@ -66,7 +66,7 @@ function hookSpeedFunctions()
     return
   end
 
- -- print("allocated speedhack_wantedspeed")
+ -- print("allocated spdhack_wantedspeed")
 
   local gtcaddress=getAddressSafe('kernel32.gettickcount64')
   if gtcaddress==nil then
@@ -89,7 +89,7 @@ function hookSpeedFunctions()
   if originalcode then
 
 
-  --speedhack does not disable. Just sets speed to 1 when done
+  --spdhack does not disable. Just sets speed to 1 when done
 
     local s=string.format([[
 alloc(gtc_originalcode,64,"kernel32.gettickcount64")
@@ -108,7 +108,7 @@ uint64_t gtc_initialtime=0;
 uint64_t gtc_initialoffset=0;
 cecs gtc_cs;
 
-extern float speedhack_wantedspeed;
+extern float spdhack_wantedspeed;
 extern void csenter(cecs *cs);
 
 
@@ -124,7 +124,7 @@ __stdcall uint64_t new_gettickcount(void)
   currenttime=gtc_originalcode();
 
   csenter(&gtc_cs);  
-  wantedspeed=speedhack_wantedspeed;
+  wantedspeed=spdhack_wantedspeed;
 
   if (gtc_initialtime==0)
   {
@@ -140,7 +140,7 @@ __stdcall uint64_t new_gettickcount(void)
     //the user wants to change the speed
     gtc_initialoffset=newtime;
     gtc_initialtime=currenttime;
-    gtc_speed=speedhack_wantedspeed;
+    gtc_speed=spdhack_wantedspeed;
   }
 
 
@@ -208,7 +208,7 @@ jmp new_gettickcount
   if originalcode then
 
 
-  --speedhack does not disable. Just sets speed to 1 when done
+  --spdhack does not disable. Just sets speed to 1 when done
 
     local s=string.format([[
 alloc(qpc_originalcode,64,"ntdll.RtlQueryPerformanceCounter")
@@ -228,7 +228,7 @@ cecs qpc_cs;
 
 uint64_t qpc_lastresult=0;
 
-extern float speedhack_wantedspeed;
+extern float spdhack_wantedspeed;
 extern void csenter(cecs *cs);
 
 
@@ -248,7 +248,7 @@ __stdcall int  new_RtlQueryPerformanceCounter(uint64_t *count)
 
   csenter(&qpc_cs);
   
-  wantedspeed=speedhack_wantedspeed;
+  wantedspeed=spdhack_wantedspeed;
 
   if (qpc_initialtime==0)
   {
@@ -264,7 +264,7 @@ __stdcall int  new_RtlQueryPerformanceCounter(uint64_t *count)
     //the user wants to change the speed
     qpc_initialoffset=newtime;
     qpc_initialtime=currenttime;
-    qpc_speed=speedhack_wantedspeed;
+    qpc_speed=spdhack_wantedspeed;
   }
   
 
@@ -311,11 +311,11 @@ end
 
 
 
-registerSpeedhackCallbacks(function() --OnActivate
+registerSpdhackCallbacks(function() --OnActivate
   if (not isConnectedToCEServer()) and targetIsX86() then
     local result, errormsg
     
-    if getAddressSafe("new_gettickcount")==nil or getAddressSafe("speedhack_wantedspeed")==nil then
+    if getAddressSafe("new_gettickcount")==nil or getAddressSafe("spdhack_wantedspeed")==nil then
       --still needs hooking
       result,errormsg=hookSpeedFunctions()
     else
@@ -331,13 +331,13 @@ end,
 function(speed) --OnSetSpeed(speed)
   if (not isConnectedToCEServer()) and targetIsX86() then
     local result, errormsg
-    if getAddressSafe("new_gettickcount")==nil or getAddressSafe("speedhack_wantedspeed")==nil then
+    if getAddressSafe("new_gettickcount")==nil or getAddressSafe("spdhack_wantedspeed")==nil then
 
       result,errormsg=hookSpeedFunctions()
       if not result then return true, false, errormsg end
     end
 
-    writeFloat("speedhack_wantedspeed", speed)
+    writeFloat("spdhack_wantedspeed", speed)
     result=true      
     
     return true, true

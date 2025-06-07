@@ -97,7 +97,7 @@ extern int useSpeedhack;
 
 
 
-void speedhack_setspeed(double speed);
+void spdhack_setspeed(double speed);
 
 void incrementRIP(int count);
 

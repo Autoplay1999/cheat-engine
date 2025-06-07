@@ -306,7 +306,7 @@ type TScanSettings = record
   hooknewprocesses: boolean;
 end;
 
-type tspeedhackspeed=record
+type tspdhackspeed=record
   speed: single;
   disablewhenreleased: boolean;
   keycombo: TKeyCombo;

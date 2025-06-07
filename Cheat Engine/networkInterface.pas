@@ -146,7 +146,7 @@ type
     function loadModule(hProcess: THandle; modulepath: string): boolean;
     function loadModuleEx(hProcess: THandle; dlopenaddress: ptruint; modulepath: string): boolean;
     function loadExtension(hProcess: Thandle): boolean;
-    function speedhack_setSpeed(hProcess: THandle; speed: single): boolean;
+    function spdhack_setSpeed(hProcess: THandle; speed: single): boolean;
     procedure setConnectionName(name: string);
 
     procedure getOptions(var options: TCEServerOptions);
@@ -2284,9 +2284,9 @@ begin
 
 end;
 
-function TCEConnection.speedhack_setSpeed(hProcess: THandle; speed: single): boolean;
+function TCEConnection.spdhack_setSpeed(hProcess: THandle; speed: single): boolean;
 var
-  speedhackSetSpeedCommand: packed record
+  spdhackSetSpeedCommand: packed record
     command: byte;
     handle: uint32;
     speed: single;
@@ -2298,11 +2298,11 @@ begin
 
   if isNetworkHandle(hProcess) then
   begin
-    speedhackSetSpeedCommand.command:=CMD_SPEEDHACK_SETSPEED;
-    speedhackSetSpeedCommand.handle:=hProcess and $ffffff;
-    speedhackSetSpeedCommand.speed:=speed;
+    spdhackSetSpeedCommand.command:=CMD_SPEEDHACK_SETSPEED;
+    spdhackSetSpeedCommand.handle:=hProcess and $ffffff;
+    spdhackSetSpeedCommand.speed:=speed;
 
-    if send(@speedhackSetSpeedCommand,  sizeof(speedhackSetSpeedCommand))>0 then
+    if send(@spdhackSetSpeedCommand,  sizeof(spdhackSetSpeedCommand))>0 then
     begin
       receive(@r, sizeof(r));
       result:=r<>0;

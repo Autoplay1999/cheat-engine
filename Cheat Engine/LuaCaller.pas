@@ -83,8 +83,8 @@ type
       function StructureListCallback(callbackid: integer; list: tstringlist; max: integer=-1):boolean;
       function ElementListCallback(moduleid: integer; typeid: integer; list: TStringlist): boolean;
 
-      function SpeedHackSetSpeedEvent(speed: single; out r: boolean; out error: string): boolean;
-      function SpeedHackOnActivate(out r: boolean; out error: string): boolean;
+      function SpdHackSetSpeedEvent(speed: single; out r: boolean; out error: string): boolean;
+      function SpdHackOnActivate(out r: boolean; out error: string): boolean;
 
       procedure AssemblerEvent(address:qword; instruction: string; var bytes: TAssemblerBytes);
       procedure AutoAssemblerPrologueEvent(code: TStrings; syntaxcheckonly: boolean);
@@ -1543,7 +1543,7 @@ begin
   end;
 end;
 
-function TLuaCaller.SpeedHackSetSpeedEvent(speed: single; out r: boolean; out error: string): boolean;
+function TLuaCaller.SpdHackSetSpeedEvent(speed: single; out r: boolean; out error: string): boolean;
 var oldstack: integer;
 begin
   result:=false;
@@ -1567,7 +1567,7 @@ begin
   end;
 end;
 
-function TLuaCaller.SpeedHackOnActivate(out r: boolean; out error: string): boolean;
+function TLuaCaller.SpdHackOnActivate(out r: boolean; out error: string): boolean;
 var oldstack: integer;
 begin
   result:=false;

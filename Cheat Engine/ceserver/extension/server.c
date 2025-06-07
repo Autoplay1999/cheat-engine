@@ -513,7 +513,7 @@ __attribute__((constructor)) void moduleinit(void)
   int i;
   //printf("\nServerthread active\n");
 
-  speedhack_initializeSpeed(1.0f);
+  spdhack_initializeSpeed(1.0f);
 
   void *X;
   void *module=NULL;

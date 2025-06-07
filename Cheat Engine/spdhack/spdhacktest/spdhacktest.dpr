@@ -1,4 +1,4 @@
-program speedhacktest;
+program spdhacktest;
 
 uses
   Forms,

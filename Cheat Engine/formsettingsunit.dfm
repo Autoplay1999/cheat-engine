@@ -899,7 +899,7 @@ object formSettings: TformSettings
           Height = 86
           Align = alTop
           Caption = 
-            'Use the following CE Kernel routines instead of the original win' +
+            'Use the following MN Kernel routines instead of the original win' +
             'dows version'
           TabOrder = 0
           object cbKernelQueryMemoryRegion: TCheckBox

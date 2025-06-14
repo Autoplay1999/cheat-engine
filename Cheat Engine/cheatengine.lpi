@@ -830,6 +830,7 @@
       <Unit0>
         <Filename Value="cheatengine.lpr"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="monoengine"/>
       </Unit0>
       <Unit1>
         <Filename Value="MainUnit.pas"/>

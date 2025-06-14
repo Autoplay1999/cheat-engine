@@ -5,7 +5,7 @@ unit InvisForm;
 interface
 
 uses
-  Classes, SysUtils, Controls, Forms, Windows;
+  Classes, SysUtils, Forms, Windows;
 
 type
   TInvisForm = class(TForm)

@@ -41,7 +41,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images;$(LazarusDir)\ideintf\images"/>
-            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls"/>
+            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls;ndk"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -124,7 +124,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images;$(LazarusDir)\ideintf\images"/>
-            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls"/>
+            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls;ndk"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-SSE4-AVX-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -209,7 +209,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images;$(LazarusDir)\ideintf\images"/>
-            <OtherUnitFiles Value="VEHDebug;dbk32;luamac;macsrc;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls"/>
+            <OtherUnitFiles Value="VEHDebug;dbk32;luamac;macsrc;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls;ndk"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -281,7 +281,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images;$(LazarusDir)\ideintf\images"/>
-            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls"/>
+            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls;ndk"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -328,7 +328,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images;$(LazarusDir)\ideintf\images"/>
-            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls"/>
+            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls;ndk"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -405,7 +405,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images;$(LazarusDir)\ideintf\images"/>
-            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls"/>
+            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls;ndk"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -490,7 +490,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images;$(LazarusDir)\ideintf\images"/>
-            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls"/>
+            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls;ndk"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -552,7 +552,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images;$(LazarusDir)\ideintf\images"/>
-            <OtherUnitFiles Value="VEHDebug;dbk32;macsrc;luamac;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls"/>
+            <OtherUnitFiles Value="VEHDebug;dbk32;macsrc;luamac;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls;ndk"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -626,7 +626,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include;$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images"/>
-            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls"/>
+            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls;ndk"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -701,7 +701,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include;$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images"/>
-            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls"/>
+            <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls;ndk"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -826,7 +826,7 @@
         <PackageName Value="LCL"/>
       </Item9>
     </RequiredPackages>
-    <Units Count="426">
+    <Units Count="437">
       <Unit0>
         <Filename Value="cheatengine.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -3078,6 +3078,50 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="InvisForm"/>
       </Unit425>
+      <Unit426>
+        <Filename Value="ps.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit426>
+      <Unit427>
+        <Filename Value="ndk\ntldr.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit427>
+      <Unit428>
+        <Filename Value="ndk\ntdef.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit428>
+      <Unit429>
+        <Filename Value="ndk\ntpebteb.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit429>
+      <Unit430>
+        <Filename Value="ndk\ntpsapi.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit430>
+      <Unit431>
+        <Filename Value="ndk\ntrtl.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit431>
+      <Unit432>
+        <Filename Value="stdint.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit432>
+      <Unit433>
+        <Filename Value="ndk\ntwow64.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit433>
+      <Unit434>
+        <Filename Value="ndk\ntmmapi.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit434>
+      <Unit435>
+        <Filename Value="ndk\ntstatus.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit435>
+      <Unit436>
+        <Filename Value="ndk\ntobapi.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit436>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -3088,7 +3132,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir);$(LazarusDir)\ide\include\$(TargetOS);$(LazarusDir)\images;$(LazarusDir)\ideintf\images"/>
-      <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls"/>
+      <OtherUnitFiles Value="VEHDebug;dbk32;lua;jvdesign;$(LazarusDir)\designer;$(LazarusDir)\ide;betterControls;ndk"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>

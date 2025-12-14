@@ -21,7 +21,7 @@ uses
   NewKernelHandler,syncobjs, SymbolListHandler, fgl, typinfo, cvconst, PEInfoFunctions,
   DotNetPipe, DotNetTypes, commonTypeDefs, math, LazUTF8, contnrs, LazFileUtils,
   db, sqldb, sqlite3dyn, sqlite3conn, registry, symbolhandlerstructs, forms, controls,
-  AvgLvlTree,contexthandler
+  AvgLvlTree,contexthandler, ps
   {$ifdef darwin}
   ,macportdefines
   {$endif};
@@ -5976,6 +5976,7 @@ var
   x: string;
 
   i: integer;
+  l: integer;
 
   processid: dword;
   modulename: string;
@@ -5991,6 +5992,9 @@ var
   newmodulelistpos: integer;
   sectionlist: TStringlist;
   si: TSectionInfo;
+
+  moduleInfos: ps.TModuleInformationArray;
+  processHandle: THandle;
 begin
 
   result:=false;
@@ -6001,9 +6005,20 @@ begin
   try
 
     if targetself then
-      processid:=getcurrentprocessid
+    begin
+      processid:=getcurrentprocessid;
+      processHandle := THandle(-1);
+{$ifdef cpu64}
+      is64bitprocess := true;
+{$else}
+      is64bitprocess := false;
+{$endif}
+    end
     else
+    begin
       processid:=processhandlerunit.ProcessID;
+      processHandle := processhandlerunit.processhandle()
+    end;
 
     if processid=0 then exit;
 
@@ -6033,129 +6048,262 @@ begin
       begin
         me32.dwSize:=sizeof(MODULEENTRY32);
         if ths<>0 then
-        begin
-          try
-            if module32first(ths,me32) then
-            repeat
-              s:=WinCPToUTF8(pchar(@me32.szModule[0]));
-              x:=WinCPToUTF8(pchar(@me32.szExePath[0]));
-              if (s[1]<>'[') then //do not extract the filename if it's a 'special' marker
-                modulename:=extractfilename(s)
-              else
-                modulename:=s;
-
-
-              alreadyInTheList:=false;
-              //check if this modulename is already in the list, and if so check if it's the same base, else add it
-              for i:=0 to newmodulelistpos-1 do
+          begin
+            try
+              if module32first(ths,me32) then
               begin
-                if (newmodulelist[i].baseaddress=ptrUint(me32.modBaseAddr)) then
-                begin
-                  alreadyInTheList:=true;
-                  break; //it's in the list, no need to continue looking, break out of the for loop
-                end;
+                repeat
+                  s:=WinCPToUTF8(pchar(@me32.szModule[0]));
+                  x:=WinCPToUTF8(pchar(@me32.szExePath[0]));
+                  if (s[1]<>'[') then //do not extract the filename if it's a 'special' marker
+                    modulename:=extractfilename(s)
+                  else
+                    modulename:=s;
 
-              end;
 
-              if not alreadyInTheList then
-              begin
-                if newmodulelistpos+1>=length(newmodulelist) then
-                  setlength(newmodulelist,length(newmodulelist)*2);
-
-                newmodulelist[newmodulelistpos].modulename:=modulename;
-                newmodulelist[newmodulelistpos].modulepath:=x;
-
-                //all windows folder files are system modules, except when it is an .exe (minesweeper in xp)
-                newmodulelist[newmodulelistpos].isSystemModule:=(pos(lowercase(windowsdir),lowercase(x))>0) and (ExtractFileExt(lowercase(x))<>'.exe');
-
-                newmodulelist[newmodulelistpos].baseaddress:=ptrUint(me32.modBaseAddr);
-                newmodulelist[newmodulelistpos].basesize:=me32.modBaseSize;
-
-                if not processhandler.isNetwork then
-                begin
-                  {$ifdef darwin}
-                  //if me32.is64bit then
-                 //   outputdebugstring(modulename+' is 64-bit')
-                  //else
-                  //  outputdebugstring(modulename+' is NOT 64-bit');
-
-                  newmodulelist[newmodulelistpos].is64bitmodule:=me32.is64bit; //I own this struct now so yes...
-                  {$endif}
-
-                  {$ifdef windows}
-                  if targetself=false then  //not useful for CE
+                  alreadyInTheList:=false;
+                  //check if this modulename is already in the list, and if so check if it's the same base, else add it
+                  for i:=0 to newmodulelistpos-1 do
                   begin
-                    sectionlist:=tstringlist.create;
-                    if peinfo_getSectionList(newmodulelist[newmodulelistpos].baseaddress,sectionlist) then
+                    if (newmodulelist[i].baseaddress=ptrUint(me32.modBaseAddr)) then
                     begin
-                      setlength(newmodulelist[newmodulelistpos].sections, sectionlist.count);
-                      for i:=0 to sectionlist.count-1 do
-                      begin
-                        si:=TSectionInfo(sectionlist.Objects[i]);
-                        newmodulelist[newmodulelistpos].sections[i].name:=si.name;
-                        newmodulelist[newmodulelistpos].sections[i].size:=si.size;
-                        newmodulelist[newmodulelistpos].sections[i].fileaddress:=si.fileAddress;
-                        newmodulelist[newmodulelistpos].sections[i].address:=si.virtualAddress;
-                        si.Free;
-                      end;
+                      alreadyInTheList:=true;
+                      break; //it's in the list, no need to continue looking, break out of the for loop
                     end;
-                    sectionlist.free;
+
                   end;
 
-                  if peinfo_is64bitfile(x, newmodulelist[newmodulelistpos].is64bitmodule)=false then
+                  if not alreadyInTheList then
                   begin
-                    //fallback
-                    {$ifdef cpu64}
-                    if is64bitprocess then
-                      newmodulelist[newmodulelistpos].is64bitmodule:=true
+                    if newmodulelistpos+1>=length(newmodulelist) then
+                      setlength(newmodulelist,length(newmodulelist)*2);
+
+                    newmodulelist[newmodulelistpos].modulename:=modulename;
+                    newmodulelist[newmodulelistpos].modulepath:=x;
+
+                    //all windows folder files are system modules, except when it is an .exe (minesweeper in xp)
+                    newmodulelist[newmodulelistpos].isSystemModule:=(pos(lowercase(windowsdir),lowercase(x))>0) and (ExtractFileExt(lowercase(x))<>'.exe');
+
+                    newmodulelist[newmodulelistpos].baseaddress:=ptrUint(me32.modBaseAddr);
+                    newmodulelist[newmodulelistpos].basesize:=me32.modBaseSize;
+
+                    if not processhandler.isNetwork then
+                    begin
+                      {$ifdef darwin}
+                      //if me32.is64bit then
+                    //   outputdebugstring(modulename+' is 64-bit')
+                      //else
+                      //  outputdebugstring(modulename+' is NOT 64-bit');
+
+                      newmodulelist[newmodulelistpos].is64bitmodule:=me32.is64bit; //I own this struct now so yes...
+                      {$endif}
+
+                      {$ifdef windows}
+                      if targetself=false then  //not useful for CE
+                      begin
+                        sectionlist:=tstringlist.create;
+                        if peinfo_getSectionList(newmodulelist[newmodulelistpos].baseaddress,sectionlist) then
+                        begin
+                          setlength(newmodulelist[newmodulelistpos].sections, sectionlist.count);
+                          for i:=0 to sectionlist.count-1 do
+                          begin
+                            si:=TSectionInfo(sectionlist.Objects[i]);
+                            newmodulelist[newmodulelistpos].sections[i].name:=si.name;
+                            newmodulelist[newmodulelistpos].sections[i].size:=si.size;
+                            newmodulelist[newmodulelistpos].sections[i].fileaddress:=si.fileAddress;
+                            newmodulelist[newmodulelistpos].sections[i].address:=si.virtualAddress;
+                            si.Free;
+                          end;
+                        end;
+                        sectionlist.free;
+                      end;
+
+                      if peinfo_is64bitfile(x, newmodulelist[newmodulelistpos].is64bitmodule)=false then
+                      begin
+                        //fallback
+                        {$ifdef cpu64}
+                        if is64bitprocess then
+                          newmodulelist[newmodulelistpos].is64bitmodule:=true
+                        else
+                        begin
+                          if newmodulelist[newmodulelistpos].isSystemModule then
+                          begin
+                            if pos('wow64', lowercase(ExtractFilePath(x)))>0 then  //todo: Open the file and check if it's 64-bit or not
+                              newmodulelist[newmodulelistpos].is64bitmodule:=false
+                            else
+                              newmodulelist[newmodulelistpos].is64bitmodule:=true;
+                          end;
+                        end;
+                        {$endif}
+                      end;
+                      {$endif}
+
+
+                      if is64bitprocess<>newmodulelist[newmodulelistpos].is64bitmodule then
+                      begin
+                      // outputdebugstring(newmodulelist[newmodulelistpos].modulename+' does not match process');
+                        newmodulelist[newmodulelistpos].modulename:='_'+newmodulelist[newmodulelistpos].modulename;
+                      end;
+
+                    end
                     else
                     begin
-                      if newmodulelist[newmodulelistpos].isSystemModule then
-                      begin
-                        if pos('wow64', lowercase(ExtractFilePath(x)))>0 then  //todo: Open the file and check if it's 64-bit or not
-                          newmodulelist[newmodulelistpos].is64bitmodule:=false
-                        else
-                          newmodulelist[newmodulelistpos].is64bitmodule:=true;
+                      newmodulelist[newmodulelistpos].is64bitmodule:=is64bitprocess;
+
+                      if newmodulelist[newmodulelistpos].is64bitmodule=false then
+                      asm
+                      nop
                       end;
+
+                      if pos('/system/',lowercase(x))=1 then //android thingy
+                        newmodulelist[newmodulelistpos].isSystemModule:=true;
+
+                      newmodulelist[newmodulelistpos].elfpart:=me32.GlblcntUsage;
+                      newmodulelist[newmodulelistpos].elffileoffset:=me32.ProccntUsage;
                     end;
-                    {$endif}
+
+                    if (not newmodulelist[newmodulelistpos].isSystemModule) and (commonModuleList<>nil) then //check if it's a common module (e.g nvidia physx dll's)
+                      newmodulelist[newmodulelistpos].isSystemModule:=commonModuleList.IndexOf(lowercase(newmodulelist[newmodulelistpos].modulename))<>-1;
+
+                    inc(newmodulelistpos);
+
+                    if (modulelistpos=0) or (newmodulelistpos>modulelistpos) or (modulelist[newmodulelistpos-1].baseaddress<>newmodulelist[newmodulelistpos-1].baseaddress) then //different size or different order, return true
+                      result:=true; //different
                   end;
-                  {$endif}
 
-
-                  if processhandler.is64Bit<>newmodulelist[newmodulelistpos].is64bitmodule then
+                until not module32next(ths,me32);
+              end
+            else
+              begin
+                if ps.LdrEnumerateModules(processHandle, moduleInfos) then
+                  for l := 0 to high(moduleInfos) do
                   begin
-                   // outputdebugstring(newmodulelist[newmodulelistpos].modulename+' does not match process');
-                    newmodulelist[newmodulelistpos].modulename:='_'+newmodulelist[newmodulelistpos].modulename;
+                    s:=UTF16ToUTF8(moduleInfos[l].FileName);
+                    x:=UTF16ToUTF8(moduleInfos[l].FilePath);
+                    if (s[1]<>'[') then //do not extract the filename if it's a 'special' marker
+                      modulename:=extractfilename(s)
+                    else
+                      modulename:=s;
+
+
+                    alreadyInTheList:=false;
+                    //check if this modulename is already in the list, and if so check if it's the same base, else add it
+                    for i:=0 to newmodulelistpos-1 do
+                    begin
+                      if (newmodulelist[i].baseaddress=ptrUint(moduleInfos[l].BaseAddress)) then
+                      begin
+                        alreadyInTheList:=true;
+                        break; //it's in the list, no need to continue looking, break out of the for loop
+                      end;
+
+                    end;
+
+                    if not alreadyInTheList then
+                    begin
+                      if newmodulelistpos+1>=length(newmodulelist) then
+                        setlength(newmodulelist,length(newmodulelist)*2);
+
+                      newmodulelist[newmodulelistpos].modulename:=modulename;
+                      newmodulelist[newmodulelistpos].modulepath:=x;
+
+                      //all windows folder files are system modules, except when it is an .exe (minesweeper in xp)
+                      newmodulelist[newmodulelistpos].isSystemModule:=(pos(lowercase(windowsdir),lowercase(x))>0) and (ExtractFileExt(lowercase(x))<>'.exe');
+
+                      newmodulelist[newmodulelistpos].baseaddress:=ptrUint(moduleInfos[l].BaseAddress);
+                      newmodulelist[newmodulelistpos].basesize:=moduleInfos[l].SizeOfImage;
+
+                      if not processhandler.isNetwork then
+                      begin
+                        {$ifdef darwin}
+                        //if me32.is64bit then
+                      //   outputdebugstring(modulename+' is 64-bit')
+                        //else
+                        //  outputdebugstring(modulename+' is NOT 64-bit');
+
+                        newmodulelist[newmodulelistpos].is64bitmodule:=moduleInfos[l].Is64Bit; //I own this struct now so yes...
+                        {$endif}
+
+                        {$ifdef windows}
+                        if targetself=false then  //not useful for CE
+                        begin
+                          sectionlist:=tstringlist.create;
+                          if peinfo_getSectionList(newmodulelist[newmodulelistpos].baseaddress,sectionlist) then
+                          begin
+                            setlength(newmodulelist[newmodulelistpos].sections, sectionlist.count);
+                            for i:=0 to sectionlist.count-1 do
+                            begin
+                              si:=TSectionInfo(sectionlist.Objects[i]);
+                              newmodulelist[newmodulelistpos].sections[i].name:=si.name;
+                              newmodulelist[newmodulelistpos].sections[i].size:=si.size;
+                              newmodulelist[newmodulelistpos].sections[i].fileaddress:=si.fileAddress;
+                              newmodulelist[newmodulelistpos].sections[i].address:=si.virtualAddress;
+                              si.Free;
+                            end;
+                          end;
+                          sectionlist.free;
+                        end;
+
+                        {$if 0}
+                        if peinfo_is64bitfile(x, newmodulelist[newmodulelistpos].is64bitmodule)=false then
+                        begin
+                          //fallback
+                          {$ifdef cpu64}
+                          if is64bitprocess then
+                            newmodulelist[newmodulelistpos].is64bitmodule:=true
+                          else
+                          begin
+                            if newmodulelist[newmodulelistpos].isSystemModule then
+                            begin
+                              if pos('wow64', lowercase(ExtractFilePath(x)))>0 then  //todo: Open the file and check if it's 64-bit or not
+                                newmodulelist[newmodulelistpos].is64bitmodule:=false
+                              else
+                                newmodulelist[newmodulelistpos].is64bitmodule:=true;
+                            end;
+                          end;
+                          {$endif}
+                        end;
+                        {$else}
+                        newmodulelist[newmodulelistpos].is64bitmodule := moduleInfos[l].Is64Bit;
+                        {$endif}
+                        {$endif}
+
+
+
+
+                        if is64bitprocess<>newmodulelist[newmodulelistpos].is64bitmodule then
+                        begin
+                        // outputdebugstring(newmodulelist[newmodulelistpos].modulename+' does not match process');
+                          newmodulelist[newmodulelistpos].modulename:='_'+newmodulelist[newmodulelistpos].modulename;
+                        end;
+
+                      end
+                      else
+                      begin
+                        newmodulelist[newmodulelistpos].is64bitmodule:=is64bitprocess;
+
+                        if newmodulelist[newmodulelistpos].is64bitmodule=false then
+                        asm
+                        nop
+                        end;
+
+                        if pos('/system/',lowercase(x))=1 then //android thingy
+                          newmodulelist[newmodulelistpos].isSystemModule:=true;
+
+                        // todo
+                        //newmodulelist[newmodulelistpos].elfpart:=me32.GlblcntUsage;
+                        //newmodulelist[newmodulelistpos].elffileoffset:=me32.ProccntUsage;
+                      end;
+
+                      if (not newmodulelist[newmodulelistpos].isSystemModule) and (commonModuleList<>nil) then //check if it's a common module (e.g nvidia physx dll's)
+                        newmodulelist[newmodulelistpos].isSystemModule:=commonModuleList.IndexOf(lowercase(newmodulelist[newmodulelistpos].modulename))<>-1;
+
+                      inc(newmodulelistpos);
+
+                      if (modulelistpos=0) or (newmodulelistpos>modulelistpos) or (modulelist[newmodulelistpos-1].baseaddress<>newmodulelist[newmodulelistpos-1].baseaddress) then //different size or different order, return true
+                        result:=true; //different
+                    end;
                   end;
-
-                end
-                else
-                begin
-                  newmodulelist[newmodulelistpos].is64bitmodule:=processhandler.is64Bit;
-
-                  if newmodulelist[newmodulelistpos].is64bitmodule=false then
-                  asm
-                  nop
-                  end;
-
-                  if pos('/system/',lowercase(x))=1 then //android thingy
-                    newmodulelist[newmodulelistpos].isSystemModule:=true;
-
-                  newmodulelist[newmodulelistpos].elfpart:=me32.GlblcntUsage;
-                  newmodulelist[newmodulelistpos].elffileoffset:=me32.ProccntUsage;
-                end;
-
-                if (not newmodulelist[newmodulelistpos].isSystemModule) and (commonModuleList<>nil) then //check if it's a common module (e.g nvidia physx dll's)
-                  newmodulelist[newmodulelistpos].isSystemModule:=commonModuleList.IndexOf(lowercase(newmodulelist[newmodulelistpos].modulename))<>-1;
-
-                inc(newmodulelistpos);
-
-                if (modulelistpos=0) or (newmodulelistpos>modulelistpos) or (modulelist[newmodulelistpos-1].baseaddress<>newmodulelist[newmodulelistpos-1].baseaddress) then //different size or different order, return true
-                  result:=true; //different
               end;
-
-            until not module32next(ths,me32);
           finally
             closehandle(ths);
           end;

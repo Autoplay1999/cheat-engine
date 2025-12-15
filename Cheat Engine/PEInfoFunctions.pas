@@ -322,7 +322,16 @@ type
     property Entry[index: integer]: TRunTimeEntry read getEntry; default;
   end;
 
-
+type
+  PExportEntryInfo = ^TExportEntryInfo;
+  TExportEntryInfo = record
+    name: array of string;
+    rva: NativeUInt;
+    size: NativeUInt;
+    isForward: Boolean;
+    forwardName: string;
+  end;
+  TExportEntryInfoArray = array of PExportEntryInfo;
 
 function peinfo_getSectionList(modulebase: ptruint; sectionList: Tstrings): boolean;
 function peinfo_getImageNtHeaders(headerbase: pointer; maxsize: dword):PImageNtHeaders;
@@ -336,7 +345,8 @@ function peinfo_getExceptionList(modulebase: ptruint): TExceptionList;
 
 function peinfo_getImageSectionHeader(headerbase: pointer; maxsize: dword): PImageSectionHeader;
 
-     {$endif}
+function peinfo_getExportList2(filename: string; out exportEntryInfos : TExportEntryInfoArray): boolean;
+{$endif}
 
 
 implementation
@@ -344,6 +354,49 @@ implementation
 {$ifdef windows}
 uses ProcessHandlerUnit, PEInfounit;
 
+type
+  TImageSectionHeaders = record
+    Headers: PImageSectionHeader;
+    HeaderCount: NativeUInt;
+  end;
+
+function GetSectionHeadersByNTHeader(ntHeader: Pointer): TImageSectionHeaders;
+begin
+  if ntHeader = nil then
+  begin
+    Result.Headers := nil;
+    Result.HeaderCount := 0;
+    Exit;
+  end;
+
+  Result.HeaderCount := PImageFileHeader(NativeUInt(ntHeader) + SizeOf(DWORD))^.NumberOfSections;
+  Result.Headers := PImageSectionHeader(NativeUInt(ntHeader) + SizeOf(DWORD) + SizeOf(TImageFileHeader) + PImageFileHeader(NativeUInt(ntHeader) + SizeOf(DWORD))^.SizeOfOptionalHeader);
+end;
+
+function RvaToRaw(rva: NativeUInt; const sectionHeaders: TImageSectionHeaders): NativeUInt;
+var
+  i: NativeUInt;
+  SectionPtr: PImageSectionHeader;
+begin
+  SectionPtr := sectionHeaders.Headers;
+
+  for i := 0 to sectionHeaders.HeaderCount - 1 do
+  begin
+    with SectionPtr^ do
+    begin
+      if (rva >= VirtualAddress) and (rva < VirtualAddress + Misc.VirtualSize) then
+        Exit(rva - VirtualAddress + PointerToRawData);
+    end;
+
+    SectionPtr := Pointer(NativeUInt(SectionPtr) + SizeOf(ImageSectionHeader));
+  end;
+  Result := 0;
+end;
+
+function RawToVa(raw: NativeUInt; baseAddress: NativeUInt): NativeUInt;
+begin
+  Result := baseAddress + raw;
+end;
 
 function peinfo_getImageDosHeader(headerbase: pointer):PImageDosHeader;
 {
@@ -493,7 +546,7 @@ var
   ar: ptruint;
   header: pointer;
   ImageNtHeader: PImageNtHeaders;
-  OptionalHeader: PImageOptionalHeader;
+  OptionalHeader: PImageOptionalHeader32;
   OptionalHeader64: PImageOptionalHeader64 absolute OptionalHeader;
   is64bit: boolean;
 begin
@@ -589,7 +642,7 @@ function peinfo_getExportList(modulebase: ptruint; dllList: Tstrings): boolean;
 var
   header: pointer;
   ImageNtHeader: PImageNtHeaders;
-  OptionalHeader: PImageOptionalHeader;
+  OptionalHeader: PImageOptionalHeader32;
   OptionalHeader64: PImageOptionalHeader64 absolute OptionalHeader;
   ImageExportDirectory: PImageExportDirectory;
   is64bit: boolean;
@@ -674,7 +727,7 @@ function peinfo_getExportList(filename: string; dllList: Tstrings): boolean;
 var fmap: TFileMapping;
     header: pointer;
     ImageNtHeader: PImageNtHeaders;
-    OptionalHeader: PImageOptionalHeader;
+    OptionalHeader: PImageOptionalHeader32;
     OptionalHeader64: PImageOptionalHeader64 absolute OptionalHeader;
     ImageExportDirectory: PImageExportDirectory;
     is64bit: boolean;
@@ -864,6 +917,158 @@ begin
     end;
   except
 
+  end;
+end;
+
+function peinfo_getExportList2(filename: string; out exportEntryInfos : TExportEntryInfoArray): boolean;
+var
+  fmap: TFileMapping;
+  imageBase: pointer;
+  ntHeader: PImageNtHeaders;
+  sectionHeaders: TImageSectionHeaders;
+  optionalHeader: PImageOptionalHeader32;
+  optionalHeader64: PImageOptionalHeader64 absolute optionalHeader;
+  exportDirectory: PImageExportDirectory;
+  is64bit: boolean;
+
+  addressList: PDwordArray;
+  exportList: PDwordArray;
+  ordinalList: PWordArray;
+  i, j: integer;
+
+  codeBase, codeSize, codeEnd: Qword;
+  ordinalBase: Integer;
+  funcRva: Qword;
+  funcName: string;
+  isExist: Boolean;
+
+  exportEntryInfo: PExportEntryInfo;
+  tmp: PExportEntryInfo;
+begin
+  result := false;
+  fmap := TFileMapping.create(filename);
+
+   if fmap = nil then
+  begin
+    exit;
+  end;
+
+  try
+    imageBase := fmap.fileContent;
+    ntHeader := peinfo_getImageNtHeaders(imageBase, fmap.filesize);
+
+    if ntHeader = nil then raise exception.Create(strInvalidFile);
+    sectionHeaders := GetSectionHeadersByNTHeader(ntHeader);
+
+    if ntHeader^.FileHeader.Machine = $8664 then
+      is64bit := true
+    else if ntHeader^.FileHeader.Machine = $14C then
+      is64bit := false
+    else
+      raise exception.Create(strInvalidFile);
+
+    optionalHeader := peinfo_getOptionalHeaders(imageBase, fmap.filesize);
+    if optionalHeader = nil then raise exception.Create(strInvalidFile);
+
+    codeBase := optionalHeader.BaseOfCode;
+    codeSize := optionalHeader.SizeOfCode;
+
+    if ((is64bit) and (optionalHeader64^.DataDirectory[0].VirtualAddress = 0)) or ((not is64bit) and (optionalHeader^.DataDirectory[0].VirtualAddress = 0)) then raise exception.Create(rsPEIFNoExports);
+
+    if is64bit then
+      exportDirectory := peinfo_VirtualAddressToFileAddress(imageBase, fmap.filesize, optionalHeader64^.DataDirectory[0].VirtualAddress)
+    else
+      exportDirectory := peinfo_VirtualAddressToFileAddress(imageBase, fmap.filesize, optionalHeader^.DataDirectory[0].VirtualAddress);
+
+    ordinalBase := exportDirectory.Base;
+    exportList := peinfo_VirtualAddressToFileAddress(imageBase, fmap.filesize, dword(exportDirectory.AddressOfNames));
+    addressList := peinfo_VirtualAddressToFileAddress(imageBase, fmap.filesize, dword(exportDirectory.AddressOfFunctions));
+    ordinalList := peinfo_VirtualAddressToFileAddress(imageBase, fmap.filesize, dword(exportDirectory.AddressOfNameOrdinals));
+
+    for i := 0 to exportDirectory.NumberOfFunctions - 1 do
+    begin
+      funcRva := addressList[i];
+
+      if funcRVA = 0 then continue;
+
+      funcName := '';
+
+      for j := 0 to exportDirectory.NumberOfNames - 1 do
+      begin
+        if ordinalList[j] = i then
+        begin
+          funcName := PAnsiChar(NativeUInt(imageBase) + RvaToRaw(exportList[j], sectionHeaders));
+          break;
+        end;
+      end;
+
+      if funcName = '' then
+        funcName := 'Ordinal' + IntToStr(ordinalBase + i);
+
+      isExist := False;
+      for exportEntryInfo in exportEntryInfos do
+      begin
+        if exportEntryInfo^.rva = funcRva then
+        begin
+          SetLength(exportEntryInfo^.name, Length(exportEntryInfo^.name) + 1);
+          exportEntryInfo^.name[High(exportEntryInfo^.name)] := funcName;
+          isExist := True;
+          break;
+        end;
+      end;
+
+      if not isExist then
+      begin
+        New(exportEntryInfo);
+        SetLength(exportEntryInfo^.name, 1);
+        exportEntryInfo^.name[0] := funcName;
+        exportEntryInfo^.rva := funcRva;
+        exportEntryInfo^.size := 0;
+        exportEntryInfo^.isForward := (funcRva < codeBase) or (funcRva > codeBase + codeSize);
+        exportEntryInfo^.forwardName := '';
+
+        if exportEntryInfo^.isForward then
+          exportEntryInfo^.forwardName := PAnsiChar(RawToVa(RvaToRaw(funcRva, sectionHeaders), NativeUInt(imageBase)));
+
+        SetLength(exportEntryInfos, Length(exportEntryInfos) + 1);
+        exportEntryInfos[High(exportEntryInfos)] := exportEntryInfo;
+      end;
+    end;
+
+    // Sort by RVA (bubble sort)
+    for i := 0 to High(exportEntryInfos) - 1 do
+      for j := i + 1 to High(exportEntryInfos) do
+        if exportEntryInfos[i]^.rva > exportEntryInfos[j]^.rva then
+        begin
+          tmp := exportEntryInfos[i];
+          exportEntryInfos[i] := exportEntryInfos[j];
+          exportEntryInfos[j] := tmp;
+        end;
+
+    // Calculate size
+    codeEnd := codeBase + codeSize;
+    for i := High(exportEntryInfos) downto 0 do
+    begin
+      if exportEntryInfos[i]^.isForward then
+        continue;
+      exportEntryInfos[i]^.size := codeEnd - exportEntryInfos[i]^.rva;
+      codeEnd := exportEntryInfos[i]^.rva;
+    end;
+
+    result := true;
+  finally
+    if not result then
+    begin
+      if length(exportEntryInfos) > 0 then
+      begin
+        for i := 0 to high(exportEntryInfos) do
+        begin
+          dispose(exportEntryInfos[i]);
+        end;
+        setlength(exportEntryInfos, 0);
+      end;
+    end;
+    fmap.free;
   end;
 end;
 

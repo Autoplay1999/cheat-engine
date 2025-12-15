@@ -2577,13 +2577,15 @@ type
   PModInfo=^TModInfo;
 var sp: pchar;
     s: string;
+    moduleName: string;
+    symbolName: string;
 
     temp: string;
 
     c: TCEConnection;
 
     mpl: Tstringlist;
-    i,j: integer;
+    i,j,l: integer;
 
     dotNetdomains: TDotNetDomainArray;
     dotNetmodules: TDotNetModuleArray;
@@ -2596,6 +2598,9 @@ var sp: pchar;
 
     b: byte;
     ar: ptruint;
+
+    exportEntryInfos: TExportEntryInfoArray;
+    isWow64: BOOL;
 begin
   NameThreadForDebugging('SymbolLoaderThread', GetCurrentThreadId);
   debugpart:=0;
@@ -2884,6 +2889,40 @@ begin
                     OutputDebugString('parsingstructures'+#13#10);
                     EnumerateStructures;
                     parsingstructures:=false;
+                  end;
+
+                  if enumeratedModules = 0 then
+                  begin
+                    owner.modulelistMREW.Beginread;
+
+                    IsWow64Process(THANDLE(thisprocesshandle), isWow64);
+
+                    for i := 0 to high(owner.modulelist) do
+                    begin
+                      try
+                         peinfo_getExportList2(owner.modulelist[i].modulepath, exportEntryInfos);
+                         moduleName := ChangeFileExt(owner.modulelist[i].modulename,'');
+
+                         for j := 0 to high(exportEntryInfos) do
+                         begin
+                           if exportEntryInfos[j]^.isForward then continue; // todo: I'll fix the forward issue later; for now, let's skip it!
+
+                           for l := 0 to high(exportEntryInfos[j]^.name) do
+                           begin
+                             symbolName := exportEntryInfos[j]^.name[l];
+
+                             if isWow64 <> (not owner.modulelist[i].is64bitmodule) then
+                               symbolName := '_' + symbolName;
+
+                             symbollist.AddSymbol(moduleName, symbolName, owner.modulelist[i].baseaddress + exportEntryInfos[j]^.rva, exportEntryInfos[j]^.size, true);
+                             symbollist.AddSymbol(moduleName, moduleName + '.' + symbolName, owner.modulelist[i].baseaddress + exportEntryInfos[j]^.rva, exportEntryInfos[j]^.size, false);
+                           end;
+                         end;
+                      except
+                      end;
+                    end;
+
+                    owner.modulelistMREW.Endread;
                   end;
 
                   if (targetself=false) and (length(modulelist.withdebuginfo)>0) then
@@ -6173,7 +6212,7 @@ begin
 
                 until not module32next(ths,me32);
               end
-            else
+              else
               begin
                 if ps.LdrEnumerateModules(processHandle, moduleInfos) then
                   for l := 0 to high(moduleInfos) do

@@ -5,7 +5,7 @@ unit DebugHandler;
 interface
 
 uses
-  windows, Classes, SysUtils, syncobjs, extcont;
+  first, windows, Classes, SysUtils, syncobjs, extcont;
 
 
 function Handler(ExceptionInfo: PEXCEPTION_POINTERS): LONG; stdcall;
@@ -27,7 +27,7 @@ var
 procedure testandfixcs_start;
 begin
   if emergency=0 then
-    OutputDebugString('emergency event not created');
+    DbgLog('emergency event not created');
 
   setevent(emergency);
 end;
@@ -120,7 +120,7 @@ begin
           result:=EXCEPTION_CONTINUE_SEARCH;
           handlerCS.Leave;
 
-          OutputDebugString('VEH debug terminated because the heartbeat stopped');
+          DbgLog('VEH debug terminated because the heartbeat stopped');
 
           // MessageBoxA(0,'CE''s VEH heartbeat has stopped and an exception happened. Press OK to see what happens next','VEH Debug',MB_ICONERROR or MB_OK);
           exit;

@@ -7,7 +7,7 @@ unit SimpleThread;
 interface
 
 uses
-  windows, Classes, SysUtils;
+  first, windows, Classes, SysUtils;
 
 
 type TSimpleThread=class
@@ -33,12 +33,12 @@ implementation
 
 function threadstart(self: TSimpleThread): dword; stdcall;
 begin
-  //OutputDebugString('threadstart called');
+  //DbgLog('threadstart called');
   try
     self.execute;
     result:=0;
   except
-    OutputDebugString('A thread has crashed');
+    DbgLog('A thread has crashed');
     result:=1;
   end;
 end;
@@ -77,7 +77,7 @@ begin
       resume;
   end
   else
-    OutputDebugString('CreateThread failure');
+    DbgLog('CreateThread failure');
 end;
 
 

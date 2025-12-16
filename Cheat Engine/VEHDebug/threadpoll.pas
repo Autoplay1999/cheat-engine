@@ -8,7 +8,7 @@ Keeps a list of all the threads and notifies the debugger when a change has happ
 interface
 
 uses
-  jwawindows,windows,Classes, SysUtils,init, extcont, simpleThread, VEHDebugSharedMem;
+  first, jwawindows,windows,Classes, SysUtils,init, extcont, simpleThread, VEHDebugSharedMem;
 
 
 type TThreadPoller=class(TSimpleThread)
@@ -47,7 +47,7 @@ var
   useValidContext: boolean;
   hasValidContext: boolean;
 begin
-  OutputDebugString('CreateThreadEvent');
+  DbgLog('CreateThreadEvent');
 
   useValidContext:=((VEHSharedMem.ThreadWatchMethodConfig and TPOLL_TCREATEREALCONTEXT)>0) and (GetCurrentThreadId<>threadid);
 
@@ -56,7 +56,7 @@ begin
     cp:=@c;
     ep.ContextRecord:=cp;
 
-    OutputDebugString('usevalidcontext=true');
+    DbgLog('usevalidcontext=true');
 
     th:=OpenThread(THREAD_GET_CONTEXT or THREAD_SET_CONTEXT or THREAD_SUSPEND_RESUME, false, threadid);
     if th<>0 then
@@ -69,7 +69,7 @@ begin
       if not hasValidContext then
       begin
         ep.ContextRecord:=nil;
-        OutputDebugString(pchar(Format('Failure getting context th=%d @c=%p', [th, @c])));
+        DbgLog(pchar(Format('Failure getting context th=%d @c=%p', [th, @c])));
       end;
 
      // debug_oldcontext:=c;
@@ -81,7 +81,7 @@ begin
   else
   begin
     ep.ContextRecord:=nil;
-    OutputDebugString('usevalidcontext=false');
+    DbgLog('usevalidcontext=false');
   end;
 
   ep.ExceptionRecord:=@er;
@@ -89,18 +89,18 @@ begin
 
   er.ExceptionCode:=$ce000001;
   er.ExceptionRecord:=nil;
-  OutputDebugString('Emulating CreateThreadEvent');
+  DbgLog('Emulating CreateThreadEvent');
 
   InternalHandler(@ep,threadid);
 
-  OutputDebugString('After Emulating CreateThreadEvent');
+  DbgLog('After Emulating CreateThreadEvent');
 
   if usevalidcontext then
   begin
     if (th<>0) and (hasValidContext) then
     begin
 
-      //OutputDebugString(pchar(Format('old context=%p new context=%p', [@debug_oldcontext, @debug_newcontext])));
+      //DbgLog(pchar(Format('old context=%p new context=%p', [@debug_oldcontext, @debug_newcontext])));
 
       //debug_newcontext:=c;
 
@@ -192,7 +192,7 @@ begin
       UpdateList;
     end;
   finally
-    OutputDebugString('TThreadPoller terminated');
+    DbgLog('TThreadPoller terminated');
     threadlist.free;
   end;
 end;

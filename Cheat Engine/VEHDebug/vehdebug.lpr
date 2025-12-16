@@ -4,7 +4,7 @@ library vehdebug;
 
 uses
   windows, Classes, init, DebugHandler, VEHDebugSharedMem, threadpoll, extcont,
-  SimpleThread
+  SimpleThread, First
   { you can add units after this };
 
 exports ConfigName;
@@ -14,6 +14,6 @@ exports UnloadVEH;
 
 
 begin
-  //OutputDebugString('vehdebug loaded. Waiting for init call');
+  //DbgLog('vehdebug loaded. Waiting for init call');
 end.
 

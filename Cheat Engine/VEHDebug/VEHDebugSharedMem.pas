@@ -9,7 +9,7 @@ interface
 
 {$IFDEF windows}
 uses
-  windows, Classes, SysUtils;
+  first, windows, Classes, SysUtils;
 
 
 const

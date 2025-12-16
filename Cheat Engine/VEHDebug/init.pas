@@ -5,7 +5,7 @@ unit init;
 interface
 
 uses
-  jwaWindows, Windows, Classes, SysUtils, VEHDebugSharedMem;
+  first, jwaWindows, Windows, Classes, SysUtils, VEHDebugSharedMem;
 
 
 var
@@ -43,7 +43,7 @@ var ep: TEXCEPTIONPOINTERS;
 
     bpc: TContext;
 begin
-  //OutputDebugString('EmulateInitializeEvents');
+  //DbgLog('EmulateInitializeEvents');
   cpid:=GetCurrentProcessId;
   ep.ContextRecord:=nil;
   ep.ExceptionRecord:=@er;
@@ -120,7 +120,7 @@ begin
 
   testandfixcs_start;
 
-  OutputDebugString('VEHDebug init');
+  DbgLog('VEHDebug init');
 
 
   {if ThreadPoller<>nil then
@@ -136,58 +136,58 @@ begin
 
   //get the shared memory object
   m:=pchar(@ConfigName[0]);
-  outputDebugstring(pchar('ConfigName='+m));
+  DbgLog(pchar('ConfigName='+m));
 
 //  fm:=CreateFileMapping(INVALID_HANDLE_VALUE,nil,PAGE_READWRITE,0,sizeof(TVEHDebugSharedMem),@ConfigName[0]);
 
   if fm=0 then
     fm:=OpenFileMapping(FILE_MAP_ALL_ACCESS,false,m);
 
-  OutputDebugString(pchar('fm='+inttohex(fm,8)));
+  DbgLog(pchar('fm='+inttohex(fm,8)));
 
   if (fm=0) then
   begin
-    OutputDebugString(pchar('GetLastError='+inttostr(getlasterror)));
+    DbgLog(pchar('GetLastError='+inttostr(getlasterror)));
     exit;
   end;
 
 
   VEHSharedMem:=MapViewOfFile(fm,FILE_MAP_ALL_ACCESS,0,0,0);
-  OutputDebugString(pchar('VEHSharedMem='+inttohex(ptruint(VEHSharedMem),8)));
+  DbgLog(pchar('VEHSharedMem='+inttohex(ptruint(VEHSharedMem),8)));
 
   if VEHSharedMem=nil then
   begin
-    OutputDebugString(pchar('GetLastError='+inttostr(getlasterror)));
+    DbgLog(pchar('GetLastError='+inttostr(getlasterror)));
     exit;
   end;
 
   VEHSharedMem.VEHVersion:=$cece0000+VEHVERSION;
 
 
-  OutputDebugString(pchar('HasDebugEvent='+inttohex(VEHSharedMem.HasDebugEvent,8)));
-  OutputDebugString(pchar('HasHandledDebugEvent='+inttohex(VEHSharedMem.HasHandledDebugEvent,8)));
+  DbgLog(pchar('HasDebugEvent='+inttohex(VEHSharedMem.HasDebugEvent,8)));
+  DbgLog(pchar('HasHandledDebugEvent='+inttohex(VEHSharedMem.HasHandledDebugEvent,8)));
 
-  OutputDebugString(pchar('@HasDebugEvent='+inttohex(ptruint(@VEHSharedMem.HasDebugEvent),8)));
-  OutputDebugString(pchar('@HasHandledDebugEvent='+inttohex(ptruint(@VEHSharedMem.HasHandledDebugEvent),8)));
+  DbgLog(pchar('@HasDebugEvent='+inttohex(ptruint(@VEHSharedMem.HasDebugEvent),8)));
+  DbgLog(pchar('@HasHandledDebugEvent='+inttohex(ptruint(@VEHSharedMem.HasHandledDebugEvent),8)));
 
 
   if assigned(AddVectoredExceptionHandler) then
   begin
     //if oldExceptionHandler<>nil then
-   //   outputdebugstring('Old exception handler should have been deleted. If not, this will crash');
+   //   DbgLog('Old exception handler should have been deleted. If not, this will crash');
 
 
-    OutputDebugString('Testing if it handles normal debug events');
-    OutputDebugString('1');
-    OutputDebugString('2');
-    OutputDebugString('3');
+    DbgLog('Testing if it handles normal debug events');
+    DbgLog('1');
+    DbgLog('2');
+    DbgLog('3');
 
-    OutputDebugString('Calling EmulateInitializeEvents');
+    DbgLog('Calling EmulateInitializeEvents');
 
     handlerlock:=GetCurrentThreadId;
     HandlerCS.enter; //do not handle any external exception while the threadlist is sent to ce
 
-    OutputDebugString('Registering exception handler');
+    DbgLog('Registering exception handler');
     vehdebugactive:=true;
     if oldExceptionHandler=nil then
       oldExceptionHandler:=AddVectoredExceptionHandler(1,@Handler);
@@ -205,14 +205,14 @@ begin
     handlerlock:=0;
 
 
-    OutputDebugString('returned from EmulateInitializeEvents');
+    DbgLog('returned from EmulateInitializeEvents');
 
 
 
     if oldExceptionHandler<>nil then
-      OutPutDebugString(pchar('Created exception handler:'+inttohex(ptrUint(oldExceptionHandler),8)))
+      DbgLog(pchar('Created exception handler:'+inttohex(ptrUint(oldExceptionHandler),8)))
     else
-      outputdebugstring('Failed creating exception handler');
+      DbgLog('Failed creating exception handler');
 
 
   end;

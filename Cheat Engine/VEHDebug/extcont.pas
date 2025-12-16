@@ -5,7 +5,7 @@ unit extcont;
 interface
 
 uses
-  Classes, SysUtils, jwawindows, windows;
+  first, Classes, SysUtils, jwawindows, windows;
 
   //credits to jedi code library for filling in the "extended registers"
 const CONTEXT_EXTENDED=$20;

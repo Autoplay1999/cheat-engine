@@ -69,6 +69,7 @@ implementation
 uses ProcessHandlerUnit, Globals, dialogs, mainunit2;
 
 resourcestring
+  rsModuleName = 'hevd';
   rsErrorWhileTryingToCreateTheConfigurationStructure = 'Error while trying '
     +'to create the configuration structure! (Which effectively renders this '
     +'whole feature useless) Errorcode=%s';
@@ -626,12 +627,12 @@ begin
     symhandler.waitforsymbolsloaded(true,'kernel32.dll');
 
     debuggerAttachStatus:='fetching InitializeVEH symbol';
-    testptr:=symhandler.getAddressFromName('"vehdebug'+prefix+'.InitializeVEH"',false,err);
+    testptr:=symhandler.getAddressFromName('"'+rsModuleName+prefix+'.InitializeVEH"',false,err);
     if err or (testptr=0) then
     begin
       try
-        debuggerAttachStatus:='Injecting vehdebug'+prefix+'.dll';
-        InjectDll(cheatenginedir+'vehdebug'+prefix+'.dll');
+        debuggerAttachStatus:='Injecting '+rsModuleName+prefix+'.dll';
+        InjectDll(cheatenginedir+rsModuleName+prefix+'.dll');
       except
       end;
     end;
@@ -639,24 +640,24 @@ begin
 
     debuggerAttachStatus:='reloading symbols';
     symhandler.reinitialize;
-    debuggerAttachStatus:='waiting for symbols from vehdebug'+prefix+'.dll';
-    symhandler.waitforsymbolsloaded(true,'vehdebug'+prefix+'.dll');
+    debuggerAttachStatus:='waiting for symbols from '+rsModuleName+prefix+'.dll';
+    symhandler.waitforsymbolsloaded(true,rsModuleName+prefix+'.dll');
 
-    testptr:=symhandler.getAddressFromName('"vehdebug'+prefix+'.InitializeVEH"');
+    testptr:=symhandler.getAddressFromName('"'+rsModuleName+prefix+'.InitializeVEH"');
 
     s:=tstringlist.Create;
     try
       s.Clear;
-      s.Add('"vehdebug'+prefix+'.ConfigName":');
+      s.Add('"'+rsModuleName+prefix+'.ConfigName":');
       s.add('db '''+guidstring+''',0');
 
-      s.Add('"vehdebug'+prefix+'.fm":');
+      s.Add('"'+rsModuleName+prefix+'.fm":');
       if processhandler.is64Bit then
         s.add('dq '+inttohex(cfm,8))
       else
         s.add('dd '+inttohex(cfm,8));
 
-      s.Add('CreateThread("vehdebug'+prefix+'.InitializeVEH")');
+      s.Add('CreateThread("'+rsModuleName+prefix+'.InitializeVEH")');
 
       //Clipboard.SetTextBuf(pchar(s.text));
       debuggerAttachStatus:='Assembling VEH injection script';
@@ -707,7 +708,7 @@ begin
 
       s:=tstringlist.Create;
       try
-        s.Add('CreateThread("vehdebug'+prefix+'.UnloadVEH")');
+        s.Add('CreateThread("'+rsModuleName+prefix+'.UnloadVEH")');
         if autoassemble(s,false) then
         begin
           active:=false;
